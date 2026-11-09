@@ -21,6 +21,7 @@
   z-index: 5;
 }
 .hd--overlay {
+   max-width: none;
   color: #fff;
   background: var(--scrim-header);
   position: absolute;
