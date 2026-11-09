@@ -111,3 +111,42 @@ switchBtns.forEach((btn) => {
     if (!groups.some((g) => g.contains(el))) io.observe(el);
   });
 })();
+
+// --- Header on scroll ------------------------------------------------------
+// Scroll down → header fades out; scroll up → it fades back in (200 ms, CSS).
+(() => {
+  const hd = document.querySelector(".hd--overlay");
+  if (!hd) return;
+  document.body.classList.add("hm-page");
+  const menu = hd.querySelector("[data-menu-panel]");
+  const TOP = 10;      // within this many px of the top: always shown
+  const DELTA = 6;     // ignore tiny scroll jitter
+  let lastY = window.scrollY;
+  let ticking = false;
+
+  const update = () => {
+    ticking = false;
+    const y = window.scrollY;
+    const menuOpen = menu && !menu.hasAttribute("hidden");
+    if (y <= TOP || menuOpen) {
+      hd.classList.remove("is-hidden");
+      hd.classList.toggle("is-scrolled", y > TOP);
+      lastY = y;
+      return;
+    }
+    if (Math.abs(y - lastY) < DELTA) return;
+    if (y > lastY && y > hd.offsetHeight) {
+      hd.classList.add("is-hidden");          // scrolling down
+    } else if (y < lastY) {
+      hd.classList.add("is-scrolled");        // scrolling up
+      hd.classList.remove("is-hidden");
+    }
+    lastY = y;
+  };
+
+  window.addEventListener("scroll", () => {
+    if (!ticking) { ticking = true; requestAnimationFrame(update); }
+  }, { passive: true });
+  // Keyboard users tabbing into the header must always see it.
+  hd.addEventListener("focusin", () => hd.classList.remove("is-hidden"));
+})();
