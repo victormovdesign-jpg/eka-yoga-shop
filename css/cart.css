@@ -1,0 +1,77 @@
+/* Cart page (kolichka.html). Breadcrumb style from collection.css (.cl-crumbs). */
+.ct { padding: 0 var(--side-padding-desktop) 64px; color: var(--text-main); font-family: var(--font-sans); }
+.ct .cl-crumbs { margin-bottom: 0; } /* same position as Collection (8px top padding from .cl-crumbs) */
+.ct-head { display: flex; flex-direction: column; align-items: center; padding: 56px 0 80px; } /* +16px keeps the title where it was */
+.ct-title { margin: 0; text-align: center; font: 700 var(--fs-h1)/1.2 var(--font-serif); }
+.ct-continue { margin-top: 12px; padding-bottom: 2px; border-bottom: 1px solid var(--brand-red); color: var(--brand-red); font-size: 16px; line-height: 1.5; text-decoration: none; }
+.ct-continue:hover { color: var(--brand-red-light); }
+
+.ct-split { display: grid; grid-template-columns: minmax(0, 1fr) 368px; gap: 120px; align-items: start; }
+.ct-empty { margin: 0; padding: 40px 0; font-size: 18px; }
+.ct-list { list-style: none; margin: 0; padding: 0; }
+.ct-row { display: grid; grid-template-columns: 123px minmax(0, 1fr) 140px 120px 44px; align-items: center; gap: 16px; padding: 20px 0; }
+.ct-img { width: 123px; height: 126px; object-fit: cover; display: block; background: var(--bg-content-secondary); }
+.ct-name { margin: 0; font: 700 24px/1.2 var(--font-serif); }
+.ct-name a { color: inherit; text-decoration: none; }
+.ct-var { margin: 4px 0 0; font-size: 16px; line-height: 1.5; }
+.ct-step { display: inline-flex; align-items: center; justify-self: start; height: 34px; box-sizing: border-box; border: 1px solid var(--brand-green); border-radius: 4px; }
+.ct-step button { width: 34px; height: 32px; padding: 0; border: 0; background: transparent; color: var(--text-main); cursor: pointer; display: flex; align-items: center; justify-content: center; }
+.ct-step span { min-width: 34px; text-align: center; font-size: 16px; }
+.ct-price { font: 700 24px/1.2 var(--font-serif); font-variant-numeric: proportional-nums lining-nums; text-align: right; white-space: nowrap; }
+.ct-remove { width: 44px; height: 44px; padding: 0; border: 0; background: transparent; color: var(--text-main); cursor: pointer; display: flex; align-items: center; justify-content: center; }
+.ct-remove:hover { color: var(--brand-red); }
+
+.ct-sum { box-sizing: border-box; border: 1px solid var(--brand-green); padding: 16px; position: sticky; top: 24px; }
+.ct-sum__row { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; font-size: 16px; }
+.ct-sum__row--ship { margin-top: 16px; }
+.ct-sum__label { font-weight: 700; }
+.ct-sum__total { font: 700 24px/1.2 var(--font-serif); font-variant-numeric: proportional-nums lining-nums; }
+.ct-pay {
+  box-sizing: border-box; width: 100%; height: 56px; margin-top: 24px; border-radius: var(--radius-control);
+  background: var(--brand-red); color: #fff; font: 700 16px/1.5 var(--font-sans); text-decoration: none;
+  display: flex; align-items: center; justify-content: center;
+}
+.ct-pay:hover { background: var(--brand-red-light); color: #fff; }
+.ct-pay[aria-disabled="true"] { background: var(--state-disabled); pointer-events: none; }
+.ct button:focus-visible, .ct a:focus-visible { outline: 2px solid var(--brand-green); outline-offset: 2px; }
+
+@media (max-width: 1100px) and (min-width: 768px) {
+  .ct-split { grid-template-columns: minmax(0, 1fr) 300px; gap: 32px; }
+  .ct-row { grid-template-columns: 96px minmax(0, 1fr) auto; grid-template-areas: "img info remove" "img step price"; row-gap: 8px; }
+  .ct-img { width: 96px; height: 100px; grid-area: img; }
+  .ct-row > div:not(.ct-step) { grid-area: info; }
+  .ct-step { grid-area: step; }
+  .ct-price { grid-area: price; }
+  .ct-remove { grid-area: remove; justify-self: end; }
+}
+
+/* Desktop: everything below the breadcrumb is a centred column (max 1120px);
+   the breadcrumb stays at the page edge, lined up with the logo like on Product. */
+@media (min-width: 985px) {
+  .ct > :not(.cl-crumbs) { max-width: 1120px; margin-left: auto; margin-right: auto; }
+}
+
+/* Tablet with the burger header (768–984px): align content with the logo and the burger */
+@media (min-width: 768px) and (max-width: 984px) {
+  .ct { padding-left: var(--side-padding-mobile); padding-right: var(--side-padding-mobile); }
+}
+
+@media (max-width: 767px) {
+  .ct { padding: 0 var(--side-padding-mobile) 48px; }
+  .ct .cl-crumbs { display: none; }
+  .ct-head { padding: 32px 0 24px; }
+  .ct-title { font-size: 34px; }
+  .ct-split { display: flex; flex-direction: column; gap: 24px; align-items: stretch; }
+  .ct-row {
+    grid-template-columns: 96px minmax(0, 1fr) auto; grid-template-areas: "img info remove" "img step price";
+    align-items: start; gap: 8px 12px; padding: 16px 0; border-bottom: 1px solid var(--bg-content-secondary);
+  }
+  .ct-img { grid-area: img; width: 96px; height: 124px; }
+  .ct-row > div:not(.ct-step) { grid-area: info; min-width: 0; }
+  .ct-step { grid-area: step; align-self: end; }
+  .ct-price { grid-area: price; align-self: end; justify-self: end; font-size: 22px; }
+  .ct-remove { grid-area: remove; justify-self: end; margin: -10px -10px 0 0; }
+  .ct-name { font-size: 20px; }
+  .ct-var { font-size: 14px; }
+  .ct-sum { position: static; margin-top: 8px; background: var(--bg-content-secondary); border-color: var(--bg-content-secondary); }
+}

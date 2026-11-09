@@ -2,7 +2,7 @@
 // looks up product metadata from data/products.json (fetched once on first
 // open, cached on window._EKA_META).
 
-import { getCart, onChange, updateQuantity, checkout } from "./checkout.js";
+import { getCart, onChange, updateQuantity } from "./checkout.js";
 
 const IMAGE_MAP = {
   gashterizon: {
@@ -42,7 +42,7 @@ const IMAGE_MAP = {
 };
 
 let metaPromise = null;
-function loadMeta() {
+export function loadMeta() {
   if (!metaPromise) {
     metaPromise = fetch("data/products.json")
       .then((r) => r.json())
@@ -62,16 +62,20 @@ function loadMeta() {
   return metaPromise;
 }
 
-function imageFor(productId, color) {
+export function imageFor(productId, color) {
   const byColor = IMAGE_MAP[productId];
   if (!byColor) return "";
   const key = color && byColor[color] ? color : Object.keys(byColor)[0];
   return byColor[key];
 }
 
-function variantLabel(meta, color, size) {
+const COLOR_LABELS = { bordo: "Бордо", maslina: "Маслина", sinyo: "Синьо", zhalto: "Жълто" }; // = data/colors.json
+
+export function variantLabel(meta, color, size) {
   const parts = [];
-  if (color && meta?.colors?.[color]) parts.push(meta.colors[color].label);
+  // Fall back to the global colour list: the CSV has no colours for sets / eye pillow.
+  const label = meta?.colors?.[color]?.label ?? COLOR_LABELS[color];
+  if (color && label) parts.push(label);
   if (size) parts.push(size);
   return parts.join(" / ");
 }
@@ -162,13 +166,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (e.key === "Escape" && !drawer.hasAttribute("hidden")) close();
   });
 
+  // "Купи сега" goes to the checkout page; payment is handed off there.
   drawer.querySelector("[data-buy]").addEventListener("click", () => {
-    try {
-      checkout();
-    } catch (e) {
-      providerNote.hidden = false;
-      providerNote.textContent = e.message;
-    }
+    if (getCart().lines.length === 0) return;
+    window.location.href = "porachka.html";
   });
 
   render();

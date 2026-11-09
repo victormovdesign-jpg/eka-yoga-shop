@@ -1,0 +1,42 @@
+/* Brand page (za-eka-yoga.html) */
+.br { color: var(--text-main); }
+.br-hero { position: relative; height: 100vh; height: 100svh; min-height: 480px; overflow: hidden; }
+.br-hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 40%; }
+
+.br-h2 { margin: 0; padding: 80px 16px; text-align: center; font: 700 var(--fs-h1)/1 var(--font-serif); letter-spacing: -0.02em; }
+.br-text { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; font: 400 18px/1.5 var(--font-sans); }
+.br-text p, .br-who__text p { margin: 0; }
+.br-extra { display: contents; }
+.br-extra[hidden] { display: none; }
+.br-more {
+  align-self: center; margin-top: 12px; padding: 0 0 2px; border: 0; border-bottom: 1px solid var(--brand-red);
+  background: none; color: var(--brand-red); font: 700 16px/1.5 var(--font-sans); cursor: pointer; min-height: 32px;
+}
+.br-more--light { align-self: flex-start; border-bottom-color: #fff; color: #fff; }
+.br-more:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+
+.br-why { padding: 0 var(--side-padding-desktop) 40px; }
+.br-mat { padding: 0 var(--side-padding-desktop) 80px; }
+
+.br-who { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); min-height: 100vh; min-height: 100svh; } /* at least full screen; grows when "Прочети повече" opens */
+/* Text block centred in the green panel, equal padding left and right */
+.br-who__panel { background: var(--brand-green); color: #fff; display: flex; align-items: center; justify-content: center; padding: 80px 64px; box-sizing: border-box; }
+.br-who__text { width: 100%; max-width: 560px; display: flex; flex-direction: column; gap: 20px; font: 400 18px/1.5 var(--font-sans); }
+.br-who__img { width: 100%; height: 100%; min-height: 100%; object-fit: cover; display: block; }
+.br-pillows { width: 100%; height: 100vh; height: 100svh; min-height: 480px; object-fit: cover; display: block; }
+
+@media (max-width: 1100px) and (min-width: 768px) {
+  .br-who__panel { padding: 64px 32px; }
+}
+
+@media (max-width: 767px) {
+  .br-h2 { font-size: 40px; line-height: 1.2; padding: 48px 16px 24px; }
+  .br-why { padding: 0 var(--side-padding-mobile) 40px; }
+  .br-text { gap: 16px; }
+  .br-more { font-size: 14px; margin-top: 8px; }
+  .br-who { display: flex; flex-direction: column; height: auto; min-height: 0; }
+  .br-who__img { order: -1; height: 420px; }
+  .br-who__panel { padding: 32px 16px; }
+  .br-who__text { gap: 16px; }
+  .br-mat { padding: 0 var(--side-padding-mobile) 48px; }
+}

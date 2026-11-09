@@ -94,3 +94,24 @@ export function onChange(handler) {
   window.addEventListener("eka:cart-change", listener);
   return () => window.removeEventListener("eka:cart-change", listener);
 }
+
+/**
+ * Last completed order, for the Thank-you page (/blagodarim).
+ * When a provider is wired: after a successful payment call saveLastOrder()
+ * with { number, name, lines, total } and send the customer to blagodarim.html.
+ * Stored in sessionStorage so it disappears when the tab closes.
+ */
+const ORDER_KEY = "eka-last-order";
+
+export function saveLastOrder(order) {
+  try { window.sessionStorage.setItem(ORDER_KEY, JSON.stringify(order)); } catch {}
+}
+
+export function getLastOrder() {
+  try {
+    const raw = window.sessionStorage.getItem(ORDER_KEY);
+    return raw ? JSON.parse(raw) : null;
+  } catch {
+    return null;
+  }
+}

@@ -315,3 +315,10 @@ textarea.eka-field { height: 180px; padding: 16px; resize: vertical; }
   color: var(--text-main);
 }
 @media (max-width: 767px) { .eka-quote { font-size: 32px; } }
+
+/* ---------- Prices: always Cormorant Bold Italic with lining numerals ---------- */
+/* :is() + html raises specificity above the page/component `font:` shorthands, which reset font-style. */
+html :is(.pc__price, .pd-price, .cd__price, .cd__total > span:last-child,
+  .ct-price, .ct-sum__total, .co-num) {
+  font-style: italic;
+}

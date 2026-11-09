@@ -3,200 +3,191 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>EKA Yoga – начало</title>
-    <meta name="description" content="EKA YOGA – бутикова колекция за йога, танци, фитнес и спорт." />
+    <title>EKA YOGA – бутикова колекция</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400;1,700&display=swap" />
+
     <link rel="preload" href="fonts/lato-400-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="fonts/lato-400-cyrillic.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="fonts/lato-700-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="fonts/lato-700-cyrillic.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="fonts/fonts.css" />
+
     <link rel="stylesheet" href="css/tokens.css" />
     <link rel="stylesheet" href="css/base.css" />
     <link rel="stylesheet" href="css/components.css" />
     <link rel="stylesheet" href="css/home.css" />
-    <script>document.documentElement.classList.add("js-anim");</script>
+  <script>document.documentElement.classList.add("js-anim");</script>
   </head>
-
   <body>
-    <a class="skip-link" href="#main">Към съдържанието</a>
+    <header class="hd hd--overlay" data-variant="overlay">
+      <a class="hd__logo" href="index.html" aria-label="EKA Yoga — начална страница">
+        <img src="images/logos/eka-logo-slogan-white.svg" alt="EKA Yoga — wear the bloom" width="221" height="78" />
+      </a>
+      <nav class="hd__nav" aria-label="Основна навигация">
+        <a class="hd__link" href="za-eka-yoga.html">За бранда</a>
+        <a class="hd__link" href="oblekla-i-aksesoari.html">Облекла и аксесоари</a>
+        <a class="hd__link" href="komplekti.html">Комплекти</a>
+        <button type="button" class="hd__cart" aria-label="Количка, 0 продукта" data-cart-trigger>
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M5 8h14l-1.2 12H6.2L5 8Z" />
+            <path d="M9 8V6a3 3 0 0 1 6 0v2" />
+          </svg>
+          <span class="hd__count" data-cart-count hidden>0</span>
+        </button>
+        <button type="button" class="hd__burger" aria-label="Меню" aria-expanded="false" data-menu-trigger>
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+            <path d="M4 7h16M4 12h16M4 17h16" />
+          </svg>
+        </button>
+      </nav>
+      <div class="hd__mmenu" role="dialog" aria-modal="true" aria-label="Меню" hidden data-menu-panel>
+        <div class="hd__mmenu-head">
+          <button type="button" aria-label="Затворете менюто" class="hd__mmenu-close" data-menu-close>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <path d="M5 5l14 14M19 5L5 19" />
+            </svg>
+          </button>
+        </div>
+        <nav aria-label="Мобилна навигация" class="hd__mmenu-nav">
+          <a href="za-eka-yoga.html">За бранда</a>
+          <a href="oblekla-i-aksesoari.html">Облекла и аксесоари</a>
+          <a href="komplekti.html">Комплекти</a>
+          <a href="kolichka.html">Моята количка</a>
+        </nav>
+      </div>
+    </header>
 
-    <!-- Header — overlay variant over the hero -->
-    <header class="hd hd--overlay">
-                <a class="hd__logo" href="#" aria-label="EKA Yoga — начална страница">
-                  <img src="images/logos/eka-logo-slogan-white.svg" alt="EKA Yoga — wear the bloom" width="221" height="78" />
-                </a>
-                <nav class="hd__nav" aria-label="Основна навигация">
-                  <a class="hd__link" href="#">За бранда</a>
-                  <a class="hd__link" href="#">Облекла и аксесоари</a>
-                  <a class="hd__link" href="#">Комплекти</a>
-                  <button type="button" class="hd__cart" aria-label="Количка, 2 продукта" data-cart-trigger>
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                      <path d="M5 8h14l-1.2 12H6.2L5 8Z" />
-                      <path d="M9 8V6a3 3 0 0 1 6 0v2" />
-                    </svg>
-                    <span class="hd__count">2</span>
-                  </button>
-                </nav>
-              </header>
-
-    <main id="main" class="home">
-
-      <!-- Hero -->
-      <section class="home-hero" aria-label="Начало">
-        <img class="home-hero__img" src="images/header/hero-home.webp" alt="Жена в цяло йога трико в цвят малина в стойка разтегнат страничен ъгъл на коркова постелка" data-reveal="fade" data-reveal-now />
-        <span class="home-hero__shade" aria-hidden="true"></span>
-        <div class="home-hero__body">
-          <h1 class="home-hero__title" data-reveal="title" data-reveal-now>EKA YOGA – бутикова колекция</h1>
-          <p class="home-hero__sub" data-reveal="title" data-reveal-now>Където и да сте – за йога, танци, фитнес и спорт</p>
-          <a class="eka-btn eka-btn--primary home-hero__cta" href="#" data-reveal="title" data-reveal-now>Разгледайте колекцията</a>
+    <main class="hm">
+      <section class="hm-hero" aria-label="EKA YOGA">
+        <img class="hm-hero__img" src="images/header/hero-home.webp" alt="Жена в цяло йога трико в цвят малина в стойка разтегнат страничен ъгъл на коркова постелка" fetchpriority="high" />
+        <span class="hm-hero__shade" aria-hidden="true"></span>
+        <!-- Hidden in the design until the designer re-enables it (docs/pages.md › Home › 1). -->
+        <div class="hm-hero__copy" hidden>
+          <h1 class="hm-hero__title">EKA YOGA – бутикова колекция</h1>
+          <p>Където и да си – за йога, танци, фитнес и спорт</p>
+          <a class="eka-btn eka-btn--primary" href="oblekla-i-aksesoari.html">Разгледай колекцията</a>
         </div>
       </section>
 
-      <!-- Activities carousel -->
-      <section class="home-band home-band--apps" aria-label="Приложения">
-        <div class="home-carousel" data-carousel>
-          <div class="home-carousel__track" data-track data-reveal-group>
-          <a class="home-app" href="#" data-reveal="item"><img src="images/activities/eka-yoga-gashterizon-za-yoga.webp" alt="Гащеризон за йога – йога" loading="lazy" width="500" height="500" /><span class="home-app__label">Йога</span></a>
-          <a class="home-app" href="#" data-reveal="item"><img src="images/activities/eka-yoga-gashterizon-za-pilates.webp" alt="Гащеризон за йога – пилатес" loading="lazy" width="500" height="500" /><span class="home-app__label">Пилатес</span></a>
-          <a class="home-app" href="#" data-reveal="item"><img src="images/activities/eka-yoga-gashterizon-za-fitnes.webp" alt="Гащеризон за йога – фитнес" loading="lazy" width="500" height="500" /><span class="home-app__label">Фитнес</span></a>
-          <a class="home-app" href="#" data-reveal="item"><img src="images/activities/eka-yoga-gashterizon-za-tantsi.webp" alt="Гащеризон за йога – танци" loading="lazy" width="500" height="500" /><span class="home-app__label">Танци</span></a>
-          <a class="home-app" href="#" data-reveal="item"><img src="images/activities/eka-yoga-gashterizon-za-streching.webp" alt="Гащеризон за йога – стречинг" loading="lazy" width="500" height="500" /><span class="home-app__label">Стречинг</span></a>
-          <a class="home-app" href="#" data-reveal="item"><img src="images/activities/eka-yoga-gashterizon-za-dzhoging.webp" alt="Гащеризон за йога – джогинг" loading="lazy" width="500" height="500" /><span class="home-app__label">Джогинг</span></a>
-          </div>
-          <button type="button" class="home-carousel__next" aria-label="Още приложения" data-next><svg width="40" height="80" viewBox="0 0 40 80" fill="none" aria-hidden="true"><rect width="40" height="80" fill="#FFFFFF" fill-opacity="0.8"/><path d="M22 32.5 29.5 40 22 47.5M11 40h18" stroke="#5D7054" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></button>
+      <section class="hm-apps" aria-label="Приложения">
+        <div class="hm-row" data-row>
+          <div class="hm-tile"><img src="images/activities/eka-yoga-gashterizon-za-yoga.webp" alt="Гащеризон за йога – йога" loading="lazy" draggable="false" /><span class="hm-tile__label">Йога</span></div>
+          <div class="hm-tile"><img src="images/activities/eka-yoga-gashterizon-za-pilates.webp" alt="Гащеризон за йога – пилатес" loading="lazy" draggable="false" /><span class="hm-tile__label">Пилатес</span></div>
+          <div class="hm-tile"><img src="images/activities/eka-yoga-gashterizon-za-fitnes.webp" alt="Гащеризон за йога – фитнес" loading="lazy" draggable="false" /><span class="hm-tile__label">Фитнес</span></div>
+          <div class="hm-tile"><img src="images/activities/eka-yoga-gashterizon-za-tantsi.webp" alt="Гащеризон за йога – танци" loading="lazy" draggable="false" /><span class="hm-tile__label">Танци</span></div>
+          <div class="hm-tile"><img src="images/activities/eka-yoga-gashterizon-za-streching.webp" alt="Гащеризон за йога – стречинг" loading="lazy" draggable="false" /><span class="hm-tile__label">Стречинг</span></div>
+          <div class="hm-tile"><img src="images/activities/eka-yoga-gashterizon-za-dzhoging.webp" alt="Гащеризон за йога – джогинг" loading="lazy" draggable="false" /><span class="hm-tile__label">Джогинг</span></div>
         </div>
+        <button type="button" class="hm-next" aria-label="Още приложения" data-row-next><svg width="40" height="80" viewBox="0 0 40 80" fill="none" aria-hidden="true"><rect width="40" height="80" fill="#FFFFFF" fill-opacity="0.8"/><path d="M21.48 32.47a.75.75 0 0 1 1.06 0l6.99 7a.75.75 0 0 1 0 1.06l-6.99 7a.75.75 0 0 1-1.06-1.06l5.71-5.72-16.19.01a.75.75 0 0 1 0-1.5l16.19-.01-5.71-5.72a.75.75 0 0 1 0-1.06Z" fill="#5D7054"/></svg></button>
       </section>
 
-      <!-- Brand tiles -->
-      <section class="home-section home-brand" aria-labelledby="home-brand-h">
-        <h2 id="home-brand-h" class="home-title" data-reveal="title">Мека материя, която те обгръща</h2>
-        <div class="home-brand__grid" data-reveal-group>
-          <a class="home-tile" href="#" data-reveal="item">
+      <section id="brand" class="hm-brand" aria-labelledby="hm-brand-h">
+        <h2 id="hm-brand-h" class="hm-title">Мека материя, която те обгръща</h2>
+        <div class="hm-brand__grid">
+          <div class="hm-feature">
             <img src="images/jumpsuit/eka-yoga-gashterizon-za-yoga-malina-01.webp" alt="Гащеризон за йога в цвят бордо" loading="lazy" />
-            <span class="home-tile__shade" aria-hidden="true"></span>
-            <span class="home-tile__body">
-              <span class="home-tile__title">Гащеризони за йога</span>
-              <span class="eka-btn eka-btn--primary home-tile__btn">Пазарувай гащеризони</span>
-            </span>
-          </a>
-          <a class="home-tile" href="#" data-reveal="item">
-            <img src="images/shorts/eka-yoga-shorti-zeleni-01.webp" alt="Шорти в цвят маслина" loading="lazy" />
-            <span class="home-tile__shade" aria-hidden="true"></span>
-            <span class="home-tile__body">
-              <span class="home-tile__title">Шорти за йога</span>
-              <span class="eka-btn eka-btn--primary home-tile__btn">Пазарувай шорти</span>
-            </span>
-          </a>
-        </div>
-      </section>
-
-      <!-- Tees carousel -->
-      <section class="home-band" aria-labelledby="home-tees-h">
-        <h2 id="home-tees-h" class="home-title home-title--tight" data-reveal="title">Тениски с мандала от 100% органичен памук</h2>
-        <div class="home-carousel" data-carousel>
-          <div class="home-carousel__track" data-track data-reveal-group>
-          <a class="home-tee" href="#" data-reveal="item"><img src="images/tshirts/eka-yoga-tshirt-yellow_01.webp" alt="Тениска с мандала" loading="lazy" width="500" height="500" /></a>
-          <a class="home-tee" href="#" data-reveal="item"><img src="images/tshirts/eka-yoga-tshirt-pink_03.webp" alt="Тениска с мандала" loading="lazy" width="500" height="500" /></a>
-          <a class="home-tee" href="#" data-reveal="item"><img src="images/tshirts/eka-yoga-tshirt-green_01.webp" alt="Тениска с мандала" loading="lazy" width="500" height="500" /></a>
-          <a class="home-tee" href="#" data-reveal="item"><img src="images/tshirts/eka-yoga-tshirt-blue_01.webp" alt="Тениска с мандала" loading="lazy" width="500" height="500" /></a>
-          <a class="home-tee" href="#" data-reveal="item"><img src="images/tshirts/eka-yoga-tshirt-pink_01.webp" alt="Тениска с мандала" loading="lazy" width="500" height="500" /></a>
-          <a class="home-tee" href="#" data-reveal="item"><img src="images/tshirts/eka-yoga-tshirt-yellow_03.webp" alt="Тениска с мандала" loading="lazy" width="500" height="500" /></a>
+            <a class="hm-feature__cover" href="produkt.html?p=gashterizon&amp;c=red" tabindex="-1" aria-hidden="true"></a>
+            <div class="hm-feature__body">
+              <h3 class="hm-feature__title">Гащеризони за йога</h3>
+              <a class="hm-cta" href="produkt.html?p=gashterizon&amp;c=red">Пазарувай гащеризони</a>
+            </div>
           </div>
-          <button type="button" class="home-carousel__next" aria-label="Още тениски" data-next><svg width="40" height="80" viewBox="0 0 40 80" fill="none" aria-hidden="true"><rect width="40" height="80" fill="#FFFFFF" fill-opacity="0.8"/><path d="M22 32.5 29.5 40 22 47.5M11 40h18" stroke="#5D7054" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></button>
+          <div class="hm-feature">
+            <img src="images/shorts/eka-yoga-shorti-zeleni-01.webp" alt="Шорти в цвят маслина" loading="lazy" />
+            <a class="hm-feature__cover" href="produkt.html?p=shorti&amp;c=green" tabindex="-1" aria-hidden="true"></a>
+            <div class="hm-feature__body">
+              <h3 class="hm-feature__title">Шорти за йога</h3>
+              <a class="hm-cta" href="produkt.html?p=shorti&amp;c=green">Пазарувай шорти</a>
+            </div>
+          </div>
         </div>
       </section>
 
-      <!-- Ritual -->
-      <section class="home-ritual" aria-label="Ритуал">
-        <img class="home-ritual__img" src="images/eye-pillows/eka-yoga-eye-pillow-pink-02.webp" alt="Възглавничка за очи с розов флорален мотив" loading="lazy" data-reveal="fade" />
-        <span class="home-ritual__shade" aria-hidden="true"></span>
-        <div class="home-ritual__body">
-          <h2 class="home-ritual__title" data-reveal="title">Завърши практиката с красив ритуал</h2>
-          <a class="eka-btn eka-btn--primary home-ritual__btn" href="#" data-reveal="title">Пазарувай възглавнички за очи</a>
+      <section class="hm-tees" aria-labelledby="hm-tees-h">
+        <h2 id="hm-tees-h" class="hm-title">Тениски с мандала от 100% органичен памук</h2>
+        <div class="hm-carousel">
+          <div class="hm-row" data-row>
+          <a class="hm-tile" href="produkt.html?p=teniska&amp;c=blue"><img src="images/tshirts/eka-yoga-tshirt-blue_02.webp" alt="Тениска с мандала, синьо" loading="lazy" draggable="false" /></a>
+          <a class="hm-tile" href="produkt.html?p=teniska&amp;c=red"><img src="images/tshirts/eka-yoga-tshirt-pink_01.webp" alt="Тениска с мандала, бордо" loading="lazy" draggable="false" /></a>
+          <a class="hm-tile" href="produkt.html?p=teniska&amp;c=yellow"><img src="images/tshirts/eka-yoga-tshirt-yellow_03.webp" alt="Тениска с мандала, жълто" loading="lazy" draggable="false" /></a>
+          <a class="hm-tile" href="produkt.html?p=teniska&amp;c=green"><img src="images/tshirts/eka-yoga-tshirt-green_02.webp" alt="Тениска с мандала, маслина" loading="lazy" draggable="false" /></a>
+          <a class="hm-tile" href="produkt.html?p=teniska&amp;c=blue"><img src="images/tshirts/eka-yoga-tshirt-blue_03.webp" alt="Тениска с мандала, синьо" loading="lazy" draggable="false" /></a>
+          </div>
+          <button type="button" class="hm-next" aria-label="Още тениски" data-row-next><svg width="40" height="80" viewBox="0 0 40 80" fill="none" aria-hidden="true"><rect width="40" height="80" fill="#FFFFFF" fill-opacity="0.8"/><path d="M21.48 32.47a.75.75 0 0 1 1.06 0l6.99 7a.75.75 0 0 1 0 1.06l-6.99 7a.75.75 0 0 1-1.06-1.06l5.71-5.72-16.19.01a.75.75 0 0 1 0-1.5l16.19-.01-5.71-5.72a.75.75 0 0 1 0-1.06Z" fill="#5D7054"/></svg></button>
         </div>
       </section>
 
-      <!-- Colour shop -->
-      <section class="home-section" aria-labelledby="home-color-h">
-        <h2 id="home-color-h" class="home-title" data-reveal="title">Пазарувай по цвят</h2>
-        <div class="home-swatches" role="group" aria-label="Цвят" data-reveal-group>
-        <button type="button" class="home-swatch is-on" aria-label="Бордо" aria-pressed="true" data-color-tab="red" style="--swatch-color:#AE2958"><span></span></button>
-        <button type="button" class="home-swatch" aria-label="Маслина" aria-pressed="false" data-color-tab="green" style="--swatch-color:#819886"><span></span></button>
-        <button type="button" class="home-swatch" aria-label="Синьо" aria-pressed="false" data-color-tab="blue" style="--swatch-color:#518398"><span></span></button>
+      <section class="hm-ritual" aria-labelledby="hm-ritual-h">
+        <img src="images/eye-pillows/eka-yoga-eye-pillow-pink-02.webp" alt="Възглавничка за очи с розов флорален мотив" loading="lazy" />
+        <span class="hm-ritual__shade" aria-hidden="true"></span>
+        <a class="hm-feature__cover" href="oblekla-i-aksesoari.html" tabindex="-1" aria-hidden="true"></a>
+        <h2 id="hm-ritual-h" class="hm-ritual__title">Завърши практиката с красив ритуал</h2>
+        <a class="hm-cta" href="oblekla-i-aksesoari.html">Пазарувай възглавнички за очи</a>
+      </section>
+
+      <section class="hm-colors" aria-labelledby="hm-colors-h">
+        <h2 id="hm-colors-h" class="hm-title">Пазарувай по цвят</h2>
+        <div class="hm-colors__switch" role="group" aria-label="Цвят">
+          <button type="button" class="pc__swatch hm-color is-on" aria-label="Бордо" aria-pressed="true" data-color="red" style="--swatch-color:#AE2958"><span></span></button>
+          <button type="button" class="pc__swatch hm-color" aria-label="Маслина" aria-pressed="false" data-color="green" style="--swatch-color:#819886"><span></span></button>
+          <button type="button" class="pc__swatch hm-color" aria-label="Синьо" aria-pressed="false" data-color="blue" style="--swatch-color:#518398"><span></span></button>
         </div>
-        <div class="home-grid" data-color-grid data-reveal-group>
-          <article class="pc" data-variant="item" data-colour="red" data-reveal="item">
-            <a class="pc__link" href="#"><img class="pc__img" src="images/jumpsuit/eka-yoga-gashterizon-za-yoga-malina-01.webp" alt="Гащеризон за йога, цвят бордо" style="aspect-ratio: 3 / 4" loading="lazy" width="600" height="800" /></a>
-            <h3 class="pc__name"><a href="#">Гащеризон за йога</a></h3>
+        <div class="hm-grid hm-grid--4" data-by-color>
+          <article class="pc" data-variant="item" data-product="leo">
+            <a class="pc__link" href="produkt.html?p=gashterizon&amp;c=red"><img class="pc__img" src="images/jumpsuit/eka-yoga-gashterizon-za-yoga-malina-01.webp" alt="Гащеризон за йога, бордо" style="aspect-ratio: 3 / 4" loading="lazy" data-main-image /></a>
+            <div class="pc__swatches" role="group" aria-label="Цвят">
+              <span class="pc__swatch is-on" role="img" aria-label="Бордо" style="--swatch-color:#AE2958" data-swatch-static><span></span></span>
+            </div>
+            <h3 class="pc__name"><a href="produkt.html?p=gashterizon&amp;c=red">Гащеризони за йога</a></h3>
           </article>
-          <article class="pc" data-variant="item" data-colour="red" data-reveal="item">
-            <a class="pc__link" href="#"><img class="pc__img" src="images/tshirts/eka-yoga-tshirt-pink_01.webp" alt="Тениска с мандала, цвят бордо" style="aspect-ratio: 3 / 4" loading="lazy" width="600" height="800" /></a>
-            <h3 class="pc__name"><a href="#">Тениска с мандала</a></h3>
+          <article class="pc" data-variant="item" data-product="sh">
+            <a class="pc__link" href="produkt.html?p=shorti&amp;c=red"><img class="pc__img" src="images/shorts/eka-yoga-shorti-malina-01.webp" alt="Шорти за йога, бордо" style="aspect-ratio: 3 / 4" loading="lazy" data-main-image /></a>
+            <div class="pc__swatches" role="group" aria-label="Цвят">
+              <span class="pc__swatch is-on" role="img" aria-label="Бордо" style="--swatch-color:#AE2958" data-swatch-static><span></span></span>
+            </div>
+            <h3 class="pc__name"><a href="produkt.html?p=shorti&amp;c=red">Шорти за йога</a></h3>
           </article>
-          <article class="pc" data-variant="item" data-colour="red" data-reveal="item">
-            <a class="pc__link" href="#"><img class="pc__img" src="images/shorts/eka-yoga-shorti-malina-01.webp" alt="Шорти за йога, цвят бордо" style="aspect-ratio: 3 / 4" loading="lazy" width="600" height="800" /></a>
-            <h3 class="pc__name"><a href="#">Шорти за йога</a></h3>
+          <article class="pc" data-variant="item" data-product="ts">
+            <a class="pc__link" href="produkt.html?p=teniska&amp;c=red"><img class="pc__img" src="images/tshirts/eka-yoga-tshirt-pink_01.webp" alt="Тениска с мандала, бордо" style="aspect-ratio: 3 / 4" loading="lazy" data-main-image /></a>
+            <div class="pc__swatches" role="group" aria-label="Цвят">
+              <span class="pc__swatch is-on" role="img" aria-label="Бордо" style="--swatch-color:#AE2958" data-swatch-static><span></span></span>
+            </div>
+            <h3 class="pc__name"><a href="produkt.html?p=teniska&amp;c=red">Тениски с мандала</a></h3>
           </article>
-          <article class="pc" data-variant="item" data-colour="red" data-reveal="item">
-            <a class="pc__link" href="#"><img class="pc__img" src="images/eye-pillows/eka-yoga-eye-pillow-pink-02.webp" alt="Възглавничка за очи, цвят розов" style="aspect-ratio: 3 / 4" loading="lazy" width="600" height="800" /></a>
-            <h3 class="pc__name"><a href="#">Възглавничка за очи</a></h3>
-          </article>
-          <article class="pc" data-variant="item" data-colour="green" data-reveal="item" hidden>
-            <a class="pc__link" href="#"><img class="pc__img" src="images/jumpsuit/eka-yoga-gashterizon-za-yoga-zelen-01.webp" alt="Гащеризон за йога, цвят маслина" style="aspect-ratio: 3 / 4" loading="lazy" width="600" height="800" /></a>
-            <h3 class="pc__name"><a href="#">Гащеризон за йога</a></h3>
-          </article>
-          <article class="pc" data-variant="item" data-colour="green" data-reveal="item" hidden>
-            <a class="pc__link" href="#"><img class="pc__img" src="images/tshirts/eka-yoga-tshirt-green_01.webp" alt="Тениска с мандала, цвят маслина" style="aspect-ratio: 3 / 4" loading="lazy" width="600" height="800" /></a>
-            <h3 class="pc__name"><a href="#">Тениска с мандала</a></h3>
-          </article>
-          <article class="pc" data-variant="item" data-colour="green" data-reveal="item" hidden>
-            <a class="pc__link" href="#"><img class="pc__img" src="images/shorts/eka-yoga-shorti-zeleni-01.webp" alt="Шорти за йога, цвят маслина" style="aspect-ratio: 3 / 4" loading="lazy" width="600" height="800" /></a>
-            <h3 class="pc__name"><a href="#">Шорти за йога</a></h3>
-          </article>
-          <article class="pc" data-variant="item" data-colour="green" data-reveal="item" hidden>
-            <a class="pc__link" href="#"><img class="pc__img" src="images/eye-pillows/eka-yoga-eye-pillow-pink-02.webp" alt="Възглавничка за очи, цвят розов" style="aspect-ratio: 3 / 4" loading="lazy" width="600" height="800" /></a>
-            <h3 class="pc__name"><a href="#">Възглавничка за очи</a></h3>
-          </article>
-          <article class="pc" data-variant="item" data-colour="blue" data-reveal="item" hidden>
-            <a class="pc__link" href="#"><img class="pc__img" src="images/jumpsuit/eka-yoga-gashterizon-za-yoga-sin-01.webp" alt="Гащеризон за йога, цвят синьо" style="aspect-ratio: 3 / 4" loading="lazy" width="600" height="800" /></a>
-            <h3 class="pc__name"><a href="#">Гащеризон за йога</a></h3>
-          </article>
-          <article class="pc" data-variant="item" data-colour="blue" data-reveal="item" hidden>
-            <a class="pc__link" href="#"><img class="pc__img" src="images/tshirts/eka-yoga-tshirt-blue_01.webp" alt="Тениска с мандала, цвят синьо" style="aspect-ratio: 3 / 4" loading="lazy" width="600" height="800" /></a>
-            <h3 class="pc__name"><a href="#">Тениска с мандала</a></h3>
-          </article>
-          <article class="pc" data-variant="item" data-colour="blue" data-reveal="item" hidden>
-            <a class="pc__link" href="#"><img class="pc__img" src="images/shorts/short-01-blue.webp" alt="Шорти за йога, цвят синьо" style="aspect-ratio: 3 / 4" loading="lazy" width="600" height="800" /></a>
-            <h3 class="pc__name"><a href="#">Шорти за йога</a></h3>
-          </article>
-          <article class="pc" data-variant="item" data-colour="blue" data-reveal="item" hidden>
-            <a class="pc__link" href="#"><img class="pc__img" src="images/eye-pillows/eka-yoga-eye-pillow-pink-02.webp" alt="Възглавничка за очи, цвят розов" style="aspect-ratio: 3 / 4" loading="lazy" width="600" height="800" /></a>
-            <h3 class="pc__name"><a href="#">Възглавничка за очи</a></h3>
+          <article class="pc" data-variant="item" data-product="pil">
+            <a class="pc__link" href="produkt.html?p=vazglavnichka&amp;c=red"><img class="pc__img" src="images/eye-pillows/eka-yoga-eye-pillow-pink-02.webp" alt="Възглавничка за очи, бордо" style="aspect-ratio: 3 / 4" loading="lazy" data-main-image /></a>
+            <div class="pc__swatches" role="group" aria-label="Цвят">
+              <span class="pc__swatch is-on" role="img" aria-label="Бордо" style="--swatch-color:#AE2958" data-swatch-static><span></span></span>
+            </div>
+            <h3 class="pc__name"><a href="produkt.html?p=vazglavnichka&amp;c=red">Възглавнички за очи</a></h3>
           </article>
         </div>
       </section>
 
-      <!-- Sets -->
-      <section class="home-section home-sets" aria-labelledby="home-sets-h">
-        <h2 id="home-sets-h" class="home-title" data-reveal="title">EKA комплекти</h2>
-        <div class="home-sets__grid" data-reveal-group>
-          <article class="pc pc--set" data-variant="set" data-reveal="item">
-            <a class="pc__link" href="#"><img class="pc__img" src="images/sets/eka-yoga-set-mandala-flow-blue.webp" alt="Комплект Мандала Флоу в синьо" style="aspect-ratio: 616 / 398" loading="lazy" width="616" height="398" /></a>
-            <h3 class="pc__name"><a href="#">Мандала Флоу</a></h3>
+      <section class="hm-sets" aria-labelledby="hm-sets-h">
+        <h2 id="hm-sets-h" class="hm-title">EKA комплекти</h2>
+        <div class="hm-grid hm-grid--2">
+          <article class="pc" data-variant="set">
+            <a class="pc__link" href="komplekt.html?s=mandala-flow&amp;c=blue"><img class="pc__img" src="images/sets/eka-yoga-set-mandala-flow-blue.webp" alt="Комплект Мандала Флоу в синьо" style="aspect-ratio: 616 / 398" loading="lazy" /></a>
+            <h3 class="pc__name"><a href="komplekt.html?s=mandala-flow&amp;c=blue">Мандала Флоу</a></h3>
             <p class="pc__desc">Тениска с мандала, шорти за йога и възглавничка за очи</p>
           </article>
-          <article class="pc pc--set" data-variant="set" data-reveal="item">
-            <a class="pc__link" href="#"><img class="pc__img" src="images/sets/eka-yoga-set-elegant-ritual-yellow.webp" alt="Комплект Елегантен ритуал в жълто" style="aspect-ratio: 616 / 398" loading="lazy" width="616" height="398" /></a>
-            <h3 class="pc__name"><a href="#">Елегантен ритуал</a></h3>
+          <article class="pc" data-variant="set">
+            <a class="pc__link" href="komplekt.html?s=elegant-ritual&amp;c=yellow"><img class="pc__img" src="images/sets/eka-yoga-set-elegant-ritual-yellow.webp" alt="Комплект Елегантен ритуал в жълто" style="aspect-ratio: 616 / 398" loading="lazy" /></a>
+            <h3 class="pc__name"><a href="komplekt.html?s=elegant-ritual&amp;c=yellow">Елегантен ритуал</a></h3>
             <p class="pc__desc">Гащеризон за йога и възглавничка за очи</p>
           </article>
         </div>
       </section>
-
     </main>
 
-<div class="pf">
+    <!-- ============================================================ -->
+    <!-- PreFooter                                                     -->
+    <!-- ============================================================ -->
+    <div class="pf">
       <figure class="pf__quote">
         <blockquote>„Йога дрехи и аксесоари в подкрепа на твоята практика с красиво и запомнящо се присъствие.“</blockquote>
         <figcaption>— ЕКАТЕРИНА МИНКОВА —</figcaption>
@@ -225,31 +216,30 @@
 
       <!-- EMBanner -->
       <section class="emb" aria-label="Екатерина Минкова">
-        <div class="emb__card">
+        <a class="emb__card" href="https://ekaterinaminkova.com/" target="_blank" rel="noopener">
           <img class="emb__img" src="images/banner/ekaterina-minkova-banner.webp" alt="Екатерина Минкова в бяла рокля до басейн в тропическа градина" />
           <span class="emb__scrim" aria-hidden="true"></span>
           <div class="emb__body">
             <h2 class="emb__title">Екатерина Минкова</h2>
             <p class="emb__sub">Йога преподавател и аюрведа терапевт</p>
-            <a class="emb__btn" href="https://ekaterinaminkova.com/"><strong>Към</strong>&nbsp;ekaterinaminkova.com</a>
+            <span class="emb__btn"><strong>Към</strong>&nbsp;ekaterinaminkova.com</span>
           </div>
-        </div>
+        </a>
       </section>
     </div>
 
     <!-- ============================================================ -->
     <!-- Footer                                                        -->
     <!-- ============================================================ -->
-    
-<footer class="ft">
+    <footer class="ft">
       <a class="ft__logo" href="#" aria-label="EKA Yoga — начало">
         <img src="images/logos/eka-logo-stacked-white.svg" alt="EKA Yoga — wear the bloom" width="160" />
       </a>
       <div class="ft__social">
-        <a href="https://www.instagram.com/" aria-label="Instagram" target="_blank" rel="noopener">
+        <a href="https://www.instagram.com/ekaterinaminkova.ayuryoga/" aria-label="Instagram" target="_blank" rel="noopener">
           <svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true"><path fill="#fff" d="M10.267 0H29.733C35.403 0 40 4.597 40 10.267V29.733C40 35.403 35.403 40 29.733 40H10.267C4.597 40 0 35.403 0 29.733V10.267C0 4.597 4.597 0 10.267 0ZM13.431 4.167C15.131 4.089 15.673 4.071 19.999 4.071C24.326 4.071 24.869 4.089 26.567 4.167C28.263 4.245 29.421 4.513 30.434 4.907C31.482 5.315 32.371 5.86 33.256 6.745C34.142 7.631 34.687 8.52 35.094 9.567C35.488 10.58 35.757 11.738 35.835 13.434C35.912 15.133 35.93 15.675 35.93 20.002C35.93 24.328 35.912 24.871 35.835 26.57C35.756 28.265 35.488 29.423 35.094 30.436C34.687 31.485 34.141 32.373 33.256 33.258C32.37 34.145 31.481 34.689 30.434 35.096C29.421 35.49 28.263 35.76 26.567 35.837C24.868 35.914 24.326 35.932 19.999 35.932C15.673 35.932 15.13 35.914 13.431 35.837C11.736 35.759 10.578 35.49 9.565 35.096C8.517 34.689 7.628 34.143 6.743 33.258C5.857 32.372 5.312 31.483 4.905 30.436C4.511 29.423 4.241 28.265 4.164 26.57C4.087 24.87 4.069 24.328 4.069 20.002C4.069 15.675 4.087 15.132 4.164 13.434C4.243 11.738 4.511 10.58 4.905 9.567C5.312 8.519 5.858 7.63 6.743 6.745C7.629 5.859 8.518 5.315 9.565 4.907C10.578 4.513 11.736 4.244 13.431 4.167ZM19.999 6.942C24.253 6.942 24.757 6.958 26.436 7.034C27.989 7.105 28.832 7.364 29.394 7.582C30.138 7.871 30.668 8.217 31.225 8.774C31.782 9.331 32.128 9.862 32.416 10.605C32.635 11.167 32.894 12.01 32.965 13.563C33.042 15.243 33.057 15.746 33.057 19.999C33.057 24.253 33.041 24.757 32.965 26.436C32.894 27.989 32.635 28.832 32.416 29.394C32.128 30.138 31.782 30.668 31.225 31.225C30.668 31.782 30.137 32.128 29.394 32.416C28.832 32.635 27.989 32.894 26.436 32.965C24.757 33.042 24.253 33.057 19.999 33.057C15.746 33.057 15.242 33.041 13.563 32.965C12.01 32.894 11.167 32.635 10.605 32.416C9.861 32.128 9.331 31.782 8.774 31.225C8.217 30.668 7.871 30.137 7.582 29.394C7.364 28.832 7.105 27.989 7.034 26.436C6.957 24.756 6.942 24.253 6.942 19.999C6.942 15.746 6.958 15.242 7.034 13.563C7.105 12.01 7.364 11.167 7.582 10.605C7.871 9.861 8.217 9.331 8.774 8.774C9.331 8.217 9.862 7.871 10.605 7.582C11.167 7.364 12.01 7.105 13.563 7.034C15.243 6.957 15.746 6.942 19.999 6.942ZM29.855 10.146C30.601 10.892 30.601 12.102 29.855 12.849C29.108 13.596 27.898 13.596 27.151 12.849C26.405 12.102 26.405 10.892 27.151 10.146C27.898 9.399 29.108 9.399 29.855 10.146ZM11.82 20.001C11.82 15.483 15.482 11.821 19.999 11.821C24.517 11.821 28.179 15.483 28.179 20.001C28.179 24.518 24.517 28.18 19.999 28.18C15.482 28.18 11.82 24.518 11.82 20.001ZM19.999 25.31C17.067 25.31 14.689 22.932 14.689 19.999C14.689 17.067 17.067 14.689 19.999 14.689C22.932 14.689 25.31 17.067 25.31 19.999C25.31 22.932 22.932 25.31 19.999 25.31Z" fill-rule="evenodd" clip-rule="evenodd" /></svg>
         </a>
-        <a href="https://www.facebook.com/" aria-label="Facebook" target="_blank" rel="noopener">
+        <a href="https://www.facebook.com/ayurveda.iyengar.yoga.em" aria-label="Facebook" target="_blank" rel="noopener">
           <svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true"><path fill="#fff" d="M40 20.123C40 9.009 31.046 0 20 0S0 9.009 0 20.123C0 30.166 7.314 38.491 16.875 40V25.939H11.797V20.123H16.875V15.689C16.875 10.646 19.861 7.861 24.429 7.861C26.618 7.861 28.906 8.254 28.906 8.254V13.206H26.384C23.9 13.206 23.125 14.757 23.125 16.348V20.123H28.672L27.785 25.939H23.125V40C32.686 38.491 40 30.166 40 20.123Z" /></svg>
         </a>
       </div>
@@ -274,7 +264,7 @@
             <li><a href="#">Шорти за йога</a></li>
             <li><a href="#">Възглавнички за очи</a></li>
           </ul>
-          <h3 class="ft__col-h2"><a href="#">Комплекти</a></h3>
+          <h3 class="ft__col-h2"><a href="komplekti.html">Комплекти</a></h3>
           <ul class="ft__list ft__list--tight">
             <li><a href="#">Мандала флоу</a></li>
             <li><a href="#">Елегантен ритуал</a></li>
@@ -316,7 +306,10 @@
       <p class="ft__by">by: victormov</p>
     </footer>
 
-<div class="cd" role="dialog" aria-modal="true" aria-labelledby="cd-title" hidden data-cart-drawer>
+    <!-- ============================================================ -->
+    <!-- CartDrawer                                                    -->
+    <!-- ============================================================ -->
+    <div class="cd" role="dialog" aria-modal="true" aria-labelledby="cd-title" hidden data-cart-drawer>
       <button type="button" class="cd__backdrop" aria-label="Затворете количката" data-close></button>
       <aside class="cd__panel">
         <div class="cd__head">
@@ -337,6 +330,7 @@
     </div>
 
     <script type="module" src="js/header.js"></script>
+    <script type="module" src="js/product-card.js"></script>
     <script type="module" src="js/cart-drawer.js"></script>
     <script type="module" src="js/home.js"></script>
   </body>
