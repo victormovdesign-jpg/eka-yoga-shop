@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="bg">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>EKA YOGA — Style guide</title>
+    <meta name="description" content="EKA YOGA — wear the bloom. Design tokens v4." />
+
+    <!-- Cormorant Garamond from Google Fonts (ships Cyrillic incl. italics). -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+    />
+
+    <!-- Self-hosted Lato (Google's Lato has no Cyrillic subset). -->
+    <link rel="preload" href="fonts/lato-400-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="fonts/lato-400-cyrillic.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="fonts/lato-700-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="fonts/lato-700-cyrillic.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="fonts/fonts.css" />
+
+    <link rel="stylesheet" href="css/tokens.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/styleguide.css" />
+  </head>
+  <body>
+    <main class="guide">
+      <header class="guide__head">
+        <p class="text-small-bold guide__eyebrow">EKA YOGA</p>
+        <h1 class="h1-bold">Style guide</h1>
+        <p class="text-medium-regular">
+          Design tokens v4, generated from <code>design/ds/tokens.json</code>.
+          Resize the window to check mobile overrides below 768px.
+        </p>
+      </header>
+
+      <!-- ========== Colour ========== -->
+      <section class="guide__section" aria-labelledby="guide-colour">
+        <h2 id="guide-colour" class="h2-bold">Colour</h2>
+        <ul class="guide__swatches">
+          <li class="guide__swatch"><div class="guide__chip" style="background:#AF5D65"></div><p class="text-regular-bold guide__chip-token">brand-red</p><p class="text-small-regular guide__chip-value">#AF5D65</p><p class="text-small-regular guide__chip-note">Primary / Big button fill. Link colour.</p></li>
+          <li class="guide__swatch"><div class="guide__chip" style="background:#C3737B"></div><p class="text-regular-bold guide__chip-token">brand-red-light</p><p class="text-small-regular guide__chip-value">#C3737B</p><p class="text-small-regular guide__chip-note">Primary / Big button hover.</p></li>
+          <li class="guide__swatch"><div class="guide__chip" style="background:#5D7054"></div><p class="text-regular-bold guide__chip-token">brand-green</p><p class="text-small-regular guide__chip-value">#5D7054</p><p class="text-small-regular guide__chip-note">Logo on light grounds.</p></li>
+          <li class="guide__swatch"><div class="guide__chip" style="background:#F3F0E4"></div><p class="text-regular-bold guide__chip-token">bg-page</p><p class="text-small-regular guide__chip-value">#F3F0E4</p><p class="text-small-regular guide__chip-note">Page background everywhere.</p></li>
+          <li class="guide__swatch"><div class="guide__chip" style="background:#FFFFFF"></div><p class="text-regular-bold guide__chip-token">bg-card</p><p class="text-small-regular guide__chip-value">#FFFFFF</p><p class="text-small-regular guide__chip-note">Card fill, label on brand-red.</p></li>
+          <li class="guide__swatch"><div class="guide__chip" style="background:#F3F0E4"></div><p class="text-regular-bold guide__chip-token">bg-content-primary</p><p class="text-small-regular guide__chip-value">#F3F0E4</p><p class="text-small-regular guide__chip-note">Field / checkbox / badge fill.</p></li>
+          <li class="guide__swatch"><div class="guide__chip" style="background:#E3E7DC"></div><p class="text-regular-bold guide__chip-token">bg-content-secondary</p><p class="text-small-regular guide__chip-value">#E3E7DC</p><p class="text-small-regular guide__chip-note">Secondary panel.</p></li>
+          <li class="guide__swatch"><div class="guide__chip" style="background:#5D7054"></div><p class="text-regular-bold guide__chip-token">bg-footer</p><p class="text-small-regular guide__chip-value">#5D7054</p><p class="text-small-regular guide__chip-note">Footer fill.</p></li>
+          <li class="guide__swatch"><div class="guide__chip" style="background:rgba(93,112,84,0.5)"></div><p class="text-regular-bold guide__chip-token">bg-menu</p><p class="text-small-regular guide__chip-value">rgba(93,112,84,0.5)</p><p class="text-small-regular guide__chip-note">Dropdown over photography.</p></li>
+          <li class="guide__swatch"><div class="guide__chip" style="background:#5D7054"></div><p class="text-regular-bold guide__chip-token">border-control</p><p class="text-small-regular guide__chip-value">#5D7054</p><p class="text-small-regular guide__chip-note">Field / card / check borders.</p></li>
+          <li class="guide__swatch"><div class="guide__chip" style="background:#AF5D65"></div><p class="text-regular-bold guide__chip-token">border-stroke</p><p class="text-small-regular guide__chip-value">#AF5D65</p><p class="text-small-regular guide__chip-note">Named stroke — unused in components.</p></li>
+          <li class="guide__swatch"><div class="guide__chip" style="background:#5D7054"></div><p class="text-regular-bold guide__chip-token">text-main</p><p class="text-small-regular guide__chip-value">#5D7054</p><p class="text-small-regular guide__chip-note">Body + headings on bg-page.</p></li>
+          <li class="guide__swatch"><div class="guide__chip" style="background:rgba(93,112,84,0.8)"></div><p class="text-regular-bold guide__chip-token">text-muted</p><p class="text-small-regular guide__chip-value">rgba(93,112,84,0.8)</p><p class="text-small-regular guide__chip-note">Captions / placeholders.</p></li>
+          <li class="guide__swatch"><div class="guide__chip" style="background:#B42318"></div><p class="text-regular-bold guide__chip-token">text-error</p><p class="text-small-regular guide__chip-value">#B42318</p><p class="text-small-regular guide__chip-note">Error messages + borders.</p></li>
+          <li class="guide__swatch"><div class="guide__chip" style="background:#AAAAAA"></div><p class="text-regular-bold guide__chip-token">state-disabled</p><p class="text-small-regular guide__chip-value">#AAAAAA</p><p class="text-small-regular guide__chip-note">Disabled fills + borders.</p></li>
+          <li class="guide__swatch"><div class="guide__chip" style="background:#EB0027"></div><p class="text-regular-bold guide__chip-token">notify-red</p><p class="text-small-regular guide__chip-value">#EB0027</p><p class="text-small-regular guide__chip-note">Cart badge only.</p></li>
+          <li class="guide__swatch"><div class="guide__chip" style="background:#AE2958"></div><p class="text-regular-bold guide__chip-token">product-red</p><p class="text-small-regular guide__chip-value">#AE2958</p><p class="text-small-regular guide__chip-note">Product category colour: red.</p></li>
+          <li class="guide__swatch"><div class="guide__chip" style="background:#D7B955"></div><p class="text-regular-bold guide__chip-token">product-yellow</p><p class="text-small-regular guide__chip-value">#D7B955</p><p class="text-small-regular guide__chip-note">Product category colour: yellow.</p></li>
+          <li class="guide__swatch"><div class="guide__chip" style="background:#819886"></div><p class="text-regular-bold guide__chip-token">product-green</p><p class="text-small-regular guide__chip-value">#819886</p><p class="text-small-regular guide__chip-note">Product category colour: green.</p></li>
+          <li class="guide__swatch"><div class="guide__chip" style="background:#518398"></div><p class="text-regular-bold guide__chip-token">product-blue</p><p class="text-small-regular guide__chip-value">#518398</p><p class="text-small-regular guide__chip-note">Product category colour: blue.</p></li>
+        </ul>
+      </section>
+
+      <!-- ========== Gradients ========== -->
+      <section class="guide__section" aria-labelledby="guide-grad">
+        <h2 id="guide-grad" class="h2-bold">Gradients</h2>
+        <p class="text-regular-regular guide__hint">The only two gradients in the system. No other gradient is allowed.</p>
+        <ul class="guide__gradients">
+          <li class="guide__gradient"><div class="guide__gradient-chip" style="background: var(--scrim-header)"></div><p class="text-regular-bold">scrim-header</p><p class="text-small-regular guide__chip-note">Home header over the hero photograph.</p></li>
+          <li class="guide__gradient"><div class="guide__gradient-chip" style="background: var(--thumb-gradient)"></div><p class="text-regular-bold">thumb-gradient</p><p class="text-small-regular guide__chip-note">Category tiles + image thumbs.</p></li>
+        </ul>
+      </section>
+
+      <!-- ========== Headings ========== -->
+      <section class="guide__section" aria-labelledby="guide-head">
+        <h2 id="guide-head" class="h2-bold">Headings — Cormorant Garamond</h2>
+        <p class="text-regular-regular guide__hint">Line-height 1 everywhere. H1 letter-spacing −0.02em. Mobile sizes drop one step under 768px.</p>
+        <div class="guide__rows">
+          <div class="guide__row"><code class="guide__code text-small-regular">h1-bold</code><span class="h1-bold">Мека материя, която те обгръща</span></div>
+          <div class="guide__row"><code class="guide__code text-small-regular">h1-italic</code><span class="h1-italic">Мека материя, която те обгръща</span></div>
+          <div class="guide__row"><code class="guide__code text-small-regular">h2-bold</code><span class="h2-bold">Мека материя, която те обгръща</span></div>
+          <div class="guide__row"><code class="guide__code text-small-regular">h2-italic</code><span class="h2-italic">Мека материя, която те обгръща</span></div>
+          <div class="guide__row"><code class="guide__code text-small-regular">h3-bold</code><span class="h3-bold">Мека материя, която те обгръща</span></div>
+          <div class="guide__row"><code class="guide__code text-small-regular">h3-italic</code><span class="h3-italic">Мека материя, която те обгръща</span></div>
+          <div class="guide__row"><code class="guide__code text-small-regular">h4-bold</code><span class="h4-bold">Мека материя, която те обгръща</span></div>
+          <div class="guide__row"><code class="guide__code text-small-regular">h4-italic</code><span class="h4-italic">Мека материя, която те обгръща</span></div>
+          <div class="guide__row"><code class="guide__code text-small-regular">h5-bold</code><span class="h5-bold">Мека материя, която те обгръща</span></div>
+          <div class="guide__row"><code class="guide__code text-small-regular">h5-italic</code><span class="h5-italic">Мека материя, която те обгръща</span></div>
+          <div class="guide__row"><code class="guide__code text-small-regular">h6-bold</code><span class="h6-bold">Мека материя, която те обгръща</span></div>
+          <div class="guide__row"><code class="guide__code text-small-regular">h6-italic</code><span class="h6-italic">Мека материя, която те обгръща</span></div>
+        </div>
+      </section>
+
+      <!-- ========== Text ========== -->
+      <section class="guide__section" aria-labelledby="guide-text">
+        <h2 id="guide-text" class="h2-bold">Text — Lato</h2>
+        <p class="text-regular-regular guide__hint">Line-height 1.5. Mobile sizes drop one step under 768px.</p>
+        <div class="guide__rows">
+          <div class="guide__row"><code class="guide__code text-small-regular">text-large-black</code><span class="text-large-black">Йога дрехи в подкрепа на твоята практика.</span></div>
+          <div class="guide__row"><code class="guide__code text-small-regular">text-large-bold</code><span class="text-large-bold">Йога дрехи в подкрепа на твоята практика.</span></div>
+          <div class="guide__row"><code class="guide__code text-small-regular">text-large-regular</code><span class="text-large-regular">Йога дрехи в подкрепа на твоята практика.</span></div>
+          <div class="guide__row"><code class="guide__code text-small-regular">text-medium-black</code><span class="text-medium-black">Йога дрехи в подкрепа на твоята практика.</span></div>
+          <div class="guide__row"><code class="guide__code text-small-regular">text-medium-bold</code><span class="text-medium-bold">Йога дрехи в подкрепа на твоята практика.</span></div>
+          <div class="guide__row"><code class="guide__code text-small-regular">text-medium-regular</code><span class="text-medium-regular">Йога дрехи в подкрепа на твоята практика.</span></div>
+          <div class="guide__row"><code class="guide__code text-small-regular">text-regular-black</code><span class="text-regular-black">Йога дрехи в подкрепа на твоята практика.</span></div>
+          <div class="guide__row"><code class="guide__code text-small-regular">text-regular-bold</code><span class="text-regular-bold">Йога дрехи в подкрепа на твоята практика.</span></div>
+          <div class="guide__row"><code class="guide__code text-small-regular">text-regular-regular</code><span class="text-regular-regular">Йога дрехи в подкрепа на твоята практика.</span></div>
+          <div class="guide__row"><code class="guide__code text-small-regular">text-small-black</code><span class="text-small-black">Йога дрехи в подкрепа на твоята практика.</span></div>
+          <div class="guide__row"><code class="guide__code text-small-regular">text-small-bold</code><span class="text-small-bold">Йога дрехи в подкрепа на твоята практика.</span></div>
+          <div class="guide__row"><code class="guide__code text-small-regular">text-small-regular</code><span class="text-small-regular">Йога дрехи в подкрепа на твоята практика.</span></div>
+        </div>
+      </section>
+
+      <!-- ========== Buttons ========== -->
+      <section class="guide__section" aria-labelledby="guide-btn">
+        <h2 id="guide-btn" class="h2-bold">Buttons</h2>
+        <p class="text-regular-regular guide__hint">Primary 56px tall. Secondary 58px tall (2px outline). Big 78px tall, Lato 20 regular label.</p>
+
+        <div class="guide__btn-group">
+          <h3 class="h5-bold">Primary</h3>
+          <div class="guide__btns">
+            <button class="eka-btn eka-btn--primary" type="button">Добавете в количката</button>
+            <button class="eka-btn eka-btn--primary" type="button" disabled>Недостъпно</button>
+          </div>
+        </div>
+
+        <div class="guide__btn-group">
+          <h3 class="h5-bold">Secondary</h3>
+          <div class="guide__btns">
+            <button class="eka-btn eka-btn--secondary" type="button">Купете сега</button>
+            <button class="eka-btn eka-btn--secondary" type="button" disabled>Недостъпно</button>
+          </div>
+        </div>
+
+        <div class="guide__btn-group">
+          <h3 class="h5-bold">Big</h3>
+          <div class="guide__btns">
+            <button class="eka-btn eka-btn--big" type="button">Разгледайте колекцията</button>
+            <button class="eka-btn eka-btn--big" type="button" disabled>Недостъпно</button>
+          </div>
+        </div>
+
+        <div class="guide__btn-group">
+          <h3 class="h5-bold">Third-tier</h3>
+          <div class="guide__btns"><button class="eka-btn eka-btn--third" type="button">Покажете повече</button></div>
+        </div>
+
+        <div class="guide__btn-group">
+          <h3 class="h5-bold">Link</h3>
+          <div class="guide__btns"><a href="#" class="eka-btn eka-btn--link">Таблица с размери</a></div>
+        </div>
+      </section>
+
+      <!-- ========== Badge ========== -->
+      <section class="guide__section" aria-labelledby="guide-badge">
+        <h2 id="guide-badge" class="h2-bold">Badge</h2>
+        <p class="text-regular-regular guide__hint">29px tall, 12px side padding, Lato Black 14.</p>
+        <div class="guide__btns">
+          <span class="eka-badge">Нова колекция</span>
+          <span class="eka-badge">Бестселър</span>
+        </div>
+      </section>
+
+      <!-- ========== Form controls ========== -->
+      <section class="guide__section" aria-labelledby="guide-forms">
+        <h2 id="guide-forms" class="h2-bold">Form controls</h2>
+        <div class="guide__form-grid">
+          <div><label class="text-regular-bold" for="sg-input">TextField</label><input id="sg-input" class="eka-field" type="text" placeholder="Вашият е-майл" /></div>
+          <div><label class="text-regular-bold" for="sg-input-err">TextField — error</label><input id="sg-input-err" class="eka-field is-error" type="text" value="invalid" /><p class="eka-error">Полето е задължително</p></div>
+          <div>
+            <label class="text-regular-bold" for="sg-select">Select</label>
+            <div class="eka-select">
+              <select id="sg-select" class="eka-field"><option>Размер</option><option>S</option><option>M</option><option>L</option></select>
+              <svg width="12" height="8" viewBox="0 0 12 8" fill="none" aria-hidden="true"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" /></svg>
+            </div>
+          </div>
+          <div><label class="text-regular-bold" for="sg-textarea">Textarea</label><textarea id="sg-textarea" class="eka-field" placeholder="Вашето съобщение"></textarea></div>
+        </div>
+
+        <div class="guide__btn-group">
+          <h3 class="h5-bold">Checkbox</h3>
+          <div class="guide__forms-row">
+            <label class="eka-check"><input type="checkbox" /> Бордо</label>
+            <label class="eka-check"><input type="checkbox" checked /> Маслина</label>
+            <label class="eka-check is-error"><input type="checkbox" /> Задължително</label>
+          </div>
+        </div>
+
+        <div class="guide__btn-group">
+          <h3 class="h5-bold">Radio</h3>
+          <div class="guide__forms-row">
+            <label class="eka-check"><input type="radio" name="sg-r" /> S</label>
+            <label class="eka-check"><input type="radio" name="sg-r" checked /> M</label>
+            <label class="eka-check"><input type="radio" name="sg-r" /> L</label>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== Card ========== -->
+      <section class="guide__section" aria-labelledby="guide-card">
+        <h2 id="guide-card" class="h2-bold">Card</h2>
+        <p class="text-regular-regular guide__hint">Confirmation card: 2px border, 32px padding, centred text, optional secondary button.</p>
+        <div class="eka-card">
+          <h3>Почти завършен …</h3>
+          <p>Изпратихме Ви имейл за потвърждение на поръчката.</p>
+          <button class="eka-btn eka-btn--secondary" type="button">Обратно към магазина</button>
+        </div>
+      </section>
+
+      <!-- ========== Colour swatch ========== -->
+      <section class="guide__section" aria-labelledby="guide-swatch">
+        <h2 id="guide-swatch" class="h2-bold">Colour swatch</h2>
+        <p class="text-regular-regular guide__hint">32px box. Unselected = 24px solid fill, no outline. Selected = 1px outline + 22px inner fill.</p>
+        <div class="guide__swatch-row">
+          <span class="eka-swatch eka-swatch--unselected" style="color: var(--product-red)"><i></i></span>
+          <span class="eka-swatch eka-swatch--selected" style="color: var(--product-red)"><i></i></span>
+          <span class="eka-swatch eka-swatch--unselected" style="color: var(--product-green)"><i></i></span>
+          <span class="eka-swatch eka-swatch--unselected" style="color: var(--product-blue)"><i></i></span>
+          <span class="eka-swatch eka-swatch--unselected" style="color: var(--product-yellow)"><i></i></span>
+        </div>
+      </section>
+
+      <!-- ========== Cart badge ========== -->
+      <section class="guide__section" aria-labelledby="guide-cart">
+        <h2 id="guide-cart" class="h2-bold">Cart badge</h2>
+        <p class="text-regular-regular guide__hint">18px circle, <code>notify-red</code>, Lato Black 10 white count.</p>
+        <div class="guide__btns" style="align-items:center">
+          <a href="#" class="eka-cart" aria-label="Количка, 3 продукта">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 6h12l-1.2 10a1 1 0 01-1 .9H6.2a1 1 0 01-1-.9L4 6z" stroke="currentColor" stroke-width="1.5" /><path d="M7 6V5a3 3 0 016 0v1" stroke="currentColor" stroke-width="1.5" /></svg>
+            <span class="eka-cart__count">3</span>
+          </a>
+          <a href="#" class="eka-cart" aria-label="Количка, 99+ продукта">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 6h12l-1.2 10a1 1 0 01-1 .9H6.2a1 1 0 01-1-.9L4 6z" stroke="currentColor" stroke-width="1.5" /><path d="M7 6V5a3 3 0 016 0v1" stroke="currentColor" stroke-width="1.5" /></svg>
+            <span class="eka-cart__count">99+</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- ========== Icons ========== -->
+      <section class="guide__section" aria-labelledby="guide-icons">
+        <h2 id="guide-icons" class="h2-bold">Icons</h2>
+        <p class="text-regular-regular guide__hint">Solid style. Phone and mail are footer-only.</p>
+        <ul class="guide__icons">
+          <li><span class="guide__icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 6h12l-1.2 10a1 1 0 01-1 .9H6.2a1 1 0 01-1-.9L4 6z" stroke="currentColor" stroke-width="1.5"/><path d="M7 6V5a3 3 0 016 0v1" stroke="currentColor" stroke-width="1.5"/></svg></span><code class="text-small-regular">bag</code></li>
+          <li><span class="guide__icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11M11 6l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><code class="text-small-regular">arrow-right</code></li>
+          <li><span class="guide__icon"><svg width="28" height="29" viewBox="0 0 28 29" fill="none" aria-hidden="true"><rect width="28" height="29" fill="white" fill-opacity="0.8"/><path d="M15.483 6.96934C15.6236 6.82889 15.8143 6.75 16.013 6.75C16.2118 6.75 16.4024 6.82889 16.543 6.96934L23.531 13.9693C23.6715 14.11 23.7504 14.3006 23.7504 14.4993C23.7504 14.6981 23.6715 14.8887 23.531 15.0293L16.543 22.0293C16.4016 22.166 16.2122 22.2417 16.0156 22.2401C15.8189 22.2385 15.6308 22.1597 15.4917 22.0207C15.3525 21.8817 15.2736 21.6936 15.2718 21.497C15.27 21.3003 15.3455 21.1109 15.482 20.9693L21.191 15.2503L5.00002 15.2613C4.80111 15.2616 4.61024 15.1828 4.4694 15.0424C4.32856 14.9019 4.24929 14.7113 4.24902 14.5123C4.24876 14.3134 4.32752 14.1226 4.46799 13.9817C4.60845 13.8409 4.79911 13.7616 4.99802 13.7613L21.192 13.7513L15.481 8.02934C15.3406 7.88871 15.2617 7.69809 15.2617 7.49934C15.2617 7.30059 15.3406 7.10997 15.481 6.96934" fill-rule="evenodd" clip-rule="evenodd" fill="#5D7054"/></svg></span><code class="text-small-regular">carousel-arrow</code></li>
+          <li class="guide__icon-on-green"><span class="guide__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4h3l2 5-2 1a12 12 0 006 6l1-2 5 2v3a2 2 0 01-2 2A17 17 0 013 6a2 2 0 012-2z" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"/></svg></span><code class="text-small-regular">phone</code></li>
+          <li class="guide__icon-on-green"><span class="guide__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" stroke="#fff" stroke-width="1.5"/><path d="M3.5 6l8.5 7 8.5-7" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"/></svg></span><code class="text-small-regular">mail</code></li>
+        </ul>
+      </section>
+
+      <!-- ========== Logos ========== -->
+      <section class="guide__section" aria-labelledby="guide-logos">
+        <h2 id="guide-logos" class="h2-bold">Logos</h2>
+        <p class="text-regular-regular guide__hint">Fixed inks: white <code>#FFFFFF</code>, green <code>#5D7054</code>.</p>
+        <div class="guide__logos">
+          <div class="guide__logo"><div class="guide__logo-chip guide__logo-chip--light"><img src="images/logos/eka-logo-slogan-green.svg" alt="EKA YOGA — wear the bloom" width="200" /></div><code class="text-small-regular">slogan-green on bg-page</code></div>
+          <div class="guide__logo"><div class="guide__logo-chip guide__logo-chip--brand"><img src="images/logos/eka-logo-slogan-white.svg" alt="EKA YOGA — wear the bloom" width="200" /></div><code class="text-small-regular">slogan-white on brand-red</code></div>
+          <div class="guide__logo"><div class="guide__logo-chip guide__logo-chip--footer"><img src="images/logos/eka-logo-stacked-white.svg" alt="EKA YOGA — wear the bloom" width="160" /></div><code class="text-small-regular">stacked-white on bg-footer</code></div>
+        </div>
+      </section>
+
+      <!-- ========== Price ========== -->
+      <section class="guide__section" aria-labelledby="guide-price">
+        <h2 id="guide-price" class="h2-bold">Price — Cormorant with lining numerals</h2>
+        <p class="text-regular-regular guide__hint">Prices use <code>font-variant-numeric: lining-nums</code>.</p>
+        <div class="guide__price-row">
+          <div><code class="text-small-regular">default (old-style)</code><p class="h4-bold">€ 98</p></div>
+          <div><code class="text-small-regular">.lining-nums</code><p class="h4-bold lining-nums">€ 98</p></div>
+          <div><code class="text-small-regular">italic bold 32</code><p class="h4-italic lining-nums" style="font-weight:700">€ 119</p></div>
+        </div>
+      </section>
+
+      <!-- ========== Quote ========== -->
+      <section class="guide__section" aria-labelledby="guide-quote">
+        <h2 id="guide-quote" class="h2-bold">Quote</h2>
+        <p class="text-regular-regular guide__hint">Cormorant italic 40/1.3 desktop, 32/1.3 mobile.</p>
+        <blockquote class="eka-quote">„Йога дрехи и аксесоари в подкрепа на твоята практика с красиво и запомнящо се присъствие.“</blockquote>
+        <p class="text-small-bold" style="letter-spacing:0.08em;margin-top:16px">— ЕКАТЕРИНА МИНКОВА —</p>
+      </section>
+    </main>
+  </body>
+</html>
