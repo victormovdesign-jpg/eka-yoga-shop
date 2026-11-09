@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="bg">
+<head>
+<meta charset="utf-8">
+<title>EKA Yoga – за бранда</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,700&amp;family=Lato:wght@400;700;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F3F0E4}
+a{color:#5D7054;text-decoration:none}a:hover{color:#AF5D65}
+button{font-family:inherit}
+.br-h2{margin:0;padding:80px 0;text-align:center;font-family:'Cormorant Garamond',Garamond,Georgia,serif;font-size:56px;font-weight:700;line-height:1.2}
+.br-text{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:20px;font-size:18px;line-height:1.5}
+.br-text p{margin:0}
+.br-more{align-self:center;margin-top:12px;height:auto;padding:0 0 2px;border:0;border-bottom:1px solid #AF5D65;background:none;color:#AF5D65;font-size:16px;font-weight:700;line-height:1.5;cursor:pointer}
+.br-more--light{align-self:flex-start;border-bottom-color:#FFFFFF;color:#FFFFFF}
+.br-more:focus-visible{outline:2px solid currentColor;outline-offset:2px}
+@media (max-width:767px){
+section[aria-label="EKA Yoga"]{height:533px !important}
+.br-h2{font-size:40px !important;line-height:1.2 !important;padding:48px 0 24px !important}
+.br-text{gap:16px;font-size:18px}
+.br-more{font-size:14px;margin-top:8px}
+section[aria-labelledby="br-who"] > div{display:flex !important;flex-direction:column !important;min-height:0 !important;gap:0 !important}
+section[aria-labelledby="br-who"] > div > img{order:-1;height:420px !important}
+section[aria-labelledby="br-who"] > div > div{padding:32px 16px !important}
+section[aria-labelledby="br-who"] > div > div > div{font-size:18px !important;gap:16px !important}
+section[aria-labelledby="br-mat"]{padding:0 16px 48px !important}
+img[alt^="Четири възглавнички"]{height:300px !important}
+}
+</style>
+</helmet>
+<div style="font-family: Lato, 'Helvetica Neue', Arial, sans-serif; color: #5D7054; background: #F3F0E4; width: 100%; min-width: 0">
+<div style="position: relative">
+<dc-import name="Header" variant="overlay" count="2" hint-size="100%,110px"></dc-import>
+<section aria-label="EKA Yoga" style="position: relative; height: 960px; overflow: hidden">
+<img src="/_blob/c3798337e3fd5cd2f5f12a1a6f03c9b8" alt="Жена в бордо цяло трико за йога в стойка на глава с разтворени крака в градина" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 40%">
+</section>
+</div>
+
+<section aria-labelledby="br-why" style="padding: 0 64px 40px">
+<h1 id="br-why" class="br-h2" style="font-size: 56px; line-height: 1; font-weight: 700; letter-spacing: -1.12px; font-style: normal; font-family: &quot;Cormorant Garamond&quot;, Garamond, Georgia, serif">Защо EKA YOGA</h1>
+<div class="br-text">
+<p>Eka Yoga се роди от живота ми в движение, от художествената гимнастика, танца, йога и любовта към красивата линия на тялото.</p>
+<p>Още от шестгодишна възраст тренировките бяха част от ежедневието ми. По-късно дойдоха модерният балет, контактната импровизация и тангото. През всички тези години най-силно ме привличаха целите дълги трика, заради свободата, която дават, начина, по който следват всяко движение, и естествената им елегантност.</p>
+<p>С времето започнах сама да си ги шия. Когато йога стана част от живота ми, разбрах колко удобни са и за практиката, остават на мястото си, не разсейват и позволяват да се движиш свободно дори в обърнатите пози. Постепенно и моите ученици започнаха да ме питат откъде могат да имат такива екипи. Така се роди идеята за Eka Yoga.</p>
+<sc-if value="{{ moreWhy }}" hint-placeholder-val="{{ false }}">
+<p>По-късно, когато започнах да практикувам Айенгар йога, се докоснах до още един характерен стил на обличане, така наречените Пуне шорти, носещи името на индийския град Пуне, където се намира Институтът по Айенгар йога. Те са създадени така, че по време на практиката да се вижда ясно как работи тялото, позицията на коленете, бедрата и подреждането в позата. Тази функционалност и простота естествено намериха място и в колекцията на Eka Yoga.</p>
+<p>Обичам да рисувам мандали и винаги ме е привличала тяхната съвършена геометрия, симетрия и усещането за баланс, което носят. Самото им съзерцаване успокоява ума и събира вниманието. Затова мандалите естествено намериха място върху тениските на Eka Yoga като символ на хармония, фокус и връщане към собствения център.</p>
+<p><strong>Ека</strong> означава „едно“, единство между тяло и ум, движение и покой, удобство и елегантност.</p>
+<p>Eka Yoga е създадена за свободното движение, за осъзнатата практика и за онези моменти, в които се чувстваме напълно свързани със себе си.</p>
+</sc-if>
+<button type="button" class="br-more" aria-expanded="{{ moreWhy }}" onClick="{{ toggleWhy }}">{{ whyLabel }}</button>
+</div>
+</section>
+
+<section aria-labelledby="br-who">
+<h2 id="br-who" class="br-h2" style="font-size: 56px; line-height: 1; font-weight: 700; letter-spacing: -1.12px; font-style: normal; font-family: &quot;Cormorant Garamond&quot;, Garamond, Georgia, serif">За кого са създадени тези облекла?</h2>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); min-height: 820px">
+<div style="background: #5D7054; color: #FFFFFF; display: flex; align-items: center; padding: 80px 64px; box-sizing: border-box">
+<div style="max-width: 560px; display: flex; flex-direction: column; gap: 20px; font-size: 18px; line-height: 1.5">
+<p style="margin: 0">Облеклата на Eka Yoga са създадени за жените, които обичат движението – за активно спортуващата жена, за професионалната танцьорка, за отдадената йога практикуваща, за любителката на пилатес, но и за всяка жена, която просто иска да се чувства добре и да изглежда красиво, докато спортува, практикува или се движи.</p>
+<p style="margin: 0">Те съчетават удобство, функционалност и съвременна елегантност. Следват естествената линия на тялото, без да го ограничават, и дават свободата да се движиш спокойно, уверено и с лекота.</p>
+<p style="margin: 0">Целите трика не са само за модели или за “съвършени“ фигури. Те са за всяка жена, която иска да се чувства красива в тялото си такова, каквото е. Защото красотата няма един размер, една възраст или една форма.</p>
+<sc-if value="{{ moreWho }}" hint-placeholder-val="{{ false }}">
+<p style="margin: 0">Шортите и тениските от колекцията са създадени така, че да бъдат част не само от йога практиката, а и от активното ежедневие. Можеш да ги носиш във фитнеса, при бягане, на преход в планината, в свободното време, на плажа или просто у дома като удобна дреха, в която се чувстваш добре през целия ден.</p>
+<p style="margin: 0">Eka Yoga е за жената, която иска да се движи свободно и грациозно. Това са облекла, които ти помагат да се довериш на тялото си. Да се почувстваш уверена в него. Да видиш неговата красота и да разпознаеш отново волната си и естествена природа.</p>
+</sc-if>
+<button type="button" class="br-more br-more--light" aria-expanded="{{ moreWho }}" onClick="{{ toggleWho }}">{{ whoLabel }}</button>
+</div>
+</div>
+<img src="/_blob/e35e0864891f606d08ff48aab9c893ec" alt="Жена в цяло трико в цвят маслина в стойка воин II до езеро" style="width: 100%; height: 100%; object-fit: cover; display: block">
+</div>
+</section>
+
+<section aria-labelledby="br-mat" style="padding: 0 64px 80px">
+<h2 id="br-mat" class="br-h2" style="font-size: 56px; line-height: 1; font-weight: 700; letter-spacing: -1.12px; font-style: normal; font-family: &quot;Cormorant Garamond&quot;, Garamond, Georgia, serif">Какви материи използваме?</h2>
+<div class="br-text">
+<p>В Eka Yoga избираме материите с внимание към движението, комфорта и усещането върху кожата.</p>
+<p>За целите трика и шортите използваме мека и еластична материя, която следва тялото и му дава свобода във всяко движение. Тя е приятна на допир, удобна за практика и лесна за поддържане. Създадена за дрехи, които искаш да носиш отново и отново.</p>
+<p>Тениските са изработени от 100% био памук, естествен, мек и дишащ материал, който създава усещане за лекота и комфорт както по време на практика, така и в ежедневието.</p>
+<sc-if value="{{ moreMat }}" hint-placeholder-val="{{ false }}">
+<p>За йога възглавничките избираме шарен индийски памук, ръчно щампован с красиви ориенталски мотиви. Тези материи носят източен полъх с богатство на цветове, детайли и усещане за ръчна изработка, което превръща всяка възглавничка в малък, красив акцент в пространството за практика.</p>
+<p>За нас материята е част от самото преживяване. Тя е приятна, функционална и красива, така че дрехата или аксесоарът да се усещат естествено като част от твоята практика и ежедневие.</p>
+</sc-if>
+<button type="button" class="br-more" aria-expanded="{{ moreMat }}" onClick="{{ toggleMat }}">{{ matLabel }}</button>
+</div>
+</section>
+
+<img src="/_blob/5a9abea7bda7e15962be90f0c51b232d" alt="Четири възглавнички за очи от ръчно щампован индийски памук върху корков постелка" style="width: 100%; height: 820px; object-fit: cover; display: block">
+
+<dc-import name="PreFooter" hint-size="100%,1900px"></dc-import>
+<dc-import name="Footer" hint-size="100%,970px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":7265}}'>
+class Component extends DCLogic {
+  renderVals() {
+    var self = this, st = this.state;
+    function t(k){ return function(){ var o = {}; o[k] = !self.state[k]; self.setState(o); }; }
+    return {
+      moreWhy: !!st.why, toggleWhy: t('why'), whyLabel: st.why ? 'Покажи по-малко' : 'Прочети повече',
+      moreWho: !!st.who, toggleWho: t('who'), whoLabel: st.who ? 'Покажи по-малко' : 'Прочети повече',
+      moreMat: !!st.mat, toggleMat: t('mat'), matLabel: st.mat ? 'Покажи по-малко' : 'Прочети повече'
+    };
+  }
+}
+</script>
+</body>
+</html>

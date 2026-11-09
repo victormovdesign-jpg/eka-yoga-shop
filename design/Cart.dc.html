@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="bg">
+<head>
+<meta charset="utf-8">
+<title>EKA Yoga – моята количка</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,700&amp;family=Lato:wght@400;700;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F3F0E4}
+a{color:#5D7054;text-decoration:none}a:hover{color:#AF5D65}
+button{font-family:inherit}
+.ct-row{display:grid;grid-template-columns:123px minmax(0,1fr) 140px 120px 44px;align-items:center;gap:16px;padding:20px 0}
+.ct-img{width:123px;height:126px;object-fit:cover;display:block;background:#E3E7DC}
+.ct-name{margin:0;font-family:'Cormorant Garamond',Garamond,Georgia,serif;font-size:24px;font-weight:700;line-height:1.2}
+.ct-var{margin:4px 0 0;font-size:16px;line-height:1.5}
+.ct-step{display:inline-flex;align-items:center;height:34px;box-sizing:border-box;border:1px solid #5D7054;border-radius:4px}
+.ct-step button{width:34px;height:32px;padding:0;border:0;background:transparent;color:#5D7054;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.ct-step span{min-width:34px;text-align:center;font-size:16px}
+.ct-price{font-family:'Cormorant Garamond',Garamond,Georgia,serif;font-size:24px;font-weight:700;font-variant-numeric:lining-nums;font-feature-settings:'lnum' 1;text-align:right;white-space:nowrap}
+.ct-remove{width:44px;height:44px;padding:0;border:0;background:transparent;color:#5D7054;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.ct-remove:hover{color:#AF5D65}
+.ct-step button:focus-visible,.ct-remove:focus-visible,.ct-pay:focus-visible{outline:2px solid #5D7054;outline-offset:2px}
+.ct-pay{box-sizing:border-box;width:100%;height:56px;margin-top:24px;border:0;border-radius:8px;background:#AF5D65;color:#FFFFFF;font:700 16px/1.5 Lato,'Helvetica Neue',Arial,sans-serif;cursor:pointer}
+.ct-pay:hover{background:#C3737B}
+@media (max-width:767px){
+main{padding-top:0 !important}
+main > nav[aria-label="Път"]{display:none}
+main > div[style*="padding: 40px 0 80px"]{padding:32px 0 24px !important}
+main > div[style*="padding: 40px 0 80px"] h1{font-size:34px !important}
+.ct-row{padding:16px 0 !important;border-bottom:1px solid #E3E7DC;align-items:start !important}
+.ct-row > img{height:124px !important}
+.ct-name{font-size:20px}
+.ct-var{font-size:14px}
+.ct-row > .ct-step{align-self:end}
+.ct-row > .ct-price{align-self:end;justify-self:end;font-size:22px}
+.ct-row > .ct-remove{justify-self:end;margin:-10px -10px 0 0}
+aside[aria-label="Обобщение"]{margin-top:8px;background:#E3E7DC;border-color:#E3E7DC !important}
+}
+</style>
+</helmet>
+<div style="font-family: Lato, 'Helvetica Neue', Arial, sans-serif; color: #5D7054; background: #F3F0E4; width: 100%; min-width: 0">
+<dc-import name="Header" variant="solid" count="{{ count }}" hint-size="100%,110px"></dc-import>
+<main style="width: 100%; box-sizing: border-box; padding: 24px 64px 64px">
+<nav aria-label="Път" style="font-size: 14px"><a href="Main.dc.html">EKA Yoga</a> <span aria-hidden="true">›</span> Моята количка</nav>
+<div style="display: flex; flex-direction: column; align-items: center; padding: 40px 0 80px">
+<h1 style="margin: 0; font-family: 'Cormorant Garamond', Garamond, Georgia, serif; font-size: 56px; font-weight: 700; line-height: 1.2; text-align: center">Моята количка</h1>
+<a href="Collection.dc.html" style="margin-top: 12px; padding-bottom: 2px; border-bottom: 1px solid #AF5D65; color: #AF5D65; font-size: 16px; line-height: 1.5">Продължи с пазаруването</a>
+</div>
+<div class="eka-split" style="display: grid; grid-template-columns: minmax(0, 1fr) 368px; gap: 120px; align-items: start">
+<div>
+<sc-if value="{{ empty }}" hint-placeholder-val="{{ false }}">
+<p style="margin: 0; padding: 40px 0; font-size: 18px">Количката е празна.</p>
+</sc-if>
+<ul style="list-style: none; margin: 0; padding: 0">
+<sc-for list="{{ items }}" as="it" hint-placeholder-count="6">
+<li class="ct-row">
+<img class="ct-img" src="{{ it.img }}" alt="{{ it.alt }}">
+<div><h2 class="ct-name">{{ it.name }}</h2><p class="ct-var">{{ it.variant }}</p></div>
+<div class="ct-step" role="group" aria-label="Количество">
+<button type="button" aria-label="Намалете количеството" onClick="{{ it.dec }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M4 12h16"></path></svg></button>
+<span aria-live="polite">{{ it.qty }}</span>
+<button type="button" aria-label="Увеличете количеството" onClick="{{ it.inc }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M4 12h16M12 4v16"></path></svg></button>
+</div>
+<span class="ct-price">€ {{ it.sum }}</span>
+<button type="button" class="ct-remove" aria-label="Премахнете {{ it.name }}" onClick="{{ it.remove }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"></path></svg></button>
+</li>
+</sc-for>
+</ul>
+</div>
+<aside aria-label="Обобщение" style="box-sizing: border-box; border: 1px solid #5D7054; padding: 16px; position: sticky; top: 24px">
+<div style="display: flex; align-items: baseline; justify-content: space-between; gap: 16px"><span style="font-size: 16px; font-weight: 700">Сума:</span><span style="font-family: 'Cormorant Garamond', Garamond, Georgia, serif; font-size: 24px; font-weight: 700; font-variant-numeric: lining-nums; font-feature-settings: 'lnum' 1">€ {{ total }}</span></div>
+<div style="display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-top: 16px"><span style="font-size: 16px; font-weight: 700">Доставка:</span><span style="font-size: 16px">Начислява се при плащането</span></div>
+<a class="ct-pay" href="Checkout.dc.html" style="display: flex; align-items: center; justify-content: center; color: #FFFFFF; text-decoration: none">Плащане</a>
+</aside>
+</div>
+</main>
+<dc-import name="PreFooter" hint-size="100%,1900px"></dc-import>
+<dc-import name="Footer" hint-size="100%,970px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2370}}'>
+var ITEMS = [
+  { id: 'leo-red-m', name: 'Гащеризон за йога', variant: 'Бордо / M', price: 98, qty: 1, img: '/_blob/728e47038b09140c04f806bcb558385b' },
+  { id: 'ts-blue-m', name: 'Тениска с мандала', variant: 'Синьо / M', price: 45, qty: 1, img: '/_blob/d953a323b5a5c66cd9aebaf0776b3235' },
+  { id: 'sh-green-s', name: 'Шорти за йога', variant: 'Маслина / S', price: 49, qty: 1, img: '/_blob/11650be921363287e207215abe97d956' },
+  { id: 'pil-red', name: 'Възглавничка за очи', variant: 'Бордо', price: 36, qty: 1, img: '/_blob/465c46c9b9cc853ce3cd66519f128ebf' },
+  { id: 'mf-blue', name: 'Мандала Флоу', variant: 'Синьо', price: 119, qty: 1, img: '/_blob/0e4c5e09c22c0bb5e377c325b0798768' },
+  { id: 'er-yellow', name: 'Елегантен ритуал', variant: 'Жълто', price: 123, qty: 1, img: '/_blob/af93716d43d2fa3b26719a883dc378e3' }
+];
+class Component extends DCLogic {
+  renderVals() {
+    var self = this, q = this.state.q || {};
+    function setQ(id, n){ var o = Object.assign({}, self.state.q || {}); o[id] = n; self.setState({ q: o }); }
+    var items = ITEMS.map(function(p){ return { p: p, n: q[p.id] != null ? q[p.id] : p.qty }; }).filter(function(x){ return x.n > 0; }).map(function(x){ var p = x.p;
+      return { name: p.name, variant: p.variant, img: p.img, alt: p.name + ', ' + p.variant, qty: x.n, sum: p.price * x.n,
+        dec: function(){ setQ(p.id, x.n - 1); }, inc: function(){ setQ(p.id, x.n + 1); }, remove: function(){ setQ(p.id, 0); } }; });
+    var total = items.reduce(function(s, it){ return s + it.sum; }, 0), count = items.reduce(function(s, it){ return s + it.qty; }, 0);
+    return { items: items, empty: items.length === 0, total: total, count: count };
+  }
+}
+</script>
+</body>
+</html>

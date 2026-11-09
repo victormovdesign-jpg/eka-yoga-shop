@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="bg">
+<head>
+<meta charset="utf-8">
+<title>EKA_Cart-Drawer</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,700&amp;family=Lato:wght@400;700;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.cd-overlay{position:fixed;inset:0;z-index:1000;display:flex;justify-content:flex-end}
+.cd-backdrop{position:absolute;inset:0;width:100%;height:100%;margin:0;padding:0;border:0;background:rgba(93,112,84,0.6);cursor:pointer}
+.cd-panel{position:relative;box-sizing:border-box;width:min(400px,100%);height:100%;display:flex;flex-direction:column;background:#F3F0E4;color:#5D7054;font-family:Lato,'Helvetica Neue',Arial,sans-serif}
+.cd-head{flex:none;display:flex;align-items:center;justify-content:space-between;height:50px;padding:0 16px;background:#5D7054;color:#FFFFFF}
+.cd-title{margin:0;font-family:'Cormorant Garamond',Garamond,Georgia,serif;font-size:24px;font-weight:700;line-height:1.2}
+.cd-close{width:44px;height:44px;margin-right:-12px;padding:0;border:0;background:transparent;color:#FFFFFF;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.cd-close:focus-visible,.cd-btn:focus-visible,.cd-step button:focus-visible{outline:2px solid #5D7054;outline-offset:2px}
+.cd-list{flex:1;min-height:0;overflow-y:auto;margin:0;padding:0 16px;list-style:none}
+.cd-item{display:flex;gap:18px;padding:16px 0;border-bottom:1px solid #5D7054}
+.cd-img{flex:none;width:105px;height:120px;object-fit:cover;display:block;background:#E3E7DC}
+.cd-info{flex:1;min-width:0;display:flex;flex-direction:column}
+.cd-name{margin:6px 0 0;font-family:'Cormorant Garamond',Garamond,Georgia,serif;font-size:24px;font-weight:700;line-height:1.2}
+.cd-var{margin:4px 0 0;font-size:16px;line-height:1.5}
+.cd-row{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.cd-step{display:inline-flex;align-items:center;height:34px;box-sizing:border-box;border:1px solid #5D7054;border-radius:4px}
+.cd-step button{width:34px;height:32px;padding:0;border:0;background:transparent;color:#5D7054;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.cd-step span{min-width:34px;text-align:center;font-size:16px}
+.cd-price{font-family:'Cormorant Garamond',Garamond,Georgia,serif;font-size:24px;font-weight:700;font-variant-numeric:lining-nums;font-feature-settings:'lnum' 1;white-space:nowrap}
+.cd-empty{margin:40px 0;text-align:center;font-size:18px}
+.cd-foot{flex:none;padding:16px 16px 24px;display:flex;flex-direction:column}
+.cd-btn{box-sizing:border-box;width:100%;height:58px;border-radius:8px;font:700 16px/1.5 Lato,'Helvetica Neue',Arial,sans-serif;cursor:pointer}
+.cd-btn--secondary{border:2px solid #5D7054;background:transparent;color:#5D7054}
+.cd-btn--primary{height:56px;border:0;background:#AF5D65;color:#FFFFFF}.cd-btn--primary:hover{background:#C3737B;color:#FFFFFF}
+.cd-total{display:flex;align-items:center;justify-content:space-between;margin:24px 0 20px;padding-top:20px;border-top:1px solid #5D7054;font-family:'Cormorant Garamond',Garamond,Georgia,serif;font-size:24px;font-weight:700;font-variant-numeric:lining-nums;font-feature-settings:'lnum' 1}
+</style>
+</helmet>
+<sc-if value="{{ open }}" hint-placeholder-val="{{ true }}">
+<div class="cd-overlay" role="dialog" aria-modal="true" aria-labelledby="cd-title">
+<button type="button" class="cd-backdrop" aria-label="Затворете количката" onClick="{{ close }}"></button>
+<div class="cd-panel">
+<div class="cd-head">
+<h2 id="cd-title" class="cd-title">Моята количка</h2>
+<button type="button" class="cd-close" aria-label="Затворете" onClick="{{ close }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"></path></svg></button>
+</div>
+<sc-if value="{{ empty }}" hint-placeholder-val="{{ false }}">
+<p class="cd-empty">Количката е празна.</p>
+</sc-if>
+<ul class="cd-list">
+<sc-for list="{{ items }}" as="it" hint-placeholder-count="4">
+<li class="cd-item">
+<img class="cd-img" src="{{ it.img }}" alt="{{ it.alt }}">
+<div class="cd-info">
+<h3 class="cd-name">{{ it.name }}</h3>
+<p class="cd-var">{{ it.variant }}</p>
+<div class="cd-row">
+<div class="cd-step" role="group" aria-label="Количество">
+<button type="button" aria-label="Намалете количеството" onClick="{{ it.dec }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M4 12h16"></path></svg></button>
+<span aria-live="polite">{{ it.qty }}</span>
+<button type="button" aria-label="Увеличете количеството" onClick="{{ it.inc }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M4 12h16M12 4v16"></path></svg></button>
+</div>
+<span class="cd-price">€ {{ it.sum }}</span>
+</div>
+</div>
+</li>
+</sc-for>
+</ul>
+<div class="cd-foot">
+<button type="button" class="cd-btn cd-btn--secondary" onClick="{{ close }}">Продължи да пазаруваш</button>
+<div class="cd-total"><span>Общо:</span><span>€ {{ total }}</span></div>
+<a class="cd-btn cd-btn--primary" href="Cart.dc.html" style="display: flex; align-items: center; justify-content: center; text-decoration: none">Купи сега</a>
+</div>
+</div>
+</div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"item":{"editor":null},"$preview":{"width":400,"height":1056}}'>
+var SAMPLE_ITEMS = [
+  { id: 'leo-red-m', name: 'Гащеризон за йога', variant: 'Бордо / M', price: 98, qty: 1, img: '/_blob/728e47038b09140c04f806bcb558385b' },
+  { id: 'ts-blue-m', name: 'Тениска с мандала', variant: 'Синьо / M', price: 45, qty: 1, img: '/_blob/d953a323b5a5c66cd9aebaf0776b3235' },
+  { id: 'sh-green-s', name: 'Шорти за йога', variant: 'Маслина / S', price: 49, qty: 1, img: '/_blob/11650be921363287e207215abe97d956' },
+  { id: 'pil-red', name: 'Възглавничка за очи', variant: 'Бордо', price: 36, qty: 1, img: '/_blob/465c46c9b9cc853ce3cd66519f128ebf' },
+  { id: 'mf-blue', name: 'Мандала Флоу', variant: 'Синьо', price: 119, qty: 1, img: '/_blob/0e4c5e09c22c0bb5e377c325b0798768' }
+];
+class Component extends DCLogic {
+  renderVals() {
+    var self = this, item = this.props.item || {};
+    var base = item.items || SAMPLE_ITEMS, q = this.state.q || {};
+    var list = base.map(function(p){ var n = q[p.id] != null ? q[p.id] : (p.qty || 1); return { p: p, n: n }; }).filter(function(x){ return x.n > 0; });
+    var items = list.map(function(x){ var p = x.p;
+      return { name: p.name, variant: p.variant, img: p.img, alt: p.name + ', ' + p.variant, qty: x.n, sum: p.price * x.n,
+        dec: function(){ var o = Object.assign({}, self.state.q || {}); o[p.id] = x.n - 1; self.setState({ q: o }); },
+        inc: function(){ var o = Object.assign({}, self.state.q || {}); o[p.id] = x.n + 1; self.setState({ q: o }); } }; });
+    var total = items.reduce(function(s, it){ return s + it.sum; }, 0);
+    return { open: item.open !== undefined ? !!item.open : true, close: item.close || function(){}, buy: item.buy || function(){},
+      items: items, empty: items.length === 0, total: total };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="bg">
+<head>
+<meta charset="utf-8">
+<title>EKA Yoga – плащане</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,700&amp;family=Lato:wght@400;700;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F3F0E4}
+a{color:#5D7054;text-decoration:none}a:hover{color:#AF5D65}
+button,input,select,textarea{font-family:inherit}
+.co-h2{margin:0 0 20px;font-family:'Cormorant Garamond',Garamond,Georgia,serif;font-size:32px;font-weight:700;line-height:1.2}
+.co-sec{margin-bottom:48px}
+.co-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 16px}
+.co-field{display:flex;flex-direction:column;gap:6px}
+.co-field--full{grid-column:1 / -1}
+.co-label{font-size:14px;font-weight:700;line-height:1.5}
+.co-input{box-sizing:border-box;width:100%;height:56px;padding:0 16px;border:1px solid #5D7054;border-radius:8px;background:#F3F0E4;color:#5D7054;font-size:16px}
+.co-input::placeholder{color:#8A9A82}
+.co-input:focus{outline:2px solid #5D7054;outline-offset:1px}
+textarea.co-input{height:112px;padding:12px 16px;resize:vertical}
+.eka-check{display:flex;align-items:center;gap:12px;font-size:16px;line-height:1.5;cursor:pointer}
+.eka-check input{appearance:none;-webkit-appearance:none;box-sizing:border-box;margin:0;width:18px;height:18px;flex:none;background:#F3F0E4;border:1px solid #5D7054;border-radius:4px;cursor:pointer}
+.eka-check input:checked{background:#5D7054;box-shadow:inset 0 0 0 3px #F3F0E4}
+.eka-check input:focus-visible{outline:2px solid #5D7054;outline-offset:2px}
+.co-methods{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:24px}
+.co-method{box-sizing:border-box;height:72px;padding:0 16px;border-radius:8px;background:transparent;color:#5D7054;font-size:16px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:10px}
+.co-method:focus-visible,.co-pay:focus-visible{outline:2px solid #5D7054;outline-offset:2px}
+.co-pay{box-sizing:border-box;width:100%;height:78px;margin-top:24px;border:0;border-radius:8px;background:#AF5D65;color:#FFFFFF;font:400 20px/1.5 Lato,'Helvetica Neue',Arial,sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:12px}
+.co-pay:hover{background:#C3737B}
+.co-item{display:grid;grid-template-columns:72px minmax(0,1fr) auto;gap:16px;padding:16px 0;border-bottom:1px solid #5D7054}
+.co-item img{width:72px;height:84px;object-fit:cover;display:block;background:#E3E7DC}
+.co-num{font-family:'Cormorant Garamond',Garamond,Georgia,serif;font-weight:700;font-variant-numeric:lining-nums;font-feature-settings:'lnum' 1;white-space:nowrap}
+.co-sumbar{display:none}
+@media (max-width:767px){
+main{padding-top:0 !important}
+main > nav[aria-label="Път"]{display:none}
+main > h1{padding:32px 0 24px !important;font-size:34px !important}
+.co-sumbar{display:flex;align-items:center;justify-content:space-between;box-sizing:border-box;width:calc(100% + 32px);margin:0 -16px 24px;height:56px;padding:0 16px;border:0;border-top:1px solid #5D7054;border-bottom:1px solid #5D7054;background:#E3E7DC;color:#5D7054;font:700 16px/1.5 Lato,'Helvetica Neue',Arial,sans-serif;cursor:pointer}
+.co-sumbar .co-num{font-size:24px}
+.co-aside{order:-1;display:none;padding:16px !important}
+.co-aside.is-open{display:block}
+.co-h2{font-size:26px;margin-bottom:16px}
+.co-sec{margin-bottom:32px}
+.co-method{height:56px}
+.co-pay{height:64px}
+}
+</style>
+</helmet>
+<div style="font-family: Lato, 'Helvetica Neue', Arial, sans-serif; color: #5D7054; background: #F3F0E4; width: 100%; min-width: 0">
+<dc-import name="Header" variant="solid" count="{{ count }}" hint-size="100%,110px"></dc-import>
+<main style="width: 100%; box-sizing: border-box; padding: 24px 64px 120px">
+<nav aria-label="Път" style="font-size: 14px"><a href="Main.dc.html">EKA Yoga</a> <span aria-hidden="true">›</span> <a href="Cart.dc.html">Моята количка</a> <span aria-hidden="true">›</span> Плащане</nav>
+<h1 style="margin: 0; padding: 40px 0 80px; font-family: 'Cormorant Garamond', Garamond, Georgia, serif; font-size: 56px; font-weight: 700; line-height: 1.2; text-align: center">Плащане</h1>
+<button type="button" class="co-sumbar" aria-expanded="{{ sumOpen }}" onClick="{{ toggleSum }}"><span style="display: inline-flex; align-items: center; gap: 8px">{{ sumLabel }}<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true" style="{{ sumChev }}"><path d="M3.5 6l4.5 4.5L12.5 6"></path></svg></span><span class="co-num">€ {{ total }}</span></button>
+<div class="eka-split" style="display: grid; grid-template-columns: minmax(0, 1fr) 448px; gap: 120px; align-items: start">
+<form onSubmit="{{ submit }}">
+<section class="co-sec" aria-labelledby="co-contact">
+<h2 id="co-contact" class="co-h2">Контакт</h2>
+<div class="co-field"><label class="co-label" for="co-email">Имейл *</label><input id="co-email" class="co-input" type="email" placeholder="Имейл" autocomplete="email"></div>
+</section>
+<section class="co-sec" aria-labelledby="co-ship">
+<h2 id="co-ship" class="co-h2">Детайли на доставката</h2>
+<div class="co-grid">
+<div class="co-field co-field--full"><label class="co-label" for="co-name">Имена *</label><input id="co-name" class="co-input" type="text" placeholder="Имена" autocomplete="name"></div>
+<div class="co-field co-field--full"><label class="co-label" for="co-phone">Телефон *</label><input id="co-phone" class="co-input" type="tel" placeholder="Телефон" autocomplete="tel"></div>
+<div class="co-field co-field--full"><label class="co-label" for="co-addr">Пълен адрес (личен адрес или адрес на офис на Спиди) *</label><input id="co-addr" class="co-input" type="text" placeholder="Пълен адрес" autocomplete="street-address"></div>
+<div class="co-field"><label class="co-label" for="co-country">Държава *</label><select id="co-country" class="co-input" autocomplete="country-name"><option>България</option></select></div>
+<div class="co-field"><label class="co-label" for="co-region">Област *</label><input id="co-region" class="co-input" type="text" placeholder="Област"></div>
+<div class="co-field"><label class="co-label" for="co-city">Град *</label><input id="co-city" class="co-input" type="text" placeholder="Град" autocomplete="address-level2"></div>
+<div class="co-field"><label class="co-label" for="co-zip">Пощенски код *</label><input id="co-zip" class="co-input" type="text" placeholder="Пощенски код" autocomplete="postal-code"></div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 16px; margin-top: 24px">
+<label class="eka-check"><input type="checkbox" checked="{{ sameBilling }}" onChange="{{ toggleBilling }}">Адресът за фактура е същият като адреса за доставка</label>
+<label class="eka-check"><input type="checkbox" checked="{{ notes }}" onChange="{{ toggleNotes }}">Добави бележка към поръчката</label>
+<sc-if value="{{ notes }}" hint-placeholder-val="{{ false }}">
+<div class="co-field"><label class="co-label" for="co-note">Бележка</label><textarea id="co-note" class="co-input" placeholder="Напиши бележка към поръчката"></textarea></div>
+</sc-if>
+</div>
+</section>
+<section aria-labelledby="co-payh">
+<h2 id="co-payh" class="co-h2">Начин на плащане</h2>
+<div class="co-methods" role="radiogroup" aria-label="Начин на плащане">
+<sc-for list="{{ methods }}" as="m" hint-placeholder-count="3">
+<button type="button" role="radio" aria-checked="{{ m.on }}" class="co-method" onClick="{{ m.pick }}" style="{{ m.style }}">{{ m.label }}</button>
+</sc-for>
+</div>
+<sc-if value="{{ isCard }}" hint-placeholder-val="{{ true }}">
+<div class="co-grid">
+<div class="co-field co-field--full"><label class="co-label" for="co-card">Номер на картата</label><input id="co-card" class="co-input" type="text" inputmode="numeric" placeholder="1234 1234 1234 1234" autocomplete="cc-number"></div>
+<div class="co-field"><label class="co-label" for="co-exp">Валидност</label><input id="co-exp" class="co-input" type="text" placeholder="ММ / ГГ" autocomplete="cc-exp"></div>
+<div class="co-field"><label class="co-label" for="co-cvc">CVC код</label><input id="co-cvc" class="co-input" type="text" inputmode="numeric" placeholder="CVC" autocomplete="cc-csc"></div>
+</div>
+</sc-if>
+<sc-if value="{{ isCod }}" hint-placeholder-val="{{ false }}">
+<p style="margin: 0; font-size: 16px; line-height: 1.5">Плащате на куриера при получаване на пратката.</p>
+</sc-if>
+<sc-if value="{{ isWallet }}" hint-placeholder-val="{{ false }}">
+<p style="margin: 0; font-size: 16px; line-height: 1.5">След „Плати“ ще потвърдите плащането в Google Pay или Apple Pay.</p>
+</sc-if>
+<label class="eka-check" style="margin-top: 24px"><input type="checkbox" checked="{{ agree }}" onChange="{{ toggleAgree }}"><span>Съгласявам се с <a href="#" style="color: #AF5D65; text-decoration: underline">Общите условия</a> и <a href="#" style="color: #AF5D65; text-decoration: underline">Политиката за поверителност</a>.</span></label>
+<sc-if value="{{ agree }}" hint-placeholder-val="{{ false }}"><a class="co-pay" href="ThankYou.dc.html" style="color: #FFFFFF; text-decoration: none"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="1"></rect><path d="M8 11V8a4 4 0 0 1 8 0v3"></path></svg>{{ payLabel }}</a></sc-if>
+<sc-if value="{{ notAgree }}" hint-placeholder-val="{{ true }}"><button type="submit" class="co-pay" style="{{ payStyle }}"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="1"></rect><path d="M8 11V8a4 4 0 0 1 8 0v3"></path></svg>{{ payLabel }}</button></sc-if>
+<p style="margin: 12px 0 0; text-align: center; font-size: 14px">100% сигурно плащане</p>
+<sc-if value="{{ done }}" hint-placeholder-val="{{ false }}">
+<p role="status" style="margin: 16px 0 0; text-align: center; font-size: 16px; font-weight: 700">Благодарим! Поръчката е приета (демо).</p>
+</sc-if>
+</section>
+</form>
+<aside class="{{ asideClass }}" aria-labelledby="co-sum" style="position: sticky; top: 24px; box-sizing: border-box; border: 1px solid #5D7054; padding: 24px">
+<div style="display: flex; align-items: center; justify-content: space-between"><h2 id="co-sum" style="margin: 0; font-family: 'Cormorant Garamond', Garamond, Georgia, serif; font-size: 24px; font-weight: 700">Детайли на поръчката</h2><a href="Cart.dc.html" style="color: #AF5D65; font-size: 16px; border-bottom: 1px solid #AF5D65">Редактирай</a></div>
+<ul style="list-style: none; margin: 8px 0 0; padding: 0">
+<sc-for list="{{ items }}" as="it" hint-placeholder-count="4">
+<li class="co-item"><img src="{{ it.img }}" alt="{{ it.alt }}"><div style="font-size: 14px; line-height: 1.5"><div style="font-family: 'Cormorant Garamond', Garamond, Georgia, serif; font-size: 20px; font-weight: 700; line-height: 1.2">{{ it.name }}</div><div>{{ it.variant }}</div><div>€ {{ it.price }} × {{ it.qty }}</div></div><span class="co-num" style="font-size: 20px">€ {{ it.sum }}</span></li>
+</sc-for>
+</ul>
+<div style="display: flex; justify-content: space-between; padding: 16px 0 0; font-size: 16px"><span>Междинна сума</span><span class="co-num" style="font-size: 20px">€ {{ total }}</span></div>
+<div style="display: flex; justify-content: space-between; padding: 8px 0 16px; border-bottom: 1px solid #5D7054; font-size: 16px"><span>Доставка</span><span>Начислява се от куриера</span></div>
+<div style="display: flex; justify-content: space-between; align-items: baseline; padding-top: 16px"><span style="font-family: 'Cormorant Garamond', Garamond, Georgia, serif; font-size: 24px; font-weight: 700">Общо</span><span class="co-num" style="font-size: 32px; font-style: italic">€ {{ total }}</span></div>
+</aside>
+</div>
+</main>
+<dc-import name="PreFooter" hint-size="100%,1900px"></dc-import>
+<dc-import name="Footer" hint-size="100%,970px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2700}}'>
+var ITEMS = [
+  { name: 'Гащеризон за йога', variant: 'Бордо / M', price: 98, qty: 1, img: '/_blob/728e47038b09140c04f806bcb558385b' },
+  { name: 'Тениска с мандала', variant: 'Синьо / M', price: 45, qty: 2, img: '/_blob/d953a323b5a5c66cd9aebaf0776b3235' },
+  { name: 'Шорти за йога', variant: 'Маслина / S', price: 49, qty: 1, img: '/_blob/11650be921363287e207215abe97d956' },
+  { name: 'Мандала Флоу', variant: 'Синьо', price: 119, qty: 1, img: '/_blob/0e4c5e09c22c0bb5e377c325b0798768' }
+];
+var METHODS = [['card', 'Карта'], ['wallet', 'Google / Apple Pay'], ['cod', 'Наложен платеж']];
+class Component extends DCLogic {
+  renderVals() {
+    var self = this, st = this.state, m = st.method || 'card', agree = !!st.agree;
+    var items = ITEMS.map(function(p){ return { name: p.name, variant: p.variant, img: p.img, alt: p.name + ', ' + p.variant, price: p.price, qty: p.qty, sum: p.price * p.qty }; });
+    var total = items.reduce(function(s, it){ return s + it.sum; }, 0), count = items.reduce(function(s, it){ return s + it.qty; }, 0);
+    var methods = METHODS.map(function(x){ var on = x[0] === m; return { label: x[1], on: on,
+      style: 'border: ' + (on ? '2px solid #AF5D65' : '1px solid #5D7054') + '; background: ' + (on ? 'rgba(175,93,101,0.06)' : 'transparent'),
+      pick: function(){ self.setState({ method: x[0] }); } }; });
+    return { items: items, total: total, count: count, methods: methods, isCard: m === 'card', isWallet: m === 'wallet', isCod: m === 'cod',
+      sameBilling: st.sameBilling !== false, toggleBilling: function(){ self.setState({ sameBilling: self.state.sameBilling === false }); },
+      notes: !!st.notes, toggleNotes: function(){ self.setState({ notes: !self.state.notes }); },
+      sumOpen: !!st.sum, toggleSum: function(){ self.setState({ sum: !self.state.sum }); }, asideClass: 'co-aside' + (st.sum ? ' is-open' : ''), sumLabel: st.sum ? 'Скрий поръчката' : 'Детайли на поръчката', sumChev: 'transition: transform .2s; transform: rotate(' + (st.sum ? '180deg' : '0deg') + ')',
+      agree: agree, notAgree: !agree, toggleAgree: function(){ self.setState({ agree: !self.state.agree }); },
+      payLabel: m === 'cod' ? 'Поръчай' : 'Плати € ' + total,
+      payStyle: agree ? '' : 'opacity: 0.5; cursor: not-allowed',
+      done: !!st.done, submit: function(e){ e.preventDefault(); if (self.state.agree) self.setState({ done: true }); } };
+  }
+}
+</script>
+</body>
+</html>

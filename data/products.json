@@ -1,0 +1,123 @@
+[
+  {
+    "id": "gashterizon",
+    "name": "Гащеризон за йога",
+    "category": "jumpsuit",
+    "colors": [
+      {
+        "key": "bordo",
+        "label": "Бордо",
+        "token": "product-red",
+        "hex": "#AE2958"
+      },
+      {
+        "key": "maslina",
+        "label": "Маслина",
+        "token": "product-green",
+        "hex": "#819886"
+      },
+      {
+        "key": "sinyo",
+        "label": "Синьо",
+        "token": "product-blue",
+        "hex": "#518398"
+      }
+    ],
+    "sizes": [
+      "S",
+      "M"
+    ],
+    "price_eur": 98
+  },
+  {
+    "id": "shorti",
+    "name": "Шорти за йога",
+    "category": "shorts",
+    "colors": [
+      {
+        "key": "bordo",
+        "label": "Бордо",
+        "token": "product-red",
+        "hex": "#AE2958"
+      },
+      {
+        "key": "maslina",
+        "label": "Маслина",
+        "token": "product-green",
+        "hex": "#819886"
+      },
+      {
+        "key": "sinyo",
+        "label": "Синьо",
+        "token": "product-blue",
+        "hex": "#518398"
+      }
+    ],
+    "sizes": [
+      "S",
+      "M"
+    ],
+    "price_eur": 49
+  },
+  {
+    "id": "teniska",
+    "name": "Тениска с мандала",
+    "category": "tshirt",
+    "colors": [
+      {
+        "key": "bordo",
+        "label": "Бордо",
+        "token": "product-red",
+        "hex": "#AE2958"
+      },
+      {
+        "key": "maslina",
+        "label": "Маслина",
+        "token": "product-green",
+        "hex": "#819886"
+      },
+      {
+        "key": "sinyo",
+        "label": "Синьо",
+        "token": "product-blue",
+        "hex": "#518398"
+      },
+      {
+        "key": "zhalto",
+        "label": "Жълто",
+        "token": "product-yellow",
+        "hex": "#D7B955"
+      }
+    ],
+    "sizes": [
+      "S",
+      "M",
+      "L"
+    ],
+    "price_eur": 45
+  },
+  {
+    "id": "vazglavnichka",
+    "name": "Възглавничка за очи",
+    "category": "accessory",
+    "colors": [],
+    "sizes": [],
+    "price_eur": 36
+  },
+  {
+    "id": "mandala-flow",
+    "name": "Мандала флоу",
+    "category": "set",
+    "colors": [],
+    "sizes": [],
+    "price_eur": 119
+  },
+  {
+    "id": "elegant-ritual",
+    "name": "Елегантен ритуал",
+    "category": "set",
+    "colors": [],
+    "sizes": [],
+    "price_eur": 123
+  }
+]

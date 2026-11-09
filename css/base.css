@@ -1,0 +1,317 @@
+/* Reset + type helpers + button helpers used site-wide.
+   Self-hosted Lato @font-face lives in public/fonts/fonts.css and is linked
+   from Base.astro, so Vite leaves the url() paths alone. */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background: var(--bg-page);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  font-size: var(--fs-text-regular);
+  line-height: var(--lh-text);
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Prices and any number in Cormorant should use lining numerals. */
+.lining-nums {
+  font-variant-numeric: proportional-nums lining-nums;
+}
+
+/* ---------- Heading classes (map to type scale v4) ---------- */
+.h1-bold, .h1-italic,
+.h2-bold, .h2-italic,
+.h3-bold, .h3-italic,
+.h4-bold, .h4-italic,
+.h5-bold, .h5-italic,
+.h6-bold, .h6-italic {
+  font-family: var(--font-serif);
+  line-height: var(--lh-heading);
+  margin: 0;
+}
+
+.h1-bold { font-size: var(--fs-h1); font-weight: 700; letter-spacing: -0.02em; }
+.h1-italic { font-size: var(--fs-h1); font-weight: 400; font-style: italic; letter-spacing: -0.02em; }
+.h2-bold { font-size: var(--fs-h2); font-weight: 700; }
+.h2-italic { font-size: var(--fs-h2); font-weight: 400; font-style: italic; }
+.h3-bold { font-size: var(--fs-h3); font-weight: 700; }
+.h3-italic { font-size: var(--fs-h3); font-weight: 400; font-style: italic; }
+.h4-bold { font-size: var(--fs-h4); font-weight: 700; }
+.h4-italic { font-size: var(--fs-h4); font-weight: 400; font-style: italic; }
+.h5-bold { font-size: var(--fs-h5); font-weight: 700; }
+.h5-italic { font-size: var(--fs-h5); font-weight: 400; font-style: italic; }
+.h6-bold { font-size: var(--fs-h6); font-weight: 700; }
+.h6-italic { font-size: var(--fs-h6); font-weight: 400; font-style: italic; }
+
+/* ---------- Text classes (map to type scale v4) ---------- */
+.text-large-black, .text-large-bold, .text-large-regular,
+.text-medium-black, .text-medium-bold, .text-medium-regular,
+.text-regular-black, .text-regular-bold, .text-regular-regular,
+.text-small-black, .text-small-bold, .text-small-regular {
+  font-family: var(--font-sans);
+  line-height: var(--lh-text);
+  margin: 0;
+}
+
+.text-large-black   { font-size: var(--fs-text-large);   font-weight: 900; }
+.text-large-bold    { font-size: var(--fs-text-large);   font-weight: 700; }
+.text-large-regular { font-size: var(--fs-text-large);   font-weight: 400; }
+
+.text-medium-black   { font-size: var(--fs-text-medium); font-weight: 900; }
+.text-medium-bold    { font-size: var(--fs-text-medium); font-weight: 700; }
+.text-medium-regular { font-size: var(--fs-text-medium); font-weight: 400; }
+
+.text-regular-black   { font-size: var(--fs-text-regular); font-weight: 900; }
+.text-regular-bold    { font-size: var(--fs-text-regular); font-weight: 700; }
+.text-regular-regular { font-size: var(--fs-text-regular); font-weight: 400; }
+
+.text-small-black   { font-size: var(--fs-text-small);   font-weight: 900; }
+.text-small-bold    { font-size: var(--fs-text-small);   font-weight: 700; }
+.text-small-regular { font-size: var(--fs-text-small);   font-weight: 400; }
+
+/* ---------- Buttons ---------- */
+.eka-btn {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 56px;
+  min-width: 99px;
+  padding: 0 24px;
+  border: 0;
+  border-radius: var(--radius-control);
+  background: none;
+  color: var(--text-main);
+  font: 700 16px/1.5 var(--font-sans);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.eka-btn:focus-visible {
+  outline: 2px solid var(--text-main);
+  outline-offset: 2px;
+}
+
+.eka-btn--primary { background: var(--brand-red); color: var(--bg-card); }
+.eka-btn--primary:hover { background: var(--brand-red-light); }
+.eka-btn--primary:active { background: var(--brand-red); }
+.eka-btn--primary:disabled { background: var(--state-disabled); cursor: not-allowed; }
+
+.eka-btn--secondary {
+  border: 2px solid var(--border-control);
+  height: 58px;
+  min-width: 101px;
+}
+.eka-btn--secondary:disabled {
+  border-color: var(--state-disabled);
+  color: var(--state-disabled);
+  cursor: not-allowed;
+}
+
+.eka-btn--big {
+  height: 78px;
+  min-width: 127px;
+  padding: 0 32px;
+  background: var(--brand-red);
+  color: var(--bg-card);
+  font: 400 20px/1.5 var(--font-sans);
+}
+.eka-btn--big:hover { background: var(--brand-red-light); }
+.eka-btn--big:active { background: var(--brand-red); }
+.eka-btn--big:disabled { background: var(--state-disabled); cursor: not-allowed; }
+
+.eka-btn--third {
+  height: auto;
+  min-width: 0;
+  padding: 0 0 2px;
+  border-bottom: 1px solid transparent;
+  border-radius: 0;
+  background: none;
+  color: var(--text-main);
+  font: 700 16px/1.5 var(--font-sans);
+}
+.eka-btn--third:hover,
+.eka-btn--third:active { border-bottom-color: var(--brand-red); }
+.eka-btn--third:disabled { color: var(--state-disabled); border-color: transparent; cursor: not-allowed; }
+
+.eka-btn--link {
+  height: auto;
+  min-width: 0;
+  padding: 0 0 2px;
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
+  background: none;
+  color: var(--brand-red);
+  font: 400 16px/1.5 var(--font-sans);
+}
+.eka-btn--link:hover,
+.eka-btn--link:active,
+.eka-btn--link:focus-visible { border-bottom-color: var(--brand-red); outline: 0; }
+.eka-btn--link:disabled { color: var(--state-disabled); border-color: transparent; cursor: not-allowed; }
+
+/* ---------- Badge ---------- */
+.eka-badge {
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
+  height: 29px;
+  padding: 0 12px;
+  background: var(--bg-content-primary);
+  border: 1px solid var(--border-control);
+  border-radius: var(--radius-badge);
+  font: 900 14px/1 var(--font-sans);
+  color: var(--text-main);
+}
+
+/* ---------- Fields ---------- */
+.eka-field {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  height: 56px;
+  padding: 0 16px;
+  background: var(--bg-content-primary);
+  color: var(--text-main);
+  border: 1px solid var(--border-control);
+  border-radius: var(--radius-control);
+  font: 400 14px/1.5 var(--font-sans);
+  appearance: none;
+}
+.eka-field::placeholder { color: var(--text-muted); }
+.eka-field:hover,
+.eka-field:focus { border-width: 2px; outline: 0; }
+.eka-field.is-error { border: 2px solid var(--text-error); }
+textarea.eka-field { height: 180px; padding: 16px; resize: vertical; }
+
+.eka-select { position: relative; display: block; }
+.eka-select select { padding-right: 44px; }
+.eka-select svg {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  margin-top: -4px;
+  pointer-events: none;
+  color: var(--text-main);
+}
+
+.eka-error {
+  margin: 8px 0 0;
+  color: var(--text-error);
+  font: 400 14px/1.5 var(--font-sans);
+}
+
+/* ---------- Checkbox + Radio ---------- */
+.eka-check {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  font: 400 16px/1.5 var(--font-sans);
+  cursor: pointer;
+}
+.eka-check input {
+  appearance: none;
+  box-sizing: border-box;
+  margin: 0;
+  width: 18px;
+  height: 18px;
+  background: var(--bg-content-primary);
+  border: 1px solid var(--border-control);
+  border-radius: 4px;
+  cursor: pointer;
+}
+.eka-check input[type="radio"] { border-radius: 50%; }
+.eka-check input:hover { border-width: 2px; }
+.eka-check input:checked {
+  background: var(--text-main);
+  box-shadow: inset 0 0 0 3px var(--bg-content-primary);
+}
+.eka-check.is-error input { border: 2px solid var(--text-error); }
+
+/* ---------- Card ---------- */
+.eka-card {
+  box-sizing: border-box;
+  max-width: 636px;
+  padding: 32px;
+  background: var(--bg-card);
+  border: 2px solid var(--border-control);
+  border-radius: var(--radius-control);
+  text-align: center;
+}
+.eka-card h3 { margin: 0 0 16px; font: 700 24px/1.2 var(--font-serif); }
+.eka-card p { margin: 0 0 24px; font-size: 16px; line-height: 1.5; }
+
+/* ---------- Colour swatch ---------- */
+.eka-swatch {
+  box-sizing: border-box;
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  padding: 4px;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+.eka-swatch i {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: currentColor;
+}
+/* Unselected: no outline, flat 24px fill. */
+.eka-swatch--unselected { padding: 4px; border-color: transparent; }
+.eka-swatch--unselected i { width: 24px; height: 24px; }
+/* Selected: 1px outline same colour, 22px inner fill. */
+.eka-swatch--selected { padding: 5px; border-color: currentColor; }
+.eka-swatch--selected i { width: 22px; height: 22px; }
+
+/* ---------- Cart badge ---------- */
+.eka-cart {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  color: var(--text-main);
+}
+.eka-cart__count {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  box-sizing: border-box;
+  border-radius: 9px;
+  background: var(--notify-red);
+  color: #fff;
+  font: 900 10px/18px var(--font-sans);
+  text-align: center;
+}
+
+/* ---------- Quote (Cormorant italic, loose line-height) ---------- */
+.eka-quote {
+  margin: 0;
+  font: 400 40px/1.3 var(--font-serif);
+  font-style: italic;
+  color: var(--text-main);
+}
+@media (max-width: 767px) { .eka-quote { font-size: 32px; } }

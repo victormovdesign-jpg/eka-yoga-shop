@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="bg">
+<head>
+<meta charset="utf-8">
+<title>EKA Yoga – комплекти</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&amp;family=Lato:wght@400;700;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F3F0E4}
+a{color:#5D7054;text-decoration:none}a:hover{color:#AF5D65}
+button{font-family:inherit}
+.eka-check input{appearance:none;-webkit-appearance:none;box-sizing:border-box;margin:0;width:18px;height:18px;flex:none;background:#F3F0E4;border:1px solid #5D7054;border-radius:4px;cursor:pointer}
+.eka-check input:hover{border-width:2px}
+.eka-check input:checked{background:#5D7054;box-shadow:inset 0 0 0 3px #F3F0E4}
+.eka-check input:focus-visible{outline:2px solid #5D7054;outline-offset:2px}
+</style>
+</helmet>
+<div style="position: relative; font-family: Lato, 'Helvetica Neue', Arial, sans-serif; color: #5D7054; background: #F3F0E4; width: 100%; min-width: 0">
+<dc-import name="Header" variant="solid" count="{{ cartCount }}" hint-size="100%,110px"></dc-import>
+<main style="width: 100%; box-sizing: border-box; margin: 0 auto; padding: 0 64px 120px">
+<nav aria-label="Път" style="font-size: 14px; margin-bottom: 24px"><a href="Main.dc.html">EKA Yoga</a> <span aria-hidden="true">›</span> Комплекти</nav>
+<h1 style="margin: 0; padding: 80px 0; font-family: 'Cormorant Garamond', Garamond, Georgia, serif; font-size: 56px; font-weight: 700; line-height: 1.2; text-align: center; padding-top: 16px; padding-bottom: 32px">Комплекти</h1>
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 24px; border-bottom: 1px solid #E3E7DC; margin-bottom: 40px">
+<div role="tablist" aria-label="Категории" style="display: flex; flex-wrap: wrap; gap: 8px">
+<sc-for list="{{ tabs }}" as="t" hint-placeholder-count="3">
+<button type="button" role="tab" aria-selected="{{ t.on }}" onClick="{{ t.pick }}" style="{{ t.style }}">{{ t.label }}</button>
+</sc-for>
+</div>
+<button type="button" aria-haspopup="dialog" aria-expanded="{{ filterOpen }}" onClick="{{ openFilter }}" style="display: inline-flex; align-items: center; gap: 8px; height: 48px; padding: 0 16px; border: 0; background: transparent; color: #5D7054; font-size: 16px; font-weight: 700; cursor: pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M3 7h10M17 7h4M3 17h4M11 17h10"></path><circle cx="15" cy="7" r="2"></circle><circle cx="9" cy="17" r="2"></circle></svg>Филтри<sc-if value="{{ hasActive }}" hint-placeholder-val="{{ false }}"><span style="min-width: 20px; height: 20px; padding: 0 6px; box-sizing: border-box; border-radius: 10px; background: #AF5D65; color: #FFFFFF; font-size: 12px; display: inline-flex; align-items: center; justify-content: center">{{ activeCount }}</span></sc-if></button>
+</div>
+<sc-if value="{{ empty }}" hint-placeholder-val="{{ false }}">
+<p style="margin: 40px 0; text-align: center; font-size: 18px">Няма комплекти с избраните филтри.</p>
+</sc-if>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 48px 16px">
+<sc-for list="{{ cards }}" as="c" hint-placeholder-count="8">
+<div style="min-width: 0"><dc-import name="ProductCard" item="{{ c }}" hint-size="100%,640px"></dc-import></div>
+</sc-for>
+</div>
+</main>
+<dc-import name="Footer" hint-size="100%,970px"></dc-import>
+<sc-if value="{{ filterOpen }}" hint-placeholder-val="{{ false }}">
+<div style="position: absolute; inset: 0; z-index: 20">
+<button type="button" aria-label="Затворете филтрите" onClick="{{ closeFilter }}" style="position: absolute; inset: 0; width: 100%; height: 100%; border: 0; padding: 0; background: rgba(0,0,0,0.3); cursor: pointer"></button>
+<aside role="dialog" aria-modal="true" aria-labelledby="flt-title" style="position: absolute; top: 0; right: 0; width: 400px; height: 100%; box-sizing: border-box; background: #F3F0E4; border-left: 1px solid #5D7054">
+<div style="position: sticky; top: 0; padding: 32px 32px 40px; display: flex; flex-direction: column; gap: 40px">
+<div style="display: flex; align-items: center; justify-content: space-between">
+<h2 id="flt-title" style="margin: 0; font-family: 'Cormorant Garamond', Garamond, Georgia, serif; font-size: 40px; font-weight: 700; line-height: 1.2">Филтри</h2>
+<button type="button" aria-label="Затворете филтрите" onClick="{{ closeFilter }}" style="width: 44px; height: 44px; border: 0; background: transparent; color: #5D7054; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"></path></svg></button>
+</div>
+<fieldset style="border: 0; margin: 0; padding: 0">
+<legend style="padding: 0; margin-bottom: 16px; font-size: 20px; font-weight: 700">Цвят</legend>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 24px">
+<sc-for list="{{ colorOpts }}" as="o" hint-placeholder-count="4">
+<label class="eka-check" style="display: flex; align-items: center; gap: 12px; font-size: 16px; cursor: pointer"><input type="checkbox" checked="{{ o.on }}" onChange="{{ o.toggle }}"><span style="{{ o.swatch }}"></span>{{ o.label }}</label>
+</sc-for>
+</div>
+</fieldset>
+<div style="display: flex; flex-direction: column; gap: 24px; align-items: stretch">
+<button type="button" onClick="{{ clear }}" style="align-self: flex-start; height: 44px; padding: 0; border: 0; border-bottom: 1px solid #AF5D65; background: transparent; color: #5D7054; font-size: 16px; font-weight: 700; cursor: pointer">Изчистете филтрите</button>
+<button type="button" onClick="{{ closeFilter }}" style="height: 56px; border: 0; border-radius: 8px; background: #AF5D65; color: #FFFFFF; font-size: 16px; font-weight: 700; cursor: pointer">Покажи {{ count }} {{ countWord }}</button>
+</div>
+</div>
+</aside>
+</div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview": {"width": 1440, "height": 3000}}'>
+const COLORS={"red": ["Бордо", "#AE2958"], "green": ["Маслина", "#819886"], "blue": ["Синьо", "#518398"], "yellow": ["Жълто", "#D7B955"]};
+const SETS={
+  mf: { name: "Мандала Флоу", price: 119, desc: "Тениска с мандала, шорти за йога и възглавничка за очи",
+        imgs: { blue: "/_blob/0e4c5e09c22c0bb5e377c325b0798768", green: "/_blob/e0f91baba5cbec7ac0151f9419c6883b", red: "/_blob/4b2c28e4f989199308029601dc600947", yellow: "/_blob/04189649e4187644d82490ccfd7eed7c" } },
+  er: { name: "Елегантен ритуал", price: 123, desc: "Гащеризон за йога и възглавничка за очи",
+        imgs: { blue: "/_blob/6cdb13f8febcf8bd3e0d5c3d00b5c645", green: "/_blob/3135c6f93fe1c970b28dd1924f979f3a", red: "/_blob/b2e9ff69ad1cd803ba5d22d92c7be0c2", yellow: "/_blob/af93716d43d2fa3b26719a883dc378e3" } }
+};
+const ORDER = [["mf", "red"], ["mf", "yellow"], ["mf", "green"], ["mf", "blue"], ["er", "red"], ["er", "yellow"], ["er", "green"], ["er", "blue"]];
+const TABS = [['all', 'Всички'], ['mf', 'Мандала Флоу'], ['er', 'Елегантен ритуал']];
+function toggleIn(arr, v){ return arr.indexOf(v) >= 0 ? arr.filter(function(x){ return x !== v; }) : arr.concat([v]); }
+class Component extends DCLogic {
+  renderVals() {
+    var self = this, st = this.state, cur = st.tab || 'all', fc = st.fc || [];
+    var tabs = TABS.map(function(t){ var on = t[0] === cur; return { label: t[1], on: on,
+      style: 'height: 48px; padding: 0 16px; background: transparent; border: 0; margin-bottom: -1px; cursor: pointer; font-size: 16px; font-weight: 700; color: #5D7054; border-bottom: 2px solid ' + (on ? '#AF5D65' : 'transparent'),
+      pick: function(){ self.setState({ tab: t[0] }); } }; });
+    var list = ORDER.filter(function(x){
+      if (cur !== 'all' && x[0] !== cur) return false;
+      if (fc.length && fc.indexOf(x[1]) < 0) return false;
+      return true; });
+    var cards = list.map(function(x){
+      var s = SETS[x[0]], col = x[1];
+      return { name: s.name, desc: s.desc, price: s.price, href: 'Set.dc.html?set=' + x[0] + '&color=' + col, img: s.imgs[col], ratio: '616 / 398',
+        alt: s.name + ', цвят ' + COLORS[col][0].toLowerCase(),
+        swatches: [{ label: COLORS[col][0], hex: COLORS[col][1], on: true }] }; });
+    var colorOpts = ['red', 'green', 'blue', 'yellow'].map(function(k){ return { label: COLORS[k][0], on: fc.indexOf(k) >= 0,
+      swatch: 'width: 16px; height: 16px; flex: none; background: ' + COLORS[k][1],
+      toggle: function(){ self.setState({ fc: toggleIn(self.state.fc || [], k) }); } }; });
+    var n = cards.length, active = fc.length;
+    return { cartCount: 2, tabs: tabs, cards: cards, empty: n === 0, colorOpts: colorOpts, count: n, countWord: n === 1 ? 'комплект' : 'комплекта',
+      filterOpen: !!st.open, hasActive: active > 0, activeCount: active,
+      openFilter: function(){ self.setState({ open: true }); }, closeFilter: function(){ self.setState({ open: false }); },
+      clear: function(){ self.setState({ fc: [] }); } };
+  }
+}
+</script>
+</body>
+</html>

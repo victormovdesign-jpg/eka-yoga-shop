@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="bg">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>EKA YOGA — Components</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400;1,700&display=swap" />
+
+    <link rel="preload" href="fonts/lato-400-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="fonts/lato-400-cyrillic.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="fonts/lato-700-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="fonts/lato-700-cyrillic.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="fonts/fonts.css" />
+
+    <link rel="stylesheet" href="css/tokens.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/components-demo.css" />
+  </head>
+  <body>
+
+    <!-- ============================================================ -->
+    <!-- Header — solid variant                                        -->
+    <!-- ============================================================ -->
+    <header class="hd" data-variant="solid">
+      <a class="hd__logo" href="#" aria-label="EKA Yoga — начална страница">
+        <img src="images/logos/eka-logo-slogan-green.svg" alt="EKA Yoga — wear the bloom" width="221" height="78" />
+      </a>
+      <nav class="hd__nav" aria-label="Основна навигация">
+        <a class="hd__link" href="#">За бранда</a>
+        <a class="hd__link" href="#">Облекла и аксесоари</a>
+        <a class="hd__link" href="#">Комплекти</a>
+        <button type="button" class="hd__cart" aria-label="Количка, 0 продукта" data-cart-trigger>
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M5 8h14l-1.2 12H6.2L5 8Z" />
+            <path d="M9 8V6a3 3 0 0 1 6 0v2" />
+          </svg>
+          <span class="hd__count" data-cart-count hidden>0</span>
+        </button>
+        <button type="button" class="hd__burger" aria-label="Меню" aria-expanded="false" data-menu-trigger>
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+            <path d="M4 7h16M4 12h16M4 17h16" />
+          </svg>
+        </button>
+      </nav>
+      <div class="hd__mmenu" role="dialog" aria-modal="true" aria-label="Меню" hidden data-menu-panel>
+        <div class="hd__mmenu-head">
+          <button type="button" aria-label="Затворете менюто" class="hd__mmenu-close" data-menu-close>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <path d="M5 5l14 14M19 5L5 19" />
+            </svg>
+          </button>
+        </div>
+        <nav aria-label="Мобилна навигация" class="hd__mmenu-nav">
+          <a href="#">За бранда</a>
+          <a href="#">Облекла и аксесоари</a>
+          <a href="#">Комплекти</a>
+          <a href="#">Моята количка</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="cx">
+      <header class="cx__head">
+        <p class="text-small-bold cx__eyebrow">EKA YOGA</p>
+        <h1 class="h1-bold">Components</h1>
+        <p class="text-medium-regular">
+          Test page for the seven shared components. Page order mirrors production:
+          Header above, PreFooter + Footer below. Dropdowns in Header are hidden
+          until the client signs off.
+        </p>
+      </header>
+
+      <!-- ============================================================ -->
+      <!-- Header overlay variant                                        -->
+      <!-- ============================================================ -->
+      <section class="cx__section" aria-labelledby="cx-header">
+        <h2 id="cx-header" class="h2-bold">Header</h2>
+        <p class="text-regular-regular cx__hint">Solid rendered above. Overlay below, over a sample hero photograph.</p>
+        <div class="cx__hero">
+          <img src="images/header/hero-home.webp" alt="EKA Yoga хироу" />
+          <header class="hd hd--overlay">
+            <a class="hd__logo" href="#" aria-label="EKA Yoga — начална страница">
+              <img src="images/logos/eka-logo-slogan-white.svg" alt="EKA Yoga — wear the bloom" width="221" height="78" />
+            </a>
+            <nav class="hd__nav" aria-label="Основна навигация">
+              <a class="hd__link" href="#">За бранда</a>
+              <a class="hd__link" href="#">Облекла и аксесоари</a>
+              <a class="hd__link" href="#">Комплекти</a>
+              <button type="button" class="hd__cart" aria-label="Количка, 2 продукта" data-cart-trigger>
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M5 8h14l-1.2 12H6.2L5 8Z" />
+                  <path d="M9 8V6a3 3 0 0 1 6 0v2" />
+                </svg>
+                <span class="hd__count">2</span>
+              </button>
+            </nav>
+          </header>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- ProductCard — item + set                                      -->
+      <!-- ============================================================ -->
+      <section class="cx__section" aria-labelledby="cx-pc">
+        <h2 id="cx-pc" class="h2-bold">ProductCard</h2>
+        <p class="text-regular-regular cx__hint">Item variant (3:4). Click a swatch to swap the photo.</p>
+        <div class="cx__cards">
+          <article class="pc" data-variant="item">
+            <a class="pc__link" href="#"><img class="pc__img" src="images/jumpsuit/eka-yoga-gashterizon-za-yoga-malina-01.webp" alt="Гащеризон за йога, цвят малина" style="aspect-ratio: 3 / 4" data-main-image /></a>
+            <div class="pc__swatches" role="group" aria-label="Цвят">
+              <button type="button" class="pc__swatch is-on" aria-label="Бордо" aria-pressed="true" data-swatch data-image="images/jumpsuit/eka-yoga-gashterizon-za-yoga-malina-01.webp" style="--swatch-color:#AE2958"><span></span></button>
+              <button type="button" class="pc__swatch" aria-label="Маслина" aria-pressed="false" data-swatch data-image="images/jumpsuit/eka-yoga-gashterizon-za-yoga-zelen-01.webp" style="--swatch-color:#819886"><span></span></button>
+              <button type="button" class="pc__swatch" aria-label="Синьо" aria-pressed="false" data-swatch data-image="images/jumpsuit/eka-yoga-gashterizon-za-yoga-sin-01.webp" style="--swatch-color:#518398"><span></span></button>
+            </div>
+            <h3 class="pc__name"><a href="#">Гащеризон за йога</a></h3>
+            <p class="pc__price lining-nums">€ 98</p>
+          </article>
+
+          <article class="pc" data-variant="item">
+            <a class="pc__link" href="#"><img class="pc__img" src="images/tshirts/eka-yoga-tshirt-pink_01.webp" alt="Тениска с мандала, цвят бордо" style="aspect-ratio: 3 / 4" data-main-image /></a>
+            <div class="pc__swatches" role="group" aria-label="Цвят">
+              <button type="button" class="pc__swatch is-on" aria-label="Бордо" aria-pressed="true" data-swatch data-image="images/tshirts/eka-yoga-tshirt-pink_01.webp" style="--swatch-color:#AE2958"><span></span></button>
+              <button type="button" class="pc__swatch" aria-label="Маслина" aria-pressed="false" data-swatch data-image="images/tshirts/eka-yoga-tshirt-green_01.webp" style="--swatch-color:#819886"><span></span></button>
+              <button type="button" class="pc__swatch" aria-label="Синьо" aria-pressed="false" data-swatch data-image="images/tshirts/eka-yoga-tshirt-blue_01.webp" style="--swatch-color:#518398"><span></span></button>
+              <button type="button" class="pc__swatch" aria-label="Жълто" aria-pressed="false" data-swatch data-image="images/tshirts/eka-yoga-tshirt-yellow_01.webp" style="--swatch-color:#D7B955"><span></span></button>
+            </div>
+            <h3 class="pc__name"><a href="#">Тениска с мандала</a></h3>
+            <p class="pc__price lining-nums">€ 45</p>
+          </article>
+        </div>
+
+        <h3 class="h5-bold" style="margin-top:48px">Set variant (616:398)</h3>
+        <div class="cx__cards cx__cards--wide">
+          <article class="pc" data-variant="set">
+            <a class="pc__link" href="#"><img class="pc__img" src="images/sets/eka-yoga-set-mandala-flow-blue.webp" alt="Комплект Мандала флоу, цвят синьо" style="aspect-ratio: 616 / 398" data-main-image /></a>
+            <h3 class="pc__name"><a href="#">Мандала флоу</a></h3>
+            <p class="pc__desc">Тениска с мандала, шорти за йога и възглавничка за очи</p>
+            <p class="pc__price lining-nums">€ 119</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- SizeGuide demo triggers                                       -->
+      <!-- ============================================================ -->
+      <section class="cx__section" aria-labelledby="cx-sg">
+        <h2 id="cx-sg" class="h2-bold">SizeGuide</h2>
+        <p class="text-regular-regular cx__hint">Open the guide with the right size-set per product. L renders only for Тениска.</p>
+        <div class="cx__buttons">
+          <button type="button" class="eka-btn eka-btn--secondary" data-size-guide-open="S,M">Гащеризон / Шорти — S, M</button>
+          <button type="button" class="eka-btn eka-btn--secondary" data-size-guide-open="S,M,L">Тениска — S, M, L</button>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- CartDrawer demo triggers                                      -->
+      <!-- ============================================================ -->
+      <section class="cx__section" aria-labelledby="cx-cart">
+        <h2 id="cx-cart" class="h2-bold">CartDrawer</h2>
+        <p class="text-regular-regular cx__hint">Open via any bag icon. "Купи сега" calls <code>js/checkout.js</code> — provider not wired, so the stub's error message is shown in the drawer.</p>
+        <div class="cx__buttons">
+          <button type="button" class="eka-btn eka-btn--primary" data-add-sample>Добави пробен артикул</button>
+          <button type="button" class="eka-btn eka-btn--secondary" data-clear-cart>Изчисти количката</button>
+          <button type="button" class="eka-btn eka-btn--third" data-open-cart>Отвори количката</button>
+        </div>
+      </section>
+    </main>
+
+    <!-- ============================================================ -->
+    <!-- PreFooter                                                     -->
+    <!-- ============================================================ -->
+    <div class="pf">
+      <figure class="pf__quote">
+        <blockquote>„Йога дрехи и аксесоари в подкрепа на твоята практика с красиво и запомнящо се присъствие.“</blockquote>
+        <figcaption>— ЕКАТЕРИНА МИНКОВА —</figcaption>
+      </figure>
+
+      <section class="pf__more" aria-labelledby="pf-more-h">
+        <h2 id="pf-more-h">Още от Екатерина Минкова</h2>
+        <div class="pf__grid">
+          <a class="pf__card" href="https://ekaterinaminkova.com/" target="_blank" rel="noopener">
+            <img src="images/more/iyengar-yoga.webp" alt="Екатерина Минкова — Айенгар йога" />
+            <span class="pf__title">Айенгар йога</span>
+            <span class="pf__text">Групови и индивидуални класове</span>
+          </a>
+          <a class="pf__card" href="https://ekaterinaminkova.com/" target="_blank" rel="noopener">
+            <img src="images/more/therapeutic-massage.webp" alt="Екатерина Минкова — терапевтичен масаж" />
+            <span class="pf__title">Терапевтични масажи</span>
+            <span class="pf__text">Аюрведа йога масаж, Аюрведа марма терапия, Терапия за женската гръд, Тай масаж, Рефлексологичен масаж на ходилата</span>
+          </a>
+          <a class="pf__card" href="https://ekaterinaminkova.com/" target="_blank" rel="noopener">
+            <img src="images/more/events.webp" alt="Събитие с Екатерина Минкова" />
+            <span class="pf__title">Събития</span>
+            <span class="pf__text">Регулярни йога ритрийти в България, Европа и целия свят, както и Айенгар йога семинари в София и страната.</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- EMBanner -->
+      <section class="emb" aria-label="Екатерина Минкова">
+        <div class="emb__card">
+          <img class="emb__img" src="images/banner/ekaterina-minkova-banner.webp" alt="Екатерина Минкова в бяла рокля до басейн в тропическа градина" />
+          <span class="emb__scrim" aria-hidden="true"></span>
+          <div class="emb__body">
+            <h2 class="emb__title">Екатерина Минкова</h2>
+            <p class="emb__sub">Йога преподавател и аюрведа терапевт</p>
+            <a class="emb__btn" href="https://ekaterinaminkova.com/"><strong>Към</strong>&nbsp;ekaterinaminkova.com</a>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- Footer                                                        -->
+    <!-- ============================================================ -->
+    <footer class="ft">
+      <a class="ft__logo" href="#" aria-label="EKA Yoga — начало">
+        <img src="images/logos/eka-logo-stacked-white.svg" alt="EKA Yoga — wear the bloom" width="160" />
+      </a>
+      <div class="ft__social">
+        <a href="https://www.instagram.com/" aria-label="Instagram" target="_blank" rel="noopener">
+          <svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true"><path fill="#fff" d="M10.267 0H29.733C35.403 0 40 4.597 40 10.267V29.733C40 35.403 35.403 40 29.733 40H10.267C4.597 40 0 35.403 0 29.733V10.267C0 4.597 4.597 0 10.267 0ZM13.431 4.167C15.131 4.089 15.673 4.071 19.999 4.071C24.326 4.071 24.869 4.089 26.567 4.167C28.263 4.245 29.421 4.513 30.434 4.907C31.482 5.315 32.371 5.86 33.256 6.745C34.142 7.631 34.687 8.52 35.094 9.567C35.488 10.58 35.757 11.738 35.835 13.434C35.912 15.133 35.93 15.675 35.93 20.002C35.93 24.328 35.912 24.871 35.835 26.57C35.756 28.265 35.488 29.423 35.094 30.436C34.687 31.485 34.141 32.373 33.256 33.258C32.37 34.145 31.481 34.689 30.434 35.096C29.421 35.49 28.263 35.76 26.567 35.837C24.868 35.914 24.326 35.932 19.999 35.932C15.673 35.932 15.13 35.914 13.431 35.837C11.736 35.759 10.578 35.49 9.565 35.096C8.517 34.689 7.628 34.143 6.743 33.258C5.857 32.372 5.312 31.483 4.905 30.436C4.511 29.423 4.241 28.265 4.164 26.57C4.087 24.87 4.069 24.328 4.069 20.002C4.069 15.675 4.087 15.132 4.164 13.434C4.243 11.738 4.511 10.58 4.905 9.567C5.312 8.519 5.858 7.63 6.743 6.745C7.629 5.859 8.518 5.315 9.565 4.907C10.578 4.513 11.736 4.244 13.431 4.167ZM19.999 6.942C24.253 6.942 24.757 6.958 26.436 7.034C27.989 7.105 28.832 7.364 29.394 7.582C30.138 7.871 30.668 8.217 31.225 8.774C31.782 9.331 32.128 9.862 32.416 10.605C32.635 11.167 32.894 12.01 32.965 13.563C33.042 15.243 33.057 15.746 33.057 19.999C33.057 24.253 33.041 24.757 32.965 26.436C32.894 27.989 32.635 28.832 32.416 29.394C32.128 30.138 31.782 30.668 31.225 31.225C30.668 31.782 30.137 32.128 29.394 32.416C28.832 32.635 27.989 32.894 26.436 32.965C24.757 33.042 24.253 33.057 19.999 33.057C15.746 33.057 15.242 33.041 13.563 32.965C12.01 32.894 11.167 32.635 10.605 32.416C9.861 32.128 9.331 31.782 8.774 31.225C8.217 30.668 7.871 30.137 7.582 29.394C7.364 28.832 7.105 27.989 7.034 26.436C6.957 24.756 6.942 24.253 6.942 19.999C6.942 15.746 6.958 15.242 7.034 13.563C7.105 12.01 7.364 11.167 7.582 10.605C7.871 9.861 8.217 9.331 8.774 8.774C9.331 8.217 9.862 7.871 10.605 7.582C11.167 7.364 12.01 7.105 13.563 7.034C15.243 6.957 15.746 6.942 19.999 6.942ZM29.855 10.146C30.601 10.892 30.601 12.102 29.855 12.849C29.108 13.596 27.898 13.596 27.151 12.849C26.405 12.102 26.405 10.892 27.151 10.146C27.898 9.399 29.108 9.399 29.855 10.146ZM11.82 20.001C11.82 15.483 15.482 11.821 19.999 11.821C24.517 11.821 28.179 15.483 28.179 20.001C28.179 24.518 24.517 28.18 19.999 28.18C15.482 28.18 11.82 24.518 11.82 20.001ZM19.999 25.31C17.067 25.31 14.689 22.932 14.689 19.999C14.689 17.067 17.067 14.689 19.999 14.689C22.932 14.689 25.31 17.067 25.31 19.999C25.31 22.932 22.932 25.31 19.999 25.31Z" fill-rule="evenodd" clip-rule="evenodd" /></svg>
+        </a>
+        <a href="https://www.facebook.com/" aria-label="Facebook" target="_blank" rel="noopener">
+          <svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true"><path fill="#fff" d="M40 20.123C40 9.009 31.046 0 20 0S0 9.009 0 20.123C0 30.166 7.314 38.491 16.875 40V25.939H11.797V20.123H16.875V15.689C16.875 10.646 19.861 7.861 24.429 7.861C26.618 7.861 28.906 8.254 28.906 8.254V13.206H26.384C23.9 13.206 23.125 14.757 23.125 16.348V20.123H28.672L27.785 25.939H23.125V40C32.686 38.491 40 30.166 40 20.123Z" /></svg>
+        </a>
+      </div>
+
+      <div class="ft__cols">
+        <nav class="ft__col" aria-label="Към Екатерина Минкова">
+          <h3>Към Екатерина Минкова</h3>
+          <ul class="ft__list">
+            <li><a href="https://ekaterinaminkova.com/" class="ft__strong">За мен</a></li>
+            <li><a href="https://ekaterinaminkova.com/" class="ft__strong">Айенгар йога</a></li>
+            <li><a href="https://ekaterinaminkova.com/" class="ft__strong">Терапевтични масажи</a></li>
+            <li><a href="https://ekaterinaminkova.com/" class="ft__strong">Събития</a></li>
+            <li><a href="https://ekaterinaminkova.com/" class="ft__strong">Подаръци за теб</a></li>
+          </ul>
+        </nav>
+
+        <nav class="ft__col" aria-label="Облекла и аксесоари">
+          <h3>Облекла и аксесоари</h3>
+          <ul class="ft__list ft__list--tight">
+            <li><a href="#">Гащеризони за йога</a></li>
+            <li><a href="#">Тениски с мандала</a></li>
+            <li><a href="#">Шорти за йога</a></li>
+            <li><a href="#">Възглавнички за очи</a></li>
+          </ul>
+          <h3 class="ft__col-h2"><a href="#">Комплекти</a></h3>
+          <ul class="ft__list ft__list--tight">
+            <li><a href="#">Мандала флоу</a></li>
+            <li><a href="#">Елегантен ритуал</a></li>
+          </ul>
+        </nav>
+
+        <div class="ft__col">
+          <h3>Обща информация</h3>
+          <ul class="ft__list ft__list--tight">
+            <li><a href="#">Поръчки и доставка</a></li>
+            <li><a href="#">Връщане или замяна</a></li>
+            <li><a href="#">Често задавани въпроси</a></li>
+          </ul>
+          <h3 class="ft__col-h2">Контакти</h3>
+          <a class="ft__contact" href="tel:+359899826503">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2" /><path d="M11 18.5h2" /></svg>
+            +359 89 98 26 503
+          </a>
+          <a class="ft__contact" href="mailto:shop@ekaterinaminkova.com">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="1" /><path d="M3.5 6.5l8.5 6.5 8.5-6.5" /></svg>
+            shop@ekaterinaminkova.com
+          </a>
+        </div>
+
+        <form class="ft__nl" onsubmit="event.preventDefault()">
+          <label for="nl-email" class="ft__nl-label">Остани в крак с новите продукти</label>
+          <input id="nl-email" class="ft__nl-input" type="email" placeholder="Вашият е-майл" />
+          <button type="submit" class="ft__nl-btn">Изпрати</button>
+          <p class="ft__nl-consent">Като се абонираш, се съгласяваш с нашата <a href="#">Политика за поверителност</a>.</p>
+        </form>
+      </div>
+
+      <div class="ft__legal">
+        <span>© 2026 EKA YOGA. All rights reserved.</span>
+        <a href="#">Политика за поверителност</a>
+        <a href="#" style="text-decoration:underline">Общи условия</a>
+        <a href="#">Бисквитки</a>
+      </div>
+      <p class="ft__by">by: victormov</p>
+    </footer>
+
+    <!-- ============================================================ -->
+    <!-- SizeGuide #1 — S,M                                            -->
+    <!-- ============================================================ -->
+    <div class="sg" role="dialog" aria-modal="true" aria-labelledby="sg-title-sm" hidden data-size-guide>
+      <button type="button" class="sg__backdrop" aria-label="Затворете таблицата" data-close></button>
+      <div class="sg__panel">
+        <button type="button" class="sg__close" aria-label="Затворете" data-close>×</button>
+        <div class="sg__body">
+          <div class="sg__figwrap" aria-hidden="true">
+            <svg class="sg__fig" viewBox="1396 226 1180 3564" role="img" aria-label="Силует с мерки A–E" preserveAspectRatio="xMidYMid meet">
+              <rect x="1800" y="400" width="420" height="3200" fill="#5D7054" opacity="0.1" />
+              <g fill="none" stroke="#E8402A" stroke-width="26"><line x1="1801" y1="1219" x2="2285" y2="1219"/><line x1="1840" y1="1425" x2="2248" y2="1425"/><line x1="1836" y1="1611" x2="2248" y2="1611"/><line x1="1715" y1="1975" x2="2367" y2="1975"/><line x1="2016" y1="2116" x2="2016" y2="3623"/></g>
+              <g fill="none" stroke="#AF5D65" stroke-width="12" stroke-dasharray="34 26"><line x1="1523" y1="1219" x2="1801" y2="1219"/><line x1="1523" y1="1425" x2="1840" y2="1425"/><line x1="1523" y1="1611" x2="1836" y2="1611"/><line x1="1523" y1="1975" x2="1715" y2="1975"/><line x1="1523" y1="2899" x2="1974" y2="2899"/></g>
+            </svg>
+            <span class="sg__badge" style="left:10.80%;top:27.87%">A</span>
+            <span class="sg__badge" style="left:10.80%;top:33.63%">B</span>
+            <span class="sg__badge" style="left:10.80%;top:38.85%">C</span>
+            <span class="sg__badge" style="left:10.80%;top:49.07%">D</span>
+            <span class="sg__badge" style="left:10.80%;top:74.99%">E</span>
+          </div>
+          <div>
+            <p class="sg__brand">EKA YOGA</p>
+            <h2 id="sg-title-sm" class="sg__title">Таблица с размери</h2>
+            <div class="sg__table-wrap">
+              <table class="sg__table">
+                <thead><tr><th scope="col">Мярка</th><th scope="col" class="sg__num">S</th><th scope="col" class="sg__num">M</th></tr></thead>
+                <tbody>
+                  <tr><th scope="row"><span class="sg__badge sg__badge--inline">A</span>Гръдна обиколка</th><td class="sg__num">85–90</td><td class="sg__num">92–96</td></tr>
+                  <tr><th scope="row"><span class="sg__badge sg__badge--inline">B</span>Подгръдна обиколка</th><td class="sg__num">68–73</td><td class="sg__num">75–80</td></tr>
+                  <tr><th scope="row"><span class="sg__badge sg__badge--inline">C</span>Талия</th><td class="sg__num">68–73</td><td class="sg__num">76–80</td></tr>
+                  <tr><th scope="row"><span class="sg__badge sg__badge--inline">D</span>Ханш</th><td class="sg__num">90–96</td><td class="sg__num">100–104</td></tr>
+                  <tr><th scope="row"><span class="sg__badge sg__badge--inline">E</span>Вътрешен ръб на крачол</th><td class="sg__num">68–78</td><td class="sg__num">68–78</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="sg__unit">Всички мерки са в сантиметри.</p>
+            <p class="sg__note">Измерете тялото си и сравнете мерките с таблицата, за да изберете най-подходящия размер.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SizeGuide #2 — S,M,L (for Тениска)                            -->
+    <!-- ============================================================ -->
+    <div class="sg" role="dialog" aria-modal="true" aria-labelledby="sg-title-sml" hidden data-size-guide>
+      <button type="button" class="sg__backdrop" aria-label="Затворете таблицата" data-close></button>
+      <div class="sg__panel">
+        <button type="button" class="sg__close" aria-label="Затворете" data-close>×</button>
+        <div class="sg__body">
+          <div class="sg__figwrap" aria-hidden="true">
+            <svg class="sg__fig" viewBox="1396 226 1180 3564" role="img" aria-label="Силует с мерки A–E" preserveAspectRatio="xMidYMid meet">
+              <rect x="1800" y="400" width="420" height="3200" fill="#5D7054" opacity="0.1" />
+              <g fill="none" stroke="#E8402A" stroke-width="26"><line x1="1801" y1="1219" x2="2285" y2="1219"/><line x1="1840" y1="1425" x2="2248" y2="1425"/><line x1="1836" y1="1611" x2="2248" y2="1611"/><line x1="1715" y1="1975" x2="2367" y2="1975"/><line x1="2016" y1="2116" x2="2016" y2="3623"/></g>
+              <g fill="none" stroke="#AF5D65" stroke-width="12" stroke-dasharray="34 26"><line x1="1523" y1="1219" x2="1801" y2="1219"/><line x1="1523" y1="1425" x2="1840" y2="1425"/><line x1="1523" y1="1611" x2="1836" y2="1611"/><line x1="1523" y1="1975" x2="1715" y2="1975"/><line x1="1523" y1="2899" x2="1974" y2="2899"/></g>
+            </svg>
+            <span class="sg__badge" style="left:10.80%;top:27.87%">A</span>
+            <span class="sg__badge" style="left:10.80%;top:33.63%">B</span>
+            <span class="sg__badge" style="left:10.80%;top:38.85%">C</span>
+            <span class="sg__badge" style="left:10.80%;top:49.07%">D</span>
+            <span class="sg__badge" style="left:10.80%;top:74.99%">E</span>
+          </div>
+          <div>
+            <p class="sg__brand">EKA YOGA</p>
+            <h2 id="sg-title-sml" class="sg__title">Таблица с размери</h2>
+            <div class="sg__table-wrap">
+              <table class="sg__table">
+                <thead><tr><th scope="col">Мярка</th><th scope="col" class="sg__num">S</th><th scope="col" class="sg__num">M</th><th scope="col" class="sg__num">L</th></tr></thead>
+                <tbody>
+                  <tr><th scope="row"><span class="sg__badge sg__badge--inline">A</span>Гръдна обиколка</th><td class="sg__num">85–90</td><td class="sg__num">92–96</td><td class="sg__num">99–104</td></tr>
+                  <tr><th scope="row"><span class="sg__badge sg__badge--inline">B</span>Подгръдна обиколка</th><td class="sg__num">68–73</td><td class="sg__num">75–80</td><td class="sg__num">82–87</td></tr>
+                  <tr><th scope="row"><span class="sg__badge sg__badge--inline">C</span>Талия</th><td class="sg__num">68–73</td><td class="sg__num">76–80</td><td class="sg__num">84–88</td></tr>
+                  <tr><th scope="row"><span class="sg__badge sg__badge--inline">D</span>Ханш</th><td class="sg__num">90–96</td><td class="sg__num">100–104</td><td class="sg__num">106–112</td></tr>
+                  <tr><th scope="row"><span class="sg__badge sg__badge--inline">E</span>Вътрешен ръб на крачол</th><td class="sg__num">68–78</td><td class="sg__num">68–78</td><td class="sg__num">68–78</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="sg__unit">Всички мерки са в сантиметри.</p>
+            <p class="sg__note">Измерете тялото си и сравнете мерките с таблицата, за да изберете най-подходящия размер.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- CartDrawer                                                    -->
+    <!-- ============================================================ -->
+    <div class="cd" role="dialog" aria-modal="true" aria-labelledby="cd-title" hidden data-cart-drawer>
+      <button type="button" class="cd__backdrop" aria-label="Затворете количката" data-close></button>
+      <aside class="cd__panel">
+        <div class="cd__head">
+          <h2 id="cd-title" class="cd__title">Моята количка</h2>
+          <button type="button" class="cd__close" aria-label="Затворете" data-close>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19" /></svg>
+          </button>
+        </div>
+        <p class="cd__empty" data-empty>Количката е празна.</p>
+        <ul class="cd__list" data-list></ul>
+        <div class="cd__foot">
+          <button type="button" class="cd__btn cd__btn--secondary" data-close>Продължи да пазаруваш</button>
+          <div class="cd__total"><span>Общо:</span><span>€ <span data-total>0</span></span></div>
+          <button type="button" class="cd__btn cd__btn--primary" data-buy>Купи сега</button>
+          <p class="cd__provider-note" data-provider-note hidden></p>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Scripts. Type=module so they can `import` from each other. -->
+    <script type="module" src="js/header.js"></script>
+    <script type="module" src="js/product-card.js"></script>
+    <script type="module" src="js/size-guide.js"></script>
+    <script type="module" src="js/cart-drawer.js"></script>
+    <script type="module" src="js/components-demo.js"></script>
+  </body>
+</html>

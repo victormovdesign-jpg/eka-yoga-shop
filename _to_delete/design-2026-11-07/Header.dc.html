@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="bg">
+<head>
+<meta charset="utf-8">
+<title>EKA_Header</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.eka-dd::before{content:'';position:absolute;left:0;right:0;top:-16px;height:16px}
+.eka-dd__item{display:block;box-sizing:border-box;height:56px;padding:0 48px;font:400 16px/56px Lato,'Helvetica Neue',Arial,sans-serif;color:#FFFFFF;text-decoration:none;white-space:nowrap}
+.eka-dd__item:hover,.eka-dd__item:focus-visible{background:#AF5D65;color:#FFFFFF;outline:none}
+</style>
+</helmet>
+<header style="{{ bar }}">
+<a href="Main.dc.html" aria-label="EKA Yoga – начална страница" style="display: block; flex: none"><img src="{{ logo }}" alt="EKA Yoga – wear the bloom" style="width: 221px; height: 78px; display: block"></a>
+<nav aria-label="Основна навигация" style="display: flex; align-items: center; gap: 40px; font-size: 20px; font-weight: 400; line-height: 1.5">
+<a href="Main.dc.html#brand" style="{{ link }}">За бранда</a>
+<sc-for list="{{ menus }}" as="m" hint-placeholder-count="2">
+<div style="position: relative" onMouseEnter="{{ m.open }}" onMouseLeave="{{ m.close }}">
+<a href="Listing.dc.html" aria-haspopup="true" aria-expanded="{{ m.on }}" onFocus="{{ m.open }}" style="{{ m.link }}">{{ m.label }}<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="{{ m.chev }}"><path d="M3.5 6l4.5 4.5L12.5 6"></path></svg></a>
+<sc-if value="{{ m.on }}" hint-placeholder-val="{{ false }}">
+<div class="eka-dd" role="menu" aria-label="{{ m.label }}" style="position: absolute; top: calc(100% + 16px); left: -16px; width: 304px; padding: 0; background: rgba(93,112,84,0.8); border-radius: 8px; overflow: visible; z-index: 10">
+<div style="border-radius: 8px; overflow: hidden">
+<sc-for list="{{ m.items }}" as="it" hint-placeholder-count="4">
+<a role="menuitem" class="eka-dd__item" href="{{ it.href }}">{{ it.label }}</a>
+</sc-for>
+</div>
+</div>
+</sc-if>
+</div>
+</sc-for>
+<a href="#cart" aria-label="Количка, {{ count }} продукта" style="{{ cart }}">
+<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1.2 12H6.2L5 8Z"></path><path d="M9 8V6a3 3 0 0 1 6 0v2"></path></svg>
+<span style="position: absolute; top: 2px; right: 0; min-width: 18px; height: 18px; padding: 0 4px; box-sizing: border-box; border-radius: 9px; background: #AF5D65; color: #FFFFFF; font-size: 10px; font-weight: 900; display: flex; align-items: center; justify-content: center">{{ count }}</span>
+</a>
+</nav>
+</header>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"variant":{"editor":"enum","options":["solid","overlay"],"default":"solid"},"open":{"editor":"enum","options":["none","cloth","sets"],"default":"none"},"count":{"editor":"int","default":2},"$preview":{"width":1440,"height":110}}'>
+class Component extends DCLogic {
+  renderVals() {
+    var overlay = (this.props.variant || 'solid') === 'overlay';
+    var c = overlay ? '#FFFFFF' : '#5D7054';
+    var self = this, cur = this.state.open !== undefined ? this.state.open : (this.props.open || 'none');
+    var MENUS = [
+      { id: 'cloth', label: 'Облекла и аксесоари', items: [['Цяло трико', 'Product.dc.html'], ['Шорти за практика', 'Listing.dc.html'], ['Тениска с мандала', 'Listing.dc.html'], ['Възглавничка за очи', 'Listing.dc.html']] },
+      { id: 'sets', label: 'Комплекти', items: [['Мандала Флоу', 'Sets.dc.html'], ['Елегантен Ритуал', 'Sets.dc.html']] }];
+    var menus = MENUS.map(function(m){ var on = cur === m.id; return { label: m.label, on: on,
+      items: m.items.map(function(i){ return { label: i[0], href: i[1] }; }),
+      open: function(){ self.setState({ open: m.id }); }, close: function(){ self.setState({ open: 'none' }); },
+      link: 'display: inline-flex; align-items: center; gap: 12px; min-height: 44px; box-sizing: border-box; padding-top: 1px; color: ' + c + '; text-decoration: none; border-bottom: 1px solid ' + (on ? c : 'transparent'),
+      chev: 'transition: transform .2s; transform: rotate(' + (on ? '180deg' : '0deg') + ')' }; });
+    return {
+      menus: menus,
+      count: this.props.count ?? 2,
+      logo: overlay ? '/_blob/0ac706280c3608e1847977f0fa4ebb54' : '/_blob/365757b50cfd44fab6a47d24b9b2c70c',
+      bar: 'font-family: Lato, \'Helvetica Neue\', Arial, sans-serif; box-sizing: border-box; width: 100%; height: 110px; padding: 0 64px; display: flex; align-items: center; justify-content: space-between; gap: 24px; ' +
+        (overlay ? 'position: absolute; top: 0; left: 0; right: 0; z-index: 2; background: linear-gradient(180deg, rgba(93,112,84,0.8) 22%, rgba(93,112,84,0) 100%)' : 'position: relative; z-index: 5; background: transparent'),
+      link: 'display: inline-flex; align-items: center; gap: 12px; min-height: 44px; color: ' + c + '; text-decoration: none',
+      cart: 'position: relative; display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; margin-left: 48px; color: ' + c
+    };
+  }
+}
+</script>
+</body>
+</html>

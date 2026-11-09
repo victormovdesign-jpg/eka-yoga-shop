@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="bg">
+<head>
+<meta charset="utf-8">
+<title>EKA Yoga – Гащеризон за йога</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,700&amp;family=Lato:wght@400;700;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F3F0E4}
+a{color:#5D7054;text-decoration:none}a:hover{color:#AF5D65}
+button{font-family:inherit}
+.eka-btn{box-sizing:border-box;height:56px;min-width:200px;padding:0 24px;border:0;border-radius:8px;background:none;color:#5D7054;font:700 16px/1.5 Lato,'Helvetica Neue',Arial,sans-serif;cursor:pointer}
+.eka-btn:focus-visible{outline:2px solid #5D7054;outline-offset:2px}
+.eka-btn--primary{background:#AF5D65;color:#FFFFFF}.eka-btn--primary:hover{background:#C3737B}
+.eka-btn--secondary{border:2px solid #5D7054;height:58px}
+.eka-btn--third{height:auto;min-width:0;padding:0 0 2px;border-bottom:1px solid transparent;border-radius:0;color:#AF5D65;font-weight:700}.eka-btn--third:hover{border-bottom-color:#AF5D65}
+</style>
+</helmet>
+<div style="font-family: Lato, 'Helvetica Neue', Arial, sans-serif; color: #5D7054; background: #F3F0E4; width: 100%; min-width: 0">
+<dc-import name="Header" variant="solid" count="{{ cartCount }}" hint-size="100%,110px"></dc-import>
+<main style="width: 100%; margin: 0 auto; padding: 24px 64px 0; box-sizing: border-box">
+<nav aria-label="Път" style="font-size: 14px; margin-bottom: 32px"><a href="Main.dc.html">EKA Yoga</a> <span aria-hidden="true">›</span> <a href="Listing.dc.html">Облекла и аксесоари</a> <span aria-hidden="true">›</span> Гащеризон за йога</nav>
+<div style="display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: 32px; align-items: start">
+<div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px">
+<sc-for list="{{ gallery }}" as="g" hint-placeholder-count="4">
+<img src="{{ g.src }}" alt="{{ g.alt }}" style="width: 100%; height: 533px; object-fit: cover; display: block; background: #E3E7DC">
+</sc-for>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; align-items: flex-start; padding-top: 8px; position: sticky; top: 24px">
+<h1 style="margin: 0; font-family: 'Cormorant Garamond', Garamond, Georgia, serif; font-size: 40px; font-weight: 700; line-height: 1.2">Гащеризон за йога</h1>
+<p style="margin: 4px 0 0; font-family: 'Cormorant Garamond', Garamond, Georgia, serif; font-size: 32px; font-style: italic; font-weight: 700; line-height: 1.2; font-variant-numeric: lining-nums; font-feature-settings: 'lnum' 1">€ 98</p>
+<fieldset style="border: 0; margin: 32px 0 0; padding: 0">
+<legend style="padding: 0; margin-bottom: 12px; font-size: 16px; font-weight: 700">Цвят: <span style="font-weight: 400">{{ colorName }}</span></legend>
+<div style="display: flex; align-items: center; gap: 10px">
+<sc-for list="{{ swatches }}" as="sw" hint-placeholder-count="3">
+<button type="button" aria-label="{{ sw.label }}" aria-pressed="{{ sw.on }}" onClick="{{ sw.pick }}" style="{{ sw.outer }}"><span style="{{ sw.inner }}"></span></button>
+</sc-for>
+</div>
+</fieldset>
+<fieldset style="border: 0; margin: 32px 0 0; padding: 0">
+<legend style="padding: 0; margin-bottom: 12px; font-size: 16px; font-weight: 700">Размер</legend>
+<div style="display: flex; align-items: center; gap: 8px">
+<sc-for list="{{ sizes }}" as="s" hint-placeholder-count="2">
+<button type="button" aria-pressed="{{ s.on }}" onClick="{{ s.pick }}" style="{{ s.style }}">{{ s.label }}</button>
+</sc-for>
+</div>
+<button type="button" onClick="{{ openSize }}" style="display: inline-block; margin-top: 12px; padding: 0; border: 0; background: none; color: #5D7054; font-family: Lato, 'Helvetica Neue', Arial, sans-serif; font-size: 14px; line-height: 1.5; text-decoration: underline; cursor: pointer">Таблица с размери</button>
+</fieldset>
+<div style="margin-top: 32px; display: flex; flex-direction: column; gap: 12px">
+<span id="qty-label" style="font-size: 16px; font-weight: 700">Количество</span>
+<div role="group" aria-labelledby="qty-label" style="display: inline-flex; align-items: center; width: 200px; height: 48px; box-sizing: border-box; border: 1px solid #5D7054; border-radius: 8px; background: #F3F0E4">
+<button type="button" aria-label="Намалете количеството" onClick="{{ dec }}" style="width: 48px; height: 46px; border: 0; background: transparent; color: #5D7054; font-size: 22px; cursor: pointer">−</button>
+<span aria-live="polite" style="flex: 1; text-align: center; font-size: 16px">{{ qty }}</span>
+<button type="button" aria-label="Увеличете количеството" onClick="{{ inc }}" style="width: 48px; height: 46px; border: 0; background: transparent; color: #5D7054; font-size: 22px; cursor: pointer">+</button>
+</div>
+</div>
+<div style="margin-top: 24px; display: flex; flex-direction: column; gap: 16px; align-self: stretch; max-width: 520px">
+<button type="button" class="eka-btn eka-btn--primary" onClick="{{ add }}">{{ addLabel }}</button>
+<button type="button" class="eka-btn eka-btn--secondary">Купете сега</button>
+</div>
+<div style="margin-top: 32px; align-self: stretch; max-width: 520px; display: flex; flex-direction: column; gap: 16px; font-family: Lato, 'Helvetica Neue', Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 1.5">
+<p style="margin: 0">Елегантен гащеризон, подходящ за йога, фитнес, пилатес, танци и всякакви активности. Създаден да следва естествените движения на тялото и да осигурява увереност и комфорт през целия ден.</p>
+<p style="margin: 0">Моделът е с изчистено овално деколте отпред и красиво отворен гръб, който придава женствен и отличителен характер. Кройката следва плавно силуета през торса, талията и бедрата, а крачолите се разкрояват от коляното надолу за повече свобода и изящно движение.</p>
+<sc-if value="{{ more }}" hint-placeholder-val="{{ false }}">
+<p style="margin: 0">[ДОПЪЛНИТЕЛНО ОПИСАНИЕ – материя, грижа, размери]</p>
+</sc-if>
+</div>
+<button type="button" class="eka-btn eka-btn--third" aria-expanded="{{ more }}" onClick="{{ toggleMore }}" style="margin-top: 16px">{{ moreLabel }}</button>
+</div>
+</div>
+<section aria-labelledby="h-others" style="padding-top: 40px">
+<h2 id="h-others" style="margin: 0; padding: 80px 0; text-align: center; font-family: 'Cormorant Garamond', Garamond, Georgia, serif; font-size: 56px; font-weight: 700; line-height: 1.2">Други от колекцията</h2>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px">
+<sc-for list="{{ others }}" as="c" hint-placeholder-count="3">
+<dc-import name="ProductCard" item="{{ c }}" hint-size="100%,560px"></dc-import>
+</sc-for>
+</div>
+</section>
+<section aria-labelledby="h-sets" style="padding-top: 0">
+<h2 id="h-sets" style="margin: 0; padding: 80px 0; text-align: center; font-family: 'Cormorant Garamond', Garamond, Georgia, serif; font-size: 56px; font-weight: 700; line-height: 1.2">EKA комплекти</h2>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px">
+<sc-for list="{{ sets }}" as="s" hint-placeholder-count="2">
+<dc-import name="ProductCard" item="{{ s }}" hint-size="100%,600px"></dc-import>
+</sc-for>
+</div>
+</section>
+<figure style="margin: 0; padding: 160px 0 120px; text-align: center">
+<blockquote style="margin: 0 auto; max-width: 860px; font-family: 'Cormorant Garamond', Garamond, Georgia, serif; font-style: italic; font-size: 40px; line-height: 1.3">„Йога дрехи и аксесоари в подкрепа на твоята практика с красиво и запомнящо се присъствие.“</blockquote>
+<figcaption style="margin-top: 20px; font-size: 14px; font-weight: 700; letter-spacing: 0.08em">— ЕКАТЕРИНА МИНКОВА —</figcaption>
+</figure>
+<section aria-labelledby="h-more" style="padding: 0 0 120px">
+<h2 id="h-more" style="margin: 0; padding: 80px 0; text-align: center; font-family: 'Cormorant Garamond', Garamond, Georgia, serif; font-size: 56px; font-weight: 700; line-height: 1.2">Още от Екатерина Минкова</h2>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px"><a href="https://ekaterinaminkova.com/" style="display: flex; flex-direction: column; align-items: center; gap: 16px; color: #5D7054; text-align: center"><img src="/_blob/be3d7ef28c11f8ef1b47a790a714eb7d" alt="Екатерина Минкова – Айенгар йога" style="width: 100%; aspect-ratio: 416 / 400; object-fit: cover; border-radius: 0; display: block"><span style="margin-top: 8px; font-family: 'Cormorant Garamond', Garamond, Georgia, serif; font-size: 32px; font-weight: 700; line-height: 1.2">Айенгар йога</span><span style="max-width: 360px; font-size: 20px; font-weight: 400; line-height: 1.5">Айенгар йога е специфичен стил, наблягащ на правилното изпълнение на асаните.</span></a><a href="https://ekaterinaminkova.com/" style="display: flex; flex-direction: column; align-items: center; gap: 16px; color: #5D7054; text-align: center"><img src="/_blob/1f8aafd842ef159cfa46d084fe325adb" alt="Екатерина Минкова – терапевтичен масаж" style="width: 100%; aspect-ratio: 416 / 400; object-fit: cover; border-radius: 0; display: block"><span style="margin-top: 8px; font-family: 'Cormorant Garamond', Garamond, Georgia, serif; font-size: 32px; font-weight: 700; line-height: 1.2">Терапевтични масажи</span><span style="max-width: 360px; font-size: 20px; font-weight: 400; line-height: 1.5">Аюрведа йога масаж, Аюрведа марма терапия, Терапия за женската гръд, Тай масаж, Рефлексологичен масаж на ходилата</span></a><a href="https://ekaterinaminkova.com/" style="display: flex; flex-direction: column; align-items: center; gap: 16px; color: #5D7054; text-align: center"><img src="/_blob/feebec84964b4e75c64f4d8f307b770a" alt="Събитие с Екатерина Минкова" style="width: 100%; aspect-ratio: 416 / 400; object-fit: cover; border-radius: 0; display: block"><span style="margin-top: 8px; font-family: 'Cormorant Garamond', Garamond, Georgia, serif; font-size: 32px; font-weight: 700; line-height: 1.2">Събития</span><span style="max-width: 360px; font-size: 20px; font-weight: 400; line-height: 1.5">Регулярни йога ритрйти в България, Европа и целия свят, както и Айенгар йога семинари в София и страната.</span></a></div>
+</section>
+</main>
+<section aria-label="Екатерина Минкова" style="max-width: 1312px; margin: 0 auto 120px; padding: 0 16px">
+<div style="position: relative; height: 464px; border-radius: 16px; overflow: hidden; display: flex; align-items: center; padding: 64px; box-sizing: border-box">
+<img src="/_blob/80b6fbbae4b33e1da93fb6507b6ad337" alt="Екатерина Минкова в бяла рокля до басейн в тропическа градина" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 35%">
+<span aria-hidden="true" style="position: absolute; inset: 0; opacity: 0.8; background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 67%)"></span>
+<div style="position: relative; max-width: 620px; display: flex; flex-direction: column; align-items: flex-start; color: #FFFFFF">
+<h2 style="margin: 0; font-family: 'Cormorant Garamond', Garamond, Georgia, serif; font-size: 48px; line-height: 1.1; font-weight: 700">Екатерина Минкова - йога преподавател</h2>
+<p style="margin: 4px 0 0; font-size: 18px; line-height: 1.5">С 15 години опит в предлагането на Айенгар йога и терапии</p>
+<a href="https://ekaterinaminkova.com/" style="margin-top: 40px; display: inline-flex; align-items: center; justify-content: center; height: 56px; padding: 0 24px; border-radius: 8px; background: #AF5D65; color: #FFFFFF; font-size: 16px; font-weight: 700; text-decoration: none">Към ekaterinaminkova.com</a>
+</div>
+</div>
+</section>
+<dc-import name="SizeGuide" item="{{ sizeGuide }}" hint-size="100%,0px"></dc-import>
+<dc-import name="Footer" hint-size="100%,970px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview": {"width": 1440, "height": 5600}}'>
+const SIZE_ROWS=[{"letter": "A", "label": "Гръдна обиколка", "s": "85–90", "m": "92–96", "l": "99–104"}, {"letter": "B", "label": "Подгръдна обиколка", "s": "68–73", "m": "75–80", "l": "82–87"}, {"letter": "C", "label": "Талия", "s": "68–73", "m": "76–80", "l": "84–88"}, {"letter": "D", "label": "Ханш", "s": "90–96", "m": "100–104", "l": "106–112"}, {"letter": "E", "label": "Вътрешен ръб на крачол", "s": "68–78", "m": "68–78", "l": "68–78"}];
+const COLORS={"red": ["Бордо", "#AE2958"], "green": ["Маслина", "#819886"], "blue": ["Синьо", "#518398"], "yellow": ["Жълто", "#D7B955"]};
+const LEO={"red": ["/_blob/728e47038b09140c04f806bcb558385b", "/_blob/560fb7435d3243d7a9b8185b064ea06f", "/_blob/c77b14d02045e4ebbc03594e096354c3", "/_blob/a290fae5178691cbf5dff426e9c34d39"], "green": ["/_blob/d7e52462b9cb558d1a8e6a28e0ab0f58", "/_blob/54860bdf737cb27d36eeac22ce62ecc0", "/_blob/21a8390b7a6034748bc513bb93286bea", "/_blob/51c9e03f25ec7ad09b401806f595de2a"], "blue": ["/_blob/29f3fc1c52abc7f156f378b2859153ab", "/_blob/ce4ba9b7ddab63877e90916453170539", "/_blob/f6fcc21c02c7172a779080e6baf67990", "/_blob/34d45fe1ac98747a05af326949e1daca"]};
+const OTHERS=[{"name": "Шорти за йога", "price": 49, "colors": ["red", "green", "blue"], "sel": "red", "imgs": {"red": "/_blob/44840115dca5c67fdee6425f3544b944", "green": "/_blob/11650be921363287e207215abe97d956", "blue": "/_blob/415a518488630e407d3efc99ce3338c1"}}, {"name": "Тениска с мандала", "price": 45, "colors": ["red", "yellow", "green", "blue"], "sel": "blue", "imgs": {"red": "/_blob/3abb67916041bbc92bff2de99e40eabd", "yellow": "/_blob/fbf118d9e38a7157fae5b9c2a2316fcc", "green": "/_blob/2b012b0a84ecff993caa9e11b51de151", "blue": "/_blob/d953a323b5a5c66cd9aebaf0776b3235"}}, {"name": "Възглавничка за очи", "price": 36, "colors": ["red", "green", "blue", "yellow"], "sel": "green", "imgs": {"red": "/_blob/465c46c9b9cc853ce3cd66519f128ebf", "green": "/_blob/0ba7055cba356bc154772efaca14ff3e", "blue": "/_blob/7eb7e6afce8af337a316672f366206ee", "yellow": "/_blob/e7c30da2a8c86c500389ea676a9e2159"}}];
+const SETS=[{"name": "Мандала Флоу", "desc": "Тениска с мандала, шорти за йога и възглавничка за очи", "price": 119, "href": "Listing.dc.html", "ratio": "616 / 414", "img": "/_blob/0e4c5e09c22c0bb5e377c325b0798768", "alt": "Комплект Мандала Флоу в синьо"}, {"name": "Елегантен ритуал", "desc": "Гащеризон за йога и възглавничка за очи", "price": 123, "href": "Listing.dc.html", "ratio": "616 / 414", "img": "/_blob/af93716d43d2fa3b26719a883dc378e3", "alt": "Комплект Елегантен ритуал в жълто"}];
+function sq(on, hex){ return { outer: 'width: 32px; height: 32px; padding: 0; box-sizing: border-box; display: flex; align-items: center; justify-content: center; cursor: pointer; background: transparent; border: 1px solid ' + (on ? hex : 'transparent'),
+  inner: 'display: block; background: ' + hex + '; width: ' + (on ? '22px' : '24px') + '; height: ' + (on ? '22px' : '24px') }; }
+class Component extends DCLogic {
+  renderVals() {
+    var self = this, st = this.state, col = st.color || 'red', size = st.size || 'S', qty = st.qty || 1;
+    var order = st.order || [0, 1, 2], imgs = LEO[col];
+    var swatches = ['red', 'green', 'blue'].map(function(c){ var s = sq(c === col, COLORS[c][1]); return { label: COLORS[c][0], on: c === col, outer: s.outer, inner: s.inner,
+      pick: function(){ self.setState({ color: c, order: [0, 1, 2] }); } }; });
+    var thumbs = [order[1], order[2]].map(function(ix, k){ return { src: imgs[ix], n: ix + 1,
+      pick: function(){ var o = order.slice(); var t = o[0]; o[0] = o[k + 1]; o[k + 1] = t; self.setState({ order: o }); } }; });
+    var sizes = ['S', 'M'].map(function(s){ var on = s === size; return { label: s, on: on,
+      style: 'display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box; min-width: 44px; height: 44px; padding: 0 12px; border-radius: 4px; cursor: pointer; font-size: 14px; font-weight: 900; border: 1px solid #5D7054; color: ' + (on ? '#FFFFFF' : '#5D7054') + '; background: ' + (on ? '#5D7054' : '#F3F0E4'),
+      pick: function(){ self.setState({ size: s }); } }; });
+    var others = OTHERS.map(function(p, i){ var sel = (st.osel || {})[i] || p.sel;
+      return { name: p.name, price: p.price, href: 'Product.dc.html', img: p.imgs[sel] || p.imgs[p.sel], alt: p.name + (sel ? ', цвят ' + COLORS[sel][0].toLowerCase() : ''),
+        swatches: p.colors.map(function(c){ return { label: COLORS[c][0], hex: COLORS[c][1], on: c === sel,
+          pick: function(){ var o = Object.assign({}, self.state.osel || {}); o[i] = c; self.setState({ osel: o }); } }; }) }; });
+    var added = st.added || 0;
+    var gallery = imgs.map(function(src, i){ return { src: src, alt: 'Гащеризон за йога, цвят ' + COLORS[col][0].toLowerCase() + ', снимка ' + (i + 1) }; });
+    return { gallery: gallery, mainImg: imgs[order[0]], mainAlt: 'Гащеризон за йога, цвят ' + COLORS[col][0].toLowerCase(), colorName: COLORS[col][0],
+      swatches: swatches, thumbs: thumbs, sizes: sizes, qty: qty, others: others, sets: SETS,
+      dec: function(){ self.setState({ qty: Math.max(1, qty - 1) }); }, inc: function(){ self.setState({ qty: qty + 1 }); },
+      addLabel: added ? 'Добавено в количката' : 'Добавете в количката', add: function(){ self.setState({ added: added + qty }); },
+      sizeGuide: { open: !!st.sizeOpen, close: function(){ self.setState({ sizeOpen: false }); }, rows: SIZE_ROWS }, openSize: function(){ self.setState({ sizeOpen: true }); },
+      cartCount: 2 + added, more: !!st.more, moreLabel: st.more ? 'Покажете по-малко' : 'Покажете повече', toggleMore: function(){ self.setState({ more: !self.state.more }); } };
+  }
+}
+</script>
+</body>
+</html>

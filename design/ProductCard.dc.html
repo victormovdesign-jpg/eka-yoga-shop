@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="bg">
+<head>
+<meta charset="utf-8">
+<title>EKA_Product-Card</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,700&amp;family=Lato:wght@400;700;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<article style="font-family: Lato, 'Helvetica Neue', Arial, sans-serif; color: #5D7054; display: flex; flex-direction: column; min-width: 0; width: 100%">
+<a href="{{ item.href }}" draggable="false" onClick="{{ click }}" onPointerDown="{{ down }}" onPointerMove="{{ move }}" onPointerUp="{{ up }}" style="{{ linkStyle }}"><img src="{{ img }}" alt="{{ alt }}" draggable="false" style="{{ sizerStyle }}"><sc-for list="{{ slides }}" as="s" hint-placeholder-count="3"><img data-slide="{{ s.idx }}" src="{{ s.img }}" alt="" draggable="false" style="{{ s.style }}"></sc-for>
+<sc-if value="{{ hasGal }}" hint-placeholder-val="{{ false }}">
+<span aria-hidden="true" style="position: absolute; left: 0; right: 0; bottom: 12px; display: flex; justify-content: center; gap: 6px; pointer-events: none">
+<sc-for list="{{ dots }}" as="d" hint-placeholder-count="3"><span style="{{ d.style }}"></span></sc-for>
+</span>
+</sc-if></a>
+<sc-if value="{{ hasSwatches }}" hint-placeholder-val="{{ true }}">
+<div role="group" aria-label="Цвят" style="display: flex; align-items: center; gap: 10px; padding: 14px 8px 0">
+<sc-for list="{{ swatches }}" as="sw" hint-placeholder-count="3">
+<button type="button" aria-label="{{ sw.label }}" aria-pressed="{{ sw.on }}" onClick="{{ sw.pick }}" style="{{ sw.outer }}"><span style="{{ sw.inner }}"></span></button>
+</sc-for>
+</div>
+</sc-if>
+<h3 style="margin: 0; padding: 16px 8px 0; font-family: 'Cormorant Garamond', Garamond, Georgia, serif; font-size: 32px; font-weight: 700; line-height: 1.2"><a href="{{ item.href }}" style="color: #5D7054; text-decoration: none">{{ item.name }}</a></h3>
+<sc-if value="{{ hasDesc }}" hint-placeholder-val="{{ false }}">
+<p class="pc-desc" style="margin: 0; padding: 8px 8px 0; font-family: Lato, 'Helvetica Neue', Arial, sans-serif; font-size: 20px; font-weight: 400; line-height: 1.5">{{ item.desc }}</p>
+</sc-if>
+<sc-if value="{{ showPrice }}" hint-placeholder-val="{{ true }}">
+<p class="pc-price" style="margin: 0; padding: 20px 8px 0; font-family: 'Cormorant Garamond', Garamond, Georgia, serif; font-size: 32px; font-style: italic; font-weight: 700; line-height: 1.2; font-variant-numeric: lining-nums; font-feature-settings: 'lnum' 1; padding-top: 4px">€ {{ item.price }}</p>
+</sc-if>
+</article>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"item":{"editor":null},"$preview":{"width":325,"height":560}}'>
+var SAMPLE = { name: 'Гащеризон за йога', price: 98, href: 'Product.dc.html', img: '/_blob/a290fae5178691cbf5dff426e9c34d39', alt: 'Гащеризон за йога, цвят бордо',
+  swatches: [{ label: 'Бордо', hex: '#AE2958', on: true }, { label: 'Маслина', hex: '#819886', on: false }, { label: 'Синьо', hex: '#518398', on: false }] };
+function offOf(i, g, n){ var d = ((i - g) % n + n) % n; return d > n / 2 ? d - n : d; }
+class Component extends DCLogic {
+  renderVals() {
+    var item = this.props.item || SAMPLE, self = this;
+    var gal = item.gallery && item.gallery.length > 1 ? item.gallery : null;
+    var gi = gal ? (((this.state.gi || 0) % gal.length) + gal.length) % gal.length : 0;
+    var cur = gal ? gal[gi] : item;
+    var swatches = (cur.swatches || item.swatches || []).map(function(s){
+      return { label: s.label, on: s.on, pick: s.pick,
+        outer: 'width: 32px; height: 32px; padding: 0; box-sizing: border-box; display: flex; align-items: center; justify-content: center; cursor: pointer; background: transparent; border: 1px solid ' + (s.on ? s.hex : 'transparent'),
+        inner: 'display: block; background: ' + s.hex + '; width: ' + (s.on ? '22px' : '24px') + '; height: ' + (s.on ? '22px' : '24px') };
+    });
+    var dots = gal ? gal.map(function(g, k){ return { style: 'display: block; width: 6px; height: 6px; border-radius: 50%; background: #FFFFFF; opacity: ' + (k === gi ? '1' : '0.5') }; }) : [];
+    return { slides: (function(){ var list = gal || [cur], n = list.length; self._n = n; self._gi = gi; return list.map(function(g, i){ return { idx: i, img: g.img, style: 'position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none; transition: none; transform: translate3d(' + (offOf(i, gi, n) * 100) + '%,0,0)' }; }); })(), sizerStyle: 'width: 100%; aspect-ratio: ' + (item.ratio || '3 / 4') + '; object-fit: cover; display: block; visibility: hidden', img: cur.img || item.img, alt: cur.alt || item.alt, hasGal: !!gal, dots: dots,
+      linkStyle: 'position: relative; display: block; overflow: hidden; background: #E3E7DC; touch-action: pan-y; user-select: none; -webkit-user-select: none; cursor: ' + (gal ? 'grab' : 'pointer'),
+      down: function(e){ if (self._busy) return; self._x = e.clientX; self._dx = 0; self._moved = false; var a = e.currentTarget; self._a = a; var sz = a.querySelector('img'); self._w = sz ? sz.offsetWidth : 0; try { a.setPointerCapture(e.pointerId); } catch (err) {} },
+      move: function(e){ if (self._x == null || !self._a || !gal || self._busy) return; var dx = e.clientX - self._x; self._dx = dx; if (Math.abs(dx) > 8) self._moved = true; var w = self._w, n = self._n, g = self._gi; self._a.querySelectorAll('[data-slide]').forEach(function(el){ var i = +el.getAttribute('data-slide'); el.style.transition = 'none'; el.style.transform = 'translate3d(' + (offOf(i, g, n) * w + dx) + 'px,0,0)'; }); },
+      up: function(e){ var dx = self._dx || 0, w = self._w, n = self._n, g = self._gi, a = self._a; self._x = null; if (!gal || !a || self._busy) return; var T = 'transform 240ms cubic-bezier(0.22, 1, 0.36, 1)'; var els = a.querySelectorAll('[data-slide]'); var dir = dx < -30 ? 1 : (dx > 30 ? -1 : 0); if (dir) { self._moved = true; self._busy = true; els.forEach(function(el){ var i = +el.getAttribute('data-slide'); el.style.transition = T; el.style.transform = 'translate3d(' + ((offOf(i, g, n) - dir) * w) + 'px,0,0)'; }); setTimeout(function(){ var ng = (g + dir + n) % n; self.setState({ gi: ng }); setTimeout(function(){ a.querySelectorAll('[data-slide]').forEach(function(el){ var i = +el.getAttribute('data-slide'); el.style.transition = 'none'; el.style.transform = 'translate3d(' + (offOf(i, ng, n) * 100) + '%,0,0)'; }); self._busy = false; }, 40); }, 240); } else { els.forEach(function(el){ var i = +el.getAttribute('data-slide'); el.style.transition = T; el.style.transform = 'translate3d(' + (offOf(i, g, n) * 100) + '%,0,0)'; }); } },
+      click: function(e){ if (self._moved) { e.preventDefault(); self._moved = false; } },
+      item: item, swatches: swatches, hasSwatches: swatches.length > 0, hasDesc: !!item.desc, showPrice: !item.hidePrice };
+  }
+}
+</script>
+</body>
+</html>

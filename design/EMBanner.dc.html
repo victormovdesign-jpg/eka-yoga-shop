@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="bg">
+<head>
+<meta charset="utf-8">
+<title>EKA_EM-Banner</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,700&amp;family=Lato:wght@400;700;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.em-btn:hover{background:#C3737B !important;color:#FFFFFF !important}
+.em-btn:focus-visible{outline:2px solid #FFFFFF;outline-offset:2px}
+@media (max-width:767px){
+section[aria-label="Екатерина Минкова"]{padding:0 16px 80px !important}
+[style*="max-width: 1120px"]{height:494px !important;padding:32px 16px 24px !important;align-items:stretch !important}
+[style*="max-width: 1120px"] > img{object-position:62% center !important}
+[style*="max-width: 1120px"] > span[style*="linear-gradient(90deg"]{background:linear-gradient(180deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 55%) !important}
+[style*="max-width: 620px"]{max-width:none !important;width:100%;align-items:stretch !important}
+[style*="max-width: 620px"] h2{font-size:40px !important;line-height:1.1 !important}
+[style*="max-width: 620px"] p{font-size:20px !important;font-weight:700 !important;margin-top:12px !important;max-width:280px}
+.em-card .em-img{object-position:46% 35% !important;object-fit:cover !important}
+.em-card{padding:32px 16px 24px !important;align-items:stretch !important}
+.em-body{max-width:none !important;width:100% !important;box-sizing:border-box}
+.em-btn{margin-top:auto !important;width:100% !important;box-sizing:border-box;height:56px !important}
+}
+</style>
+</helmet>
+<section aria-label="Екатерина Минкова" style="font-family: Lato, 'Helvetica Neue', Arial, sans-serif; box-sizing: border-box; width: 100%; padding: 0 16px 120px; display: flex; justify-content: center">
+<div class="em-card" style="position: relative; width: 100%; max-width: 1120px; height: 464px; border-radius: 16px; overflow: hidden; display: flex; align-items: center; padding: 0 64px; box-sizing: border-box">
+<img class="em-img" src="{{ img }}" alt="Екатерина Минкова в бяла рокля до басейн в тропическа градина" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 35%">
+<span aria-hidden="true" style="position: absolute; inset: 0; opacity: 0.8; background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 67%)"></span>
+<div class="em-body" style="position: relative; max-width: 620px; display: flex; flex-direction: column; align-items: flex-start; color: #FFFFFF">
+<h2 style="margin: 0; font-family: 'Cormorant Garamond', Garamond, Georgia, serif; font-size: 64px; line-height: 1.2; font-weight: 700">{{ title }}</h2>
+<p style="margin: 8px 0 0; font-size: 24px; line-height: 1.5">{{ subtitle }}</p>
+<a class="em-btn" href="https://ekaterinaminkova.com/" style="margin-top: 56px; display: inline-flex; align-items: center; justify-content: center; height: 56px; padding: 0 24px; border-radius: 8px; background: #AF5D65; color: #FFFFFF; font-size: 16px; line-height: 1.5; font-weight: 400; text-decoration: none"><strong style="font-weight: 700">Към</strong>&nbsp;ekaterinaminkova.com</a>
+</div>
+</div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"title":{"editor":"text","default":"Екатерина Минкова"},"subtitle":{"editor":"text","default":"Йога преподавател и аюрведа терапевт"},"$preview":{"width":1152,"height":584}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { img: '/_blob/ffb9e6973de5ceb09daf7b4c31b4aae2',
+      title: this.props.title || 'Екатерина Минкова',
+      subtitle: this.props.subtitle || 'Йога преподавател и аюрведа терапевт' };
+  }
+}
+</script>
+</body>
+</html>

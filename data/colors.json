@@ -1,0 +1,6 @@
+{
+  "bordo":   { "label": "Бордо",   "token": "product-red",    "hex": "#AE2958" },
+  "maslina": { "label": "Маслина", "token": "product-green",  "hex": "#819886" },
+  "sinyo":   { "label": "Синьо",   "token": "product-blue",   "hex": "#518398" },
+  "zhalto":  { "label": "Жълто",   "token": "product-yellow", "hex": "#D7B955" }
+}

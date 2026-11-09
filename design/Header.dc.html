@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="bg">
+<head>
+<meta charset="utf-8">
+<title>EKA_Header</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.eka-dd::before{content:'';position:absolute;left:0;right:0;top:-16px;height:16px}
+.eka-dd__item{display:block;box-sizing:border-box;height:56px;padding:0 48px;font:400 16px/56px Lato,'Helvetica Neue',Arial,sans-serif;color:#FFFFFF;text-decoration:none;white-space:nowrap}
+.eka-dd__item:hover,.eka-dd__item:focus-visible{background:#AF5D65;color:#FFFFFF;outline:none}
+.hd-burger{display:none;width:44px;height:44px;padding:0;border:0;background:transparent;cursor:pointer;align-items:center;justify-content:center}
+.hd-mmenu{position:fixed;inset:0;z-index:1000;background:#5D7054;color:#FFFFFF;display:flex;flex-direction:column;padding:16px;box-sizing:border-box;font-family:Lato,'Helvetica Neue',Arial,sans-serif}
+.hd-mmenu a{display:block;padding:24px 0;border-bottom:0;color:#FFFFFF;font-family:'Cormorant Garamond',Garamond,Georgia,serif;font-size:32px;font-weight:700;line-height:1.2;text-decoration:none}
+/* ===== EKA mobile (shared by every page that imports the Header) ===== */
+@media (max-width:767px){
+html,body{overflow-x:hidden}
+header[style*="height: 110px"]{height:72px !important;padding:0 16px !important;gap:8px !important}
+header img[alt^="EKA Yoga"]{width:136px !important;height:auto !important}
+header nav{gap:4px !important}
+header nav > a,header nav > div{display:none !important}
+header nav > button[aria-haspopup="dialog"]{margin-left:0 !important}
+.hd-burger{display:inline-flex}
+header{padding-left:16px !important;padding-right:16px !important;box-sizing:border-box !important}
+#brand > h2,[aria-labelledby="br-who"] > h2{padding-left:16px !important;padding-right:16px !important}
+main{padding-left:16px !important;padding-right:16px !important}
+section:not(#brand):not([aria-labelledby="br-who"]):not(.pf-more),figure:not(.pf-quote),footer{padding-left:16px !important;padding-right:16px !important;box-sizing:border-box}
+main section{padding-left:0 !important;padding-right:0 !important}
+[aria-labelledby="br-who"] > div > div{padding-left:16px !important;padding-right:16px !important}
+[style*="padding: 0 64px"],[style*="padding: 24px 64px"]{padding-left:16px !important;padding-right:16px !important}
+[style*="padding: 80px 64px"]{padding:48px 16px !important}
+[style*="font-size: 56px"]{font-size:40px !important;line-height:1 !important;letter-spacing:-0.02em !important}
+main h1,section h1,section:not([aria-label="Екатерина Минкова"]) h2:not(.co-h2){font-size:40px !important;line-height:1 !important;letter-spacing:-0.02em !important}
+main p,section p,[style*="font-size: 20px"]:not(a):not(button),[style*="font-size: 18px"]:not(a):not(button){font-size:18px !important;line-height:1.5 !important}
+[style*="padding: 80px 0"]{padding-top:48px !important;padding-bottom:40px !important}
+[style*="font-size: 48px"]{font-size:30px !important}
+h1[style*="font-size: 40px"]{font-size:32px !important}
+blockquote{font-size:26px !important}
+figure[style*="padding: 160px"]{padding:72px 16px 56px !important}
+[style*="height: 960px"]{height:533px !important}
+[style*="height: 917px"],section.eka-ritual.eka-ritual{height:844px !important}
+[style*="height: 822px"]{height:844px !important}
+img[style*="height: 820px"]{height:360px !important}
+[style*="min-height: 820px"]{min-height:0 !important}
+[style*="min-height: 820px"] > img{height:420px !important}
+img[style*="height: 533px"]{height:440px !important}
+[style*="flex: 0 0 500px"]{flex:0 0 280px !important;width:280px !important;height:280px !important}
+[style*="flex: 0 0 500px"] span[style*="font-size: 40px"]{font-size:28px !important;bottom:32px !important}
+a[style*="height: 78px"]{height:60px !important;padding:0 20px !important;font-size:18px !important}
+[style*="grid-template-columns: repeat(6"],[style*="grid-template-columns: repeat(4"]{grid-template-columns:repeat(2,minmax(0,1fr)) !important;gap:32px 12px !important}
+[style*="grid-column: span"]{grid-column:span 1 !important}
+[style*="grid-template-columns: repeat(3"],[style*="grid-template-columns: repeat(2"],[style*="grid-template-columns: minmax(0, 2fr)"],[style*="grid-template-columns: minmax(0, 1fr) 368px"],[style*="grid-template-columns: minmax(0, 1fr) 448px"]{grid-template-columns:minmax(0,1fr) !important;gap:32px !important}
+.eka-split{display:flex !important;flex-direction:column !important;align-items:stretch !important;gap:24px !important}
+.eka-split > *{width:100% !important;min-width:0 !important;max-width:none !important;position:static !important;padding-top:0 !important}
+/* product / set info column (mobile) */
+.eka-split > div:last-child{align-items:stretch !important}
+.eka-split h1{font-size:32px !important;line-height:1.2 !important;margin-top:0 !important}
+.eka-split h1 + p{font-size:32px !important;margin-top:4px !important}
+.eka-split fieldset{width:100%;margin-top:32px !important}
+.eka-split legend,#qty-label{font-size:18px !important;font-weight:400 !important;margin-bottom:12px !important}
+.eka-split legend span{display:none}
+.eka-split fieldset > div{justify-content:flex-start !important;gap:16px !important}
+.eka-split fieldset > div > button{width:52px !important;height:52px !important;min-width:0 !important;padding:0 !important;flex:none}
+.eka-split fieldset:first-of-type > div > button > span{width:44px !important;height:44px !important}
+.eka-split fieldset:nth-of-type(2) > div > button{font-size:16px !important;border-radius:4px !important}
+.eka-split fieldset > a,.eka-split fieldset > button{align-self:flex-start;margin-top:16px !important;font-size:16px !important}
+.eka-split [aria-labelledby="qty-label"]{width:100% !important;height:56px !important;justify-content:space-between}
+.eka-split [aria-labelledby="qty-label"] > button{width:56px !important;height:54px !important}
+.eka-split .eka-btn{width:100% !important;min-width:0 !important}
+.eka-split .eka-btn--third{width:auto !important;align-self:flex-start}
+#brand > div{gap:0 !important}
+article [role="group"] button{width:20px !important;height:20px !important}
+article [role="group"] button > span{width:14px !important;height:14px !important}
+article h3{font-size:24px !important;line-height:1.2 !important;padding-top:12px !important}
+article p.pc-price{font-size:24px !important;line-height:1.2 !important}
+article p.pc-desc{font-size:16px !important;line-height:1.5 !important;font-weight:400 !important}
+.co-grid{grid-template-columns:minmax(0,1fr) !important}
+.co-methods{grid-template-columns:minmax(0,1fr) !important}
+[style*="position: sticky"]{position:static !important}
+[role="tablist"]{flex-wrap:nowrap !important;overflow-x:auto;max-width:100%}
+aside[style*="width: 400px"]{width:100% !important}
+.ct-row{grid-template-columns:96px minmax(0,1fr) 44px !important;grid-template-areas:'img info x' 'img step price';gap:8px 12px !important}
+.ct-row > img{grid-area:img;width:96px !important;height:110px !important}
+.ct-row > div:not(.ct-step){grid-area:info}
+.ct-row > .ct-step{grid-area:step;justify-self:start}
+.ct-row > .ct-price{grid-area:price}
+.ct-row > .ct-remove{grid-area:x}
+.ty-table{display:block;overflow-x:auto;white-space:nowrap}
+footer[style*="padding: 96px 64px"]{padding:64px 16px 40px !important}
+footer [style*="grid-template-columns: repeat(4"]{grid-template-columns:minmax(0,1fr) !important;gap:40px !important}
+}
+/* ===== EKA type v4: headings (design system, shared by every page) ===== */
+:is(h1,h2,h3,h4,h5,h6):not(#_),span[style*="Cormorant"]:not(#_){line-height:1 !important}
+:is(h1,h2,h3,h4,h5,h6)[style*="font-size: 56px"]:not(#_){letter-spacing:-.02em !important}
+@media (max-width:767px){
+:is(h1,h2,h3,h4,h5,h6,span)[style*="Cormorant"][style*="font-size: 56px"]:not(#_),:is(h1,h2,h3,h4,h5,h6)[style*="font-size: 56px"]:not(#_){font-size:48px !important}
+:is(h1,h2,h3,h4,h5,h6)[style*="font-size: 48px"]:not(#_),span[style*="Cormorant"][style*="font-size: 48px"]:not(#_){font-size:40px !important}
+:is(h1,h2,h3,h4,h5,h6)[style*="font-size: 40px"]:not(#_),span[style*="Cormorant"][style*="font-size: 40px"]:not(#_){font-size:32px !important}
+:is(h1,h2,h3,h4,h5,h6)[style*="font-size: 32px"]:not(#_){font-size:24px !important}
+:is(h1,h2,h3,h4,h5,h6)[style*="font-size: 24px"]:not(#_){font-size:20px !important}
+}
+</style>
+</helmet>
+<header style="{{ bar }}">
+<a href="Main.dc.html" aria-label="EKA Yoga – начална страница" style="display: block; flex: none"><img src="{{ logo }}" alt="EKA Yoga – wear the bloom" style="width: 221px; height: 78px; display: block"></a>
+<nav aria-label="Основна навигация" style="display: flex; align-items: center; gap: 40px; font-size: 20px; font-weight: 400; line-height: 1.5">
+<a href="Brand.dc.html" style="{{ link }}">За бранда</a>
+<sc-for list="{{ menus }}" as="m" hint-placeholder-count="2">
+<div style="position: relative" onMouseEnter="{{ m.open }}" onMouseLeave="{{ m.close }}">
+<a href="{{ m.href }}" aria-haspopup="true" aria-expanded="{{ m.on }}" onFocus="{{ m.open }}" style="{{ m.link }}">{{ m.label }}<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="{{ m.chev }}"><path d="M3.5 6l4.5 4.5L12.5 6"></path></svg></a>
+<sc-if value="{{ m.on }}" hint-placeholder-val="{{ false }}">
+<div class="eka-dd" role="menu" aria-label="{{ m.label }}" style="position: absolute; top: calc(100% + 16px); left: -16px; width: 304px; padding: 0; background: rgba(93,112,84,0.8); border-radius: 8px; overflow: visible; z-index: 10">
+<div style="border-radius: 8px; overflow: hidden">
+<sc-for list="{{ m.items }}" as="it" hint-placeholder-count="4">
+<a role="menuitem" class="eka-dd__item" href="{{ it.href }}">{{ it.label }}</a>
+</sc-for>
+</div>
+</div>
+</sc-if>
+</div>
+</sc-for>
+<button type="button" aria-haspopup="dialog" aria-label="Количка, {{ count }} продукта" onClick="{{ toggleCart }}" style="{{ cart }}">
+<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1.2 12H6.2L5 8Z"></path><path d="M9 8V6a3 3 0 0 1 6 0v2"></path></svg>
+<span style="position: absolute; top: 2px; right: 0; min-width: 18px; height: 18px; padding: 0 4px; box-sizing: border-box; border-radius: 9px; background: #AF5D65; color: #FFFFFF; font-size: 10px; font-weight: 900; display: flex; align-items: center; justify-content: center">{{ count }}</span>
+</button>
+<button type="button" class="hd-burger" aria-label="Меню" aria-expanded="{{ menuOpen }}" onClick="{{ toggleMenu }}" style="{{ burger }}"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg></button>
+</nav>
+</header>
+<sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+<div class="hd-mmenu" role="dialog" aria-modal="true" aria-label="Меню">
+<div style="display: flex; align-items: center; justify-content: flex-end; height: 56px; margin-bottom: 24px"><button type="button" aria-label="Затворете менюто" onClick="{{ toggleMenu }}" style="width: 44px; height: 44px; padding: 0; border: 0; background: transparent; color: #FFFFFF; cursor: pointer; display: flex; align-items: center; justify-content: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"></path></svg></button></div>
+<nav aria-label="Мобилна навигация">
+<a href="Brand.dc.html">За бранда</a>
+<a href="Collection.dc.html">Облекла и аксесоари</a>
+<a href="Sets.dc.html">Комплекти</a>
+<a href="Cart.dc.html">Моята количка</a>
+</nav>
+</div>
+</sc-if>
+<dc-import name="CartDrawer" item="{{ cartDrawer }}" hint-size="0px,0px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"variant":{"editor":"enum","options":["solid","overlay"],"default":"solid"},"open":{"editor":"enum","options":["none","cloth","sets"],"default":"none"},"count":{"editor":"int","default":2},"$preview":{"width":1440,"height":110}}'>
+class Component extends DCLogic {
+  renderVals() {
+    var overlay = (this.props.variant || 'solid') === 'overlay';
+    var c = overlay ? '#FFFFFF' : '#5D7054';
+    var self = this, cur = this.state.open !== undefined ? this.state.open : (this.props.open || 'none');
+    var MENUS = [
+      { id: 'cloth', label: 'Облекла и аксесоари', items: [['Цяло трико', 'Product.dc.html'], ['Шорти за практика', 'Collection.dc.html'], ['Тениска с мандала', 'Collection.dc.html'], ['Възглавничка за очи', 'Collection.dc.html']] },
+      { id: 'sets', label: 'Комплекти', items: [['Мандала Флоу', 'Set.dc.html?set=mf'], ['Елегантен Ритуал', 'Set.dc.html?set=er']] }];
+    var menus = MENUS.map(function(m){ var on = false; return { label: m.label, on: on, href: m.id === 'sets' ? 'Sets.dc.html' : 'Collection.dc.html',
+      items: m.items.map(function(i){ return { label: i[0], href: i[1] }; }),
+      open: function(){ self.setState({ open: m.id }); }, close: function(){ self.setState({ open: 'none' }); },
+      link: 'display: inline-flex; align-items: center; gap: 12px; min-height: 44px; box-sizing: border-box; padding-top: 1px; color: ' + c + '; text-decoration: none; border-bottom: 1px solid ' + (on ? c : 'transparent'),
+      chev: 'display: none' }; });
+    return {
+      menus: menus,
+      count: this.props.count ?? 2,
+      logo: overlay ? '/_blob/0ac706280c3608e1847977f0fa4ebb54' : '/_blob/365757b50cfd44fab6a47d24b9b2c70c',
+      bar: 'font-family: Lato, \'Helvetica Neue\', Arial, sans-serif; box-sizing: border-box; width: 100%; height: 110px; padding: 0 64px; display: flex; align-items: center; justify-content: space-between; gap: 24px; ' +
+        (overlay ? 'position: absolute; top: 0; left: 0; right: 0; z-index: 2; background: linear-gradient(180deg, rgba(93,112,84,0.8) 22%, rgba(93,112,84,0) 100%)' : 'position: relative; z-index: 5; background: transparent'),
+      link: 'display: inline-flex; align-items: center; gap: 12px; min-height: 44px; color: ' + c + '; text-decoration: none',
+      cart: 'position: relative; display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; margin-left: 48px; padding: 0; border: 0; background: transparent; cursor: pointer; color: ' + c,
+      burger: 'color: ' + c,
+      menuOpen: !!self.state.menuOpen, toggleMenu: function(){ self.setState({ menuOpen: !self.state.menuOpen }); },
+      toggleCart: function(){ self.setState({ cartOpen: !self.state.cartOpen }); },
+      cartDrawer: { open: !!self.state.cartOpen, close: function(){ self.setState({ cartOpen: false }); } }
+    };
+  }
+}
+</script>
+</body>
+</html>

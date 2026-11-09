@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="bg">
+<head>
+<meta charset="utf-8">
+<title>EKA Yoga – благодарим</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,700&amp;family=Lato:wght@400;700;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F3F0E4}
+a{color:#5D7054;text-decoration:none}a:hover{color:#AF5D65}
+.ty-table{width:100%;border-collapse:collapse;font-size:18px;line-height:1.5}
+.ty-table th{padding:16px 12px;border-bottom:1px solid #5D7054;text-align:left;font-size:16px;font-weight:700}
+.ty-table td{padding:16px 12px;border-bottom:1px solid #5D7054;vertical-align:middle}
+.ty-num{font-family:'Cormorant Garamond',Garamond,Georgia,serif;font-size:24px;font-weight:700;font-variant-numeric:lining-nums;font-feature-settings:'lnum' 1;white-space:nowrap}
+.ty-right{text-align:right !important}
+.ty-btn:hover{background:#C3737B !important;color:#FFFFFF !important}
+.ty-btn:focus-visible{outline:2px solid #5D7054;outline-offset:2px}
+@media (max-width:767px){
+.ty-wrap{overflow:visible !important;max-width:100% !important}
+.ty-table{display:table !important;table-layout:auto !important;width:100% !important;min-width:0 !important;overflow:visible !important;font-size:14px !important}
+.ty-table th{padding:12px 4px !important;font-size:12px !important;white-space:normal !important;word-break:break-word}
+.ty-table td{padding:12px 4px !important}
+.ty-table th:nth-child(1),.ty-table td:nth-child(1){width:100%}
+.ty-table th:not(:first-child),.ty-table td:not(:first-child){width:1%;white-space:nowrap !important;word-break:normal !important;text-align:right !important}
+.ty-item{gap:8px !important;align-items:flex-start !important}
+.ty-item img{width:44px !important;height:52px !important;flex:none}
+.ty-name{font-size:18px !important;white-space:normal !important;overflow-wrap:anywhere}
+.ty-var{font-size:12px !important}
+.ty-num{font-size:18px !important}
+.ty-tot{gap:24px !important}
+.ty-btn{width:100% !important;display:flex !important}
+}
+</style>
+</helmet>
+<div style="font-family: Lato, 'Helvetica Neue', Arial, sans-serif; color: #5D7054; background: #F3F0E4; width: 100%; min-width: 0">
+<dc-import name="Header" variant="solid" count="0" hint-size="100%,110px"></dc-import>
+<main style="width: 100%; box-sizing: border-box; padding: 80px 64px 120px">
+<div style="max-width: 1040px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; text-align: center">
+<span aria-hidden="true" style="display: flex; align-items: center; justify-content: center; width: 72px; height: 72px; border-radius: 50%; background: #5D7054; color: #FFFFFF"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span>
+<h1 style="margin: 24px 0 0; font-family: 'Cormorant Garamond', Garamond, Georgia, serif; font-size: 56px; font-weight: 700; line-height: 1.2">Благодаря ти за поръчката, {{ name }}</h1>
+<p style="margin: 16px 0 0; max-width: 820px; font-size: 20px; line-height: 1.5">Твоята Eka Yoga поръчка е получена. Ще получиш имейл с потвърждение и детайли за доставката. Надявам се този продукт да подкрепи практиката ти с повече красота и присъствие.</p>
+<p style="margin: 12px 0 0; font-family: 'Cormorant Garamond', Garamond, Georgia, serif; font-size: 24px; font-style: italic; font-weight: 700">– Екатерина</p>
+<p style="margin: 24px 0 0; font-size: 16px">Номер на поръчката: <strong>{{ orderNo }}</strong></p>
+</div>
+<div class="ty-wrap" style="max-width: 1040px; margin: 64px auto 0">
+<table class="ty-table">
+<thead><tr><th scope="col">Артикул</th><th scope="col">Цена</th><th scope="col">Брой</th><th scope="col" class="ty-right">Сума</th></tr></thead>
+<tbody>
+<sc-for list="{{ items }}" as="it" hint-placeholder-count="3">
+<tr>
+<td><div class="ty-item" style="display: flex; align-items: center; gap: 16px"><img src="{{ it.img }}" alt="{{ it.alt }}" style="width: 72px; height: 84px; object-fit: cover; display: block; background: #E3E7DC"><div><div class="ty-name" style="font-family: 'Cormorant Garamond', Garamond, Georgia, serif; font-size: 24px; font-weight: 700; line-height: 1.2">{{ it.name }}</div><div class="ty-var" style="font-size: 16px">{{ it.variant }}</div></div></div></td>
+<td><span class="ty-num">€ {{ it.price }}</span></td>
+<td>{{ it.qty }}</td>
+<td class="ty-right"><span class="ty-num">€ {{ it.sum }}</span></td>
+</tr>
+</sc-for>
+</tbody>
+</table>
+<div style="display: flex; flex-direction: column; align-items: flex-end; gap: 8px; padding: 20px 12px 0">
+<div class="ty-tot" style="display: flex; gap: 48px; font-size: 16px"><span>Доставка</span><span>Начислява се от куриера</span></div>
+<div style="display: flex; align-items: baseline; gap: 48px"><span style="font-family: 'Cormorant Garamond', Garamond, Georgia, serif; font-size: 24px; font-weight: 700">Общо</span><span class="ty-num" style="font-size: 32px; font-style: italic">€ {{ total }}</span></div>
+</div>
+<div style="display: flex; justify-content: center; margin-top: 80px">
+<a class="ty-btn" href="Collection.dc.html" style="display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box; height: 78px; padding: 0 32px; border-radius: 8px; background: #AF5D65; color: #FFFFFF; font-size: 20px; line-height: 1.5; font-weight: 400">Продължи с пазаруването</a>
+</div>
+</div>
+</main>
+<dc-import name="PreFooter" hint-size="100%,1900px"></dc-import>
+<dc-import name="Footer" hint-size="100%,970px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"name":{"editor":"text","default":"Мария"},"$preview":{"width":1440,"height":2200}}'>
+var ITEMS = [
+  { name: 'Гащеризон за йога', variant: 'Бордо / M', price: 98, qty: 1, img: '/_blob/728e47038b09140c04f806bcb558385b' },
+  { name: 'Тениска с мандала', variant: 'Синьо / M', price: 45, qty: 2, img: '/_blob/d953a323b5a5c66cd9aebaf0776b3235' },
+  { name: 'Възглавничка за очи', variant: 'Маслина', price: 36, qty: 1, img: '/_blob/0ba7055cba356bc154772efaca14ff3e' }
+];
+class Component extends DCLogic {
+  renderVals() {
+    var items = ITEMS.map(function(p){ return { name: p.name, variant: p.variant, img: p.img, alt: p.name + ', ' + p.variant, price: p.price, qty: p.qty, sum: p.price * p.qty }; });
+    return { name: this.props.name || 'Мария', orderNo: '#EKA-1024', items: items,
+      total: items.reduce(function(s, it){ return s + it.sum; }, 0) };
+  }
+}
+</script>
+</body>
+</html>
