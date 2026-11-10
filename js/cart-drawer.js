@@ -147,12 +147,16 @@ document.addEventListener("DOMContentLoaded", async () => {
   };
 
   // --- Open / close animation -------------------------------------------
-  // Panel slides in from the right + fades in (500 ms, CSS). Then the content
-  // fades in one after another, top → bottom (header, products, total), and
-  // last the buttons: "Продължи да пазаруваш", then "Купи сега".
-  const DURATION = 500;   // panel + each element
-  const START = 250;      // content starts while the panel is still sliding in
-  const STAGGER = 120;    // between consecutive elements
+  // Panel slides in from the right + fades in: 300 ms, ease-out (fast start,
+  // slow end; CSS). Then the content fades in one after another, top → bottom
+  // (header, products, total), and last the buttons: "Продължи да пазаруваш",
+  // then "Купи сега". Each element fades in 500 ms; the gaps between them grow
+  // (GAP, GAP + GROW, GAP + 2·GROW …) so the top items follow each other
+  // quickly and the last ones arrive more slowly.
+  const DURATION = 300;   // panel in / out
+  const START = 150;      // content starts while the panel is still sliding in
+  const GAP = 60;         // first gap between elements
+  const GROW = 30;        // each following gap is this much longer
   const head = drawer.querySelector(".cd__head");
   const total = drawer.querySelector(".cd__total");
   const keepShopping = drawer.querySelector(".cd__btn--secondary");
@@ -162,9 +166,11 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const sequence = () => {
     const steps = [head, ...(empty.hidden ? [] : [empty]), ...list.children, total, keepShopping, buy];
+    let delay = START;
     steps.forEach((el, i) => {
+      if (i) delay += GAP + (i - 1) * GROW;
       el.setAttribute("data-cd-step", "");
-      el.style.setProperty("--cd-delay", `${START + i * STAGGER}ms`);
+      el.style.setProperty("--cd-delay", `${delay}ms`);
     });
   };
 

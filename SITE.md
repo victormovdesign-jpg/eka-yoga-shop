@@ -80,9 +80,9 @@ Reference-only files also in the repo (not part of the live site): `components.h
 - off with `prefers-reduced-motion`.
 
 **Cart drawer "Моята количка"** — every page (`js/cart-drawer.js` toggles `.cd.is-open`; CSS at the CartDrawer block in `css/components.css`):
-- open: backdrop fades in; panel slides in **from right to left** + fades in, **500 ms**;
-- content fades in **one after another, top → bottom**, 500 ms each, 120 ms apart, starting 250 ms in: header, products, total — then the buttons, **"Продължи да пазаруваш" first, then "Купи сега"**;
-- close (×, backdrop, "Продължи да пазаруваш", Esc): panel slides out to the right + fades out, 500 ms; then `hidden`;
+- open: backdrop fades in; panel slides in **from right to left** + fades in, **300 ms, ease-out** (`cubic-bezier(0, 0, 0.2, 1)` — fast at the beginning, slower at the end);
+- content fades in **one after another, top → bottom**, 500 ms each, starting 150 ms in; the gaps **grow** (60, 90, 120, 150 … ms) so the top items appear quickly and the last ones more slowly: header, products, total — then the buttons, **"Продължи да пазаруваш" first, then "Купи сега"**;
+- close (×, backdrop, "Продължи да пазаруваш", Esc): panel slides out to the right + fades out, 300 ms; then `hidden`;
 - quantity changes while open re-render without re-animating; off with `prefers-reduced-motion`.
 
 Animation reference requested: https://www.wearetala.com/en-eu — **could not be reached from the cloud sandbox**, so timings follow the written spec above, not Tala's exact easing.
@@ -128,6 +128,7 @@ Gotchas learned:
 
 ## Recent changes
 
+- **2026-11-10:** Cart drawer: panel 300 ms ease-out; content gaps grow top → bottom (items still 500 ms each).
 - **2026-11-10:** Cart drawer: slides in from the right + fades (500 ms); content appears top → bottom, then "Продължи да пазаруваш", then "Купи сега"; slides/fades out on close.
 - **2026-11-10:** Entrance animations on **every page** (shared `js/motion.js`); Collection/Sets grids reveal row by row and re-animate after filter/tab changes. Scroll overlap added on Brand ("Какви материи…" over "За кого…", quote over the eye-pillows photo).
 - **2026-11-10:** Navbar hide/show on scroll on **every page** (solid header sticky, overlay header fixed); sticky side panels move below the shown header. `base.css`: `overflow-x: clip` (was `hidden`, which broke all `position: sticky`).

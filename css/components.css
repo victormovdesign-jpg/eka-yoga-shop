@@ -718,13 +718,14 @@ a.emb__card:focus-visible { outline: 2px solid var(--brand-green); outline-offse
   font-variant-numeric: lining-nums;
 }
 /* Open / close animation (js/cart-drawer.js toggles .is-open):
-   backdrop fades, panel slides in from the right + fades (500 ms);
-   [data-cd-step] elements fade in one after another (delay set in JS). */
-.cd__backdrop { opacity: 0; transition: opacity 500ms linear; }
+   backdrop fades, panel slides in from the right + fades — 300 ms, ease-out
+   (fast at the beginning, slower at the end);
+   [data-cd-step] elements fade in 500 ms one after another (delay set in JS). */
+.cd__backdrop { opacity: 0; transition: opacity 300ms cubic-bezier(0, 0, 0.2, 1); }
 .cd__panel {
   opacity: 0;
   transform: translateX(100%);
-  transition: opacity 500ms linear, transform 500ms cubic-bezier(0.2, 0, 0, 1);
+  transition: opacity 300ms cubic-bezier(0, 0, 0.2, 1), transform 300ms cubic-bezier(0, 0, 0.2, 1);
 }
 .cd.is-open .cd__backdrop { opacity: 1; }
 .cd.is-open .cd__panel { opacity: 1; transform: none; }
