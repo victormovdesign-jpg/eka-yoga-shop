@@ -53,6 +53,8 @@ Reference-only files also in the repo (not part of the live site): `components.h
 
 ## Animations (every page)
 
+Summary table of all timings: `docs/EKA-YOGA_DesignSystem.md` › "Update 2026-11-10 — Motion".
+
 **Entrance + overlap** live in `js/motion.js` (loaded **last** on every page, after the page script has rendered) and at the end of `css/components.css`. Page markup is untouched for the entrance — JS adds `data-reveal` itself; each page's `<head>` sets `<html class="js-anim">` with an inline script.
 
 **Entrance on scroll** — every page, same as Home: sections animate one by one when they scroll into view (IntersectionObserver, threshold 0.15), never all at load:
@@ -62,6 +64,7 @@ Reference-only files also in the repo (not part of the live site): `components.h
 - singles fade: hero / ritual / Brand images and text blocks, breadcrumbs, filter bar, product gallery + info, cart, checkout form + summary, thank-you table, PreFooter quote, EM banner;
 - grids that re-render (filters, tabs) animate their new items;
 - without JS, or with `prefers-reduced-motion`, everything is simply visible.
+- **New page or new block?** Add the page's selectors to `TITLES` / `SINGLES` / `GROUPS` / `LONG` at the top of `js/motion.js`, put `<script>document.documentElement.classList.add("js-anim");</script>` in its `<head>`, and load `js/motion.js` **after** the page's own script.
 
 **Navbar on scroll** — every page, in `js/header.js` + `css/components.css` (class `.hd--scroll` added by JS):
 - solid header (most pages): `position: sticky`, keeps `--bg-page`; overlay header (Home, Brand): `position: fixed`;
@@ -128,6 +131,7 @@ Gotchas learned:
 
 ## Recent changes
 
+- **2026-11-10:** Docs: motion spec added to the design system; `CLAUDE.md` and `docs/current-state.md` updated (repo is ahead of the artifact; push straight to `main`).
 - **2026-11-10:** Cart drawer: panel 300 ms ease-out; content gaps grow top → bottom (items still 500 ms each).
 - **2026-11-10:** Cart drawer: slides in from the right + fades (500 ms); content appears top → bottom, then "Продължи да пазаруваш", then "Купи сега"; slides/fades out on close.
 - **2026-11-10:** Entrance animations on **every page** (shared `js/motion.js`); Collection/Sets grids reveal row by row and re-animate after filter/tab changes. Scroll overlap added on Brand ("Какви материи…" over "За кого…", quote over the eye-pillows photo).

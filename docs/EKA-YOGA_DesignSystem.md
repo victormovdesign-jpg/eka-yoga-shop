@@ -514,3 +514,28 @@ Each heading has Bold (700) and Italic (400 italic) variants; each text size has
 ## Minimum width (2026-11-08)
 Mobile design reference is 390px; the build must support down to **320px** (no horizontal scroll, 16px side padding kept).
 Check widths: 320, 390 (mobile reference), 768 (tablet – desktop layout must fit, no horizontal scroll), 1440 (desktop reference).
+
+## Update 2026-11-10 — Motion
+
+Implemented on the live site; implementation details in `SITE.md` › Animations. All motion is off with `prefers-reduced-motion` (everything simply visible), and without JS nothing is hidden.
+
+| Token | Value | Used for |
+|---|---|---|
+| `motion-reveal` | 500 ms, opacity `linear`; rise `cubic-bezier(0.2, 0, 0, 1)` | Entrance of every element |
+| `motion-reveal-rise` | 24 px | Titles rise from below while fading in |
+| `motion-stagger` | 120 ms | Grid / carousel items, left → right |
+| `motion-nav` | 200 ms, `linear` | Navbar fade out (scroll down) / in (scroll up) |
+| `motion-drawer` | 300 ms, ease-out `cubic-bezier(0, 0, 0.2, 1)` | Cart drawer panel + backdrop, in and out |
+| `motion-drawer-steps` | 500 ms each; start 150 ms; gaps 60, 90, 120 … ms | Cart drawer content sequence |
+| `overlap-drift` | 30 % of scroll speed | Covered section while it is overlapped |
+| `overlap-blur` | 0 → 12 px | Covered section while it is overlapped |
+
+**Entrance on scroll** (every page) — elements appear one by one as they scroll into view (15 % visible), never all at load. Titles fade + rise; images and text blocks fade; grids reveal left → right; long grids (Collection, Sets) row by row.
+
+**Navbar on scroll** (every page) — at the top always visible. Scrolling down fades it out, scrolling up fades it back in. Overlay header (Home, Brand): desktop keeps the gradient; ≤984 px it turns solid brand-green once scrolled. Solid header keeps `bg/page`.
+
+**Scroll overlap** (Home and Brand only) — the next section slides over the previous one, which keeps moving up slowly and blurs. The overlapping section and everything after it are filled with `bg/content-primary` (#F3F0E4) — no gap, no shadow, nothing showing through.
+- Home: "Пазарувай по цвят" over "Завърши практиката с красив ритуал"; PreFooter quote over "EKA комплекти".
+- Brand: "Какви материи използваме?" over "За кого са създадени тези облекла?"; PreFooter quote over the eye-pillows photo.
+
+**Cart drawer "Моята количка"** — panel slides in from right to left + fades in, fast at the beginning and slower at the end. Content fades in top → bottom (header, products, total) with growing gaps — the top items follow each other quickly, the last ones more slowly — then "Продължи да пазаруваш", then "Купи сега". Closing slides it out to the right + fades out.

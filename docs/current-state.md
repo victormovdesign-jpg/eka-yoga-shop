@@ -82,5 +82,10 @@ Services are not sold – they link to ekaterinaminkova.com.
 ## Update 2026-11-10 (supersedes the structure/pages sections above where they differ)
 - **Code source of truth:** artifact https://claude.ai/artifact/M9QoAUzvXfv5cPdeaiTteE — all 9 pages built as static HTML (`index`, `za-eka-yoga`, `oblekla-i-aksesoari`, `produkt`, `komplekti`, `komplekt`, `kolichka`, `porachka`, `blagodarim`). Stack is plain HTML/CSS/JS (not Astro); no `public/` — images live in `images/`.
 - **Repo:** https://github.com/victormovdesign-jpg/eka-yoga-shop · **Live:** https://victormovdesign-jpg.github.io/eka-yoga-shop/
-- **Home animations + navbar-on-scroll** are done; spec and file locations in `SITE.md` › Animations. Other pages not animated yet.
-- Still open: checkout provider, videos, favicon, repo visibility, delete duplicate `MuhtarovPhilips/eka-yoga-shop`.
+- **Motion is done on every page**; spec and file locations in `SITE.md` › Animations:
+  - navbar hides on scroll down / shows on scroll up (200 ms) — all pages;
+  - entrance on scroll (500 ms fade, titles rise, grids left → right) — all pages;
+  - scroll overlap with blur — Home and Brand only;
+  - cart drawer "Моята количка": panel 300 ms ease-out from the right, content in a slowing sequence top → bottom, buttons last.
+- **The repo is now ahead of the code artifact** (M9QoAUzvXfv5cPdeaiTteE) — build on the repo.
+- Still open: checkout provider, videos, favicon, repo visibility, delete duplicate `MuhtarovPhilips/eka-yoga-shop`, sync (or retire) the code artifact.

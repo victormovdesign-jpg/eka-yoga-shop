@@ -1,6 +1,10 @@
 # EKA Yoga shop – build brief for Claude Code
 
-> **Update 2026-11-10 — read `SITE.md` first.** The site is now plain HTML/CSS/JS (no Astro/TypeScript, no build step), all 9 pages exist, and the code source of truth is the artifact https://claude.ai/artifact/M9QoAUzvXfv5cPdeaiTteE. Images are in `images/` (not `public/images/`); the cart adapter is `js/checkout.js` (not `lib/checkout.ts`). Sections below are the original brief — where they conflict with `SITE.md`, `SITE.md` wins.
+> **Update 2026-11-10 — read `SITE.md` first.** The site is now plain HTML/CSS/JS (no Astro/TypeScript, no build step), all 9 pages exist. Images are in `images/` (not `public/images/`); the cart adapter is `js/checkout.js` (not `lib/checkout.ts`). Sections below are the original brief — where they conflict with `SITE.md`, `SITE.md` wins.
+>
+> - **Code:** the GitHub repo (`main`) is now **ahead of** the artifact https://claude.ai/artifact/M9QoAUzvXfv5cPdeaiTteE — the artifact has none of the motion work. Build on the repo; don't overwrite it from the artifact.
+> - **Motion** (every page): spec in `SITE.md` › Animations and design system › "Update 2026-11-10 — Motion". Code: `js/motion.js` (entrance + scroll overlap), `js/header.js` (navbar on scroll), `js/cart-drawer.js` (cart drawer), CSS in `css/components.css`. Keep `overflow-x: clip` on `html, body` (`hidden` breaks `position: sticky`).
+> - **Workflow:** commit and push straight to `main` (GitHub Pages rebuilds in ~1 min). The cloud sandbox can't open `*.github.io`, so test locally (`python3 -m http.server` + Playwright) at 320 / 390 / 768 / 1440 and check the Pages deploy run.
 
 Boutique shop for EKA YOGA ("wear the bloom"), the clothing line of yoga teacher Ekaterina Minkova (https://ekaterinaminkova.com/).
 Designer: Viktor Muhtarov (victormov). Language of all UI copy: Bulgarian.
