@@ -176,7 +176,7 @@ span.pc__swatch { cursor: default; }
 
 /* ---------- Scroll overlap ----------
    The section named in [data-covered-by] slides over the covered one; the
-   covered section drifts up at 10% of scroll speed (translateY set by
+   covered section drifts up at 30% of scroll speed (translateY set by
    home.js) and blurs. The cover and everything after it is filled with
    bg/content-primary and stacked above, so the sections stay stuck together
    with nothing showing through. clip-path keeps the blur inside its box. */

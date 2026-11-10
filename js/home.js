@@ -153,12 +153,12 @@ switchBtns.forEach((btn) => {
 
 // --- Scroll overlap -------------------------------------------------------
 // The next section slides over the covered one. While it is covered, the
-// covered section keeps moving up at DRIFT (10%) of the scroll speed
+// covered section keeps moving up at DRIFT (30%) of the scroll speed
 // (bottom-aligned to the viewport if taller than it) and blurs 0 → MAX_BLUR px.
 (() => {
   if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
   const MAX_BLUR = 12;
-  const DRIFT = 0.1;
+  const DRIFT = 0.3;
   const pairs = [...document.querySelectorAll("[data-covered-by]")]
     .map((under) => ({ under, over: document.querySelector(under.dataset.coveredBy) }))
     .filter((p) => p.over);
