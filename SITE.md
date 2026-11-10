@@ -130,6 +130,7 @@ Gotchas learned:
 
 ## Recent changes
 
+- **2026-11-10:** Added `woocommerce-handoff/` for the developer building the live WooCommerce shop at https://shop.ekaterinaminkova.com/ (own cart, physical products, EUR). Contains the brief (`README.md`) and a ready-to-import product file (`woocommerce-products.csv`, 6 products / 36 variations, `TODO` cells for the owner).
 - **2026-11-10:** The GitHub repo (`main`) is now the **source of truth** for code; the old code artifact (M9QoAUzvXfv5cPdeaiTteE) is an outdated archive.
 - **2026-11-10:** Docs: motion spec added to the design system; `CLAUDE.md` and `docs/current-state.md` updated (repo is ahead of the artifact; push straight to `main`).
 - **2026-11-10:** Cart drawer: panel 300 ms ease-out; content gaps grow top → bottom (items still 500 ms each).
