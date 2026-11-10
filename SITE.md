@@ -12,13 +12,13 @@ Plain HTML/CSS/JS. No frameworks, no build step. **Updated 2026-11-10.**
 | What | Where |
 |---|---|
 | **Code — source of truth** | Claude artifact "EKA YOGA – Home preview": https://claude.ai/artifact/M9QoAUzvXfv5cPdeaiTteE (slug `a323635b-b306-45b2-a667-44af95996d1b`). The final-design build of all 9 pages. |
-| **GitHub repo** | https://github.com/victormovdesign-jpg/eka-yoga-shop (branch `main`, **Public**). Matches the artifact + the Home animations below. |
+| **GitHub repo** | https://github.com/victormovdesign-jpg/eka-yoga-shop (branch `main`, **Public**). The artifact's 9 pages **plus** everything under *Animations* below (navbar, entrance, overlap) and the `overflow-x: clip` fix — **the repo is newer than the artifact** for those. |
 | **Live site (GitHub Pages)** | https://victormovdesign-jpg.github.io/eka-yoga-shop/ — Pages builds from `main`, `/ (root)`. |
 | Visual design (canvas) | https://claude.ai/artifact/2aLqSQkHBhWDYg2fkZbWGq (exports in `design/`) |
 | Design system / page specs | `docs/EKA-YOGA_DesignSystem.md`, `docs/pages.md` |
 | Product data | Google Sheet `1qjy6b5jYHnIBTrXzLAUpNXeMGzchxVt3UhpRXmt0MUE` → `data/products.json` |
 
-If the artifact and the repo disagree, check which is newer before overwriting. The 2026-11-09 zip (`shop-ship-studio`) was an **older** snapshot — do not build from it.
+If the artifact and the repo disagree, check which is newer before overwriting — as of 2026-11-10 the repo is ahead (the artifact has none of the animation work). The 2026-11-09 zip (`shop-ship-studio`) was an **older** snapshot — do not build from it.
 
 ---
 
@@ -44,7 +44,7 @@ If the artifact and the repo disagree, check which is newer before overwriting. 
 | Checkout | `porachka.html` | `css/checkout.css`, `js/checkout-page.js` |
 | Thank you | `blagodarim.html` | `css/thank-you.css`, `js/thank-you.js` |
 
-Shared on every page: `css/tokens.css`, `css/base.css`, `css/components.css`, `js/header.js`, `js/cart-drawer.js`, `js/product-card.js`, `js/size-guide.js`, `js/checkout.js`.
+Shared on every page: `css/tokens.css`, `css/base.css`, `css/components.css`, `js/header.js`, `js/cart-drawer.js`, `js/product-card.js`, `js/size-guide.js`, `js/checkout.js`, `js/motion.js` (entrance + overlap; loaded last).
 Page order everywhere: **Header → content → PreFooter → Footer.** Home uses the overlay header (`.hd--overlay`); other pages the solid one.
 
 Reference-only files also in the repo (not part of the live site): `components.html`, `styleguide.html`, `design/`, `docs/`, `scripts/`.
@@ -63,7 +63,7 @@ Reference-only files also in the repo (not part of the live site): `components.h
 - grids that re-render (filters, tabs) animate their new items;
 - without JS, or with `prefers-reduced-motion`, everything is simply visible.
 
-**Navbar on scroll** — now on **every page** (moved out of Home into `js/header.js` + `css/components.css`, class `.hd--scroll` added by JS):
+**Navbar on scroll** — every page, in `js/header.js` + `css/components.css` (class `.hd--scroll` added by JS):
 - solid header (most pages): `position: sticky`, keeps `--bg-page`; overlay header (Home, Brand): `position: fixed`;
 - at the top (≤10 px): always visible, original look;
 - scrolling down: fades out, **200 ms**; scrolling up: fades in, **200 ms** (jitter < 6 px ignored);
@@ -91,25 +91,26 @@ Local state only (`js/checkout.js`, `js/cart.js`, `localStorage`). **Checkout pr
 
 ## How to update GitHub (current workflow)
 
-The cloud Claude session **cannot push** to `victormovdesign-jpg/eka-yoga-shop` unless that repo is selected when the session starts. Until then, Claude sends a zip and Viktor uploads in the browser:
+Claude pushes **directly to `main`** from a cloud session that has `victormovdesign-jpg/eka-yoga-shop` attached (GitHub connected at claude.ai → Settings → Connectors). GitHub Pages rebuilds in ~1 min; then hard-refresh the live site (Cmd+Shift+R) — old CSS/JS is often cached.
 
-1. Unzip; open `https://github.com/victormovdesign-jpg/eka-yoga-shop/upload/main` (root) — or `/upload/main/<folder>` to upload *into* a folder.
+- If a push returns **403 "Claude doesn't have GitHub access"**: reconnect GitHub at https://claude.ai/connect-github (and install the Claude GitHub App on the repo if needed), then push again.
+- The cloud sandbox **cannot open the live site** (`*.github.io` is blocked), so Claude tests locally (`python3 -m http.server` + Playwright) at 1440 / 768 / 390 / 320 and checks the Pages deploy run on GitHub.
+
+Fallback — browser upload (no Claude access):
+1. Open `https://github.com/victormovdesign-jpg/eka-yoga-shop/upload/main` (root) — or `/upload/main/<folder>` to upload *into* a folder.
 2. Drag the files/folders in (same names are replaced) → **Commit changes**.
-3. Wait ~1 min, hard-refresh the live site (Cmd+Shift+R).
 
 Gotchas learned:
 - GitHub web upload takes **max 100 files per batch** — upload `images/` subfolder by subfolder.
 - Uploading from the repo root page puts folders at the root, not inside `images/`.
 - All asset paths must be **relative** (`images/...`, not `/images/...`) — Pages serves the site under `/eka-yoga-shop/`.
 
-**Better:** start the next Claude session with `victormovdesign-jpg/eka-yoga-shop` selected as its repository, so Claude can commit and push directly.
-
 ---
 
 ## Open items
 
 - Checkout provider — decision needed.
-- Animate the other pages (same pattern as Home) — not started.
+- Sync the artifact (M9QoAUzvXfv5cPdeaiTteE) with the repo's animation work — or treat the repo as the source of truth from now on.
 - Hero copy is hidden by design (`hidden` on `.hm-hero__copy`) until the designer re-enables it.
 - Videos for the hero and Ритуал sections — still open.
 - No favicon (harmless 404).
@@ -121,6 +122,9 @@ Gotchas learned:
 
 ## Recent changes
 
+- **2026-11-10:** Entrance animations on **every page** (shared `js/motion.js`); Collection/Sets grids reveal row by row and re-animate after filter/tab changes. Scroll overlap added on Brand ("Какви материи…" over "За кого…", quote over the eye-pillows photo).
+- **2026-11-10:** Navbar hide/show on scroll on **every page** (solid header sticky, overlay header fixed); sticky side panels move below the shown header. `base.css`: `overflow-x: clip` (was `hidden`, which broke all `position: sticky`).
+- **2026-11-10:** Home scroll overlap: cover sections stuck together and filled `#F3F0E4`, blur clipped, covered section drifts up at 30 % of scroll speed. Entrance fade 300 → 500 ms.
 - **2026-11-10:** Navbar: desktop keeps the gradient after scroll-up; solid green only ≤984 px.
 - **2026-11-09:** Navbar hides on scroll down / shows on scroll up (200 ms fade) on Home.
 - **2026-11-09:** Switched the codebase to the final-design artifact build (all 9 pages). Added scroll-triggered entrance animations to Home.
