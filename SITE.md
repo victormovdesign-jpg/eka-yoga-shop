@@ -11,14 +11,14 @@ Plain HTML/CSS/JS. No frameworks, no build step. **Updated 2026-11-10.**
 
 | What | Where |
 |---|---|
-| **Code — source of truth** | Claude artifact "EKA YOGA – Home preview": https://claude.ai/artifact/M9QoAUzvXfv5cPdeaiTteE (slug `a323635b-b306-45b2-a667-44af95996d1b`). The final-design build of all 9 pages. |
-| **GitHub repo** | https://github.com/victormovdesign-jpg/eka-yoga-shop (branch `main`, **Public**). The artifact's 9 pages **plus** everything under *Animations* below (navbar, entrance, overlap) and the `overflow-x: clip` fix — **the repo is newer than the artifact** for those. |
+| **Code — source of truth** | **GitHub repo** https://github.com/victormovdesign-jpg/eka-yoga-shop (branch `main`, **Public**) — decided 2026-11-10. All code changes go here. |
+| Old code artifact (archive) | Claude artifact "EKA YOGA – Home preview": https://claude.ai/artifact/M9QoAUzvXfv5cPdeaiTteE (slug `a323635b-b306-45b2-a667-44af95996d1b`). **Outdated snapshot** (no motion work, no `overflow-x: clip` fix) — reference only; never build from it or copy it over the repo. |
 | **Live site (GitHub Pages)** | https://victormovdesign-jpg.github.io/eka-yoga-shop/ — Pages builds from `main`, `/ (root)`. |
 | Visual design (canvas) | https://claude.ai/artifact/2aLqSQkHBhWDYg2fkZbWGq (exports in `design/`) |
 | Design system / page specs | `docs/EKA-YOGA_DesignSystem.md`, `docs/pages.md` |
 | Product data | Google Sheet `1qjy6b5jYHnIBTrXzLAUpNXeMGzchxVt3UhpRXmt0MUE` → `data/products.json` |
 
-If the artifact and the repo disagree, check which is newer before overwriting — as of 2026-11-10 the repo is ahead (the artifact has none of the animation work). The 2026-11-09 zip (`shop-ship-studio`) was an **older** snapshot — do not build from it.
+**The repo is the only source of truth for code.** If anything else (the old artifact, a zip, a local copy) disagrees with `main`, `main` wins. The 2026-11-09 zip (`shop-ship-studio`) was an **older** snapshot — do not build from it.
 
 ---
 
@@ -119,7 +119,6 @@ Gotchas learned:
 ## Open items
 
 - Checkout provider — decision needed.
-- Sync the artifact (M9QoAUzvXfv5cPdeaiTteE) with the repo's animation work — or treat the repo as the source of truth from now on.
 - Hero copy is hidden by design (`hidden` on `.hm-hero__copy`) until the designer re-enables it.
 - Videos for the hero and Ритуал sections — still open.
 - No favicon (harmless 404).
@@ -131,6 +130,7 @@ Gotchas learned:
 
 ## Recent changes
 
+- **2026-11-10:** The GitHub repo (`main`) is now the **source of truth** for code; the old code artifact (M9QoAUzvXfv5cPdeaiTteE) is an outdated archive.
 - **2026-11-10:** Docs: motion spec added to the design system; `CLAUDE.md` and `docs/current-state.md` updated (repo is ahead of the artifact; push straight to `main`).
 - **2026-11-10:** Cart drawer: panel 300 ms ease-out; content gaps grow top → bottom (items still 500 ms each).
 - **2026-11-10:** Cart drawer: slides in from the right + fades (500 ms); content appears top → bottom, then "Продължи да пазаруваш", then "Купи сега"; slides/fades out on close.
