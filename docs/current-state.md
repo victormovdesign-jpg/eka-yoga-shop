@@ -78,3 +78,9 @@ Services are not sold – they link to ekaterinaminkova.com.
 - Videos for the hero and Ритуал sections.
 - Header dropdowns hidden – decide later.
 - Checkout provider not chosen (`lib/checkout.ts` adapter).
+
+## Update 2026-11-10 (supersedes the structure/pages sections above where they differ)
+- **Code source of truth:** artifact https://claude.ai/artifact/M9QoAUzvXfv5cPdeaiTteE — all 9 pages built as static HTML (`index`, `za-eka-yoga`, `oblekla-i-aksesoari`, `produkt`, `komplekti`, `komplekt`, `kolichka`, `porachka`, `blagodarim`). Stack is plain HTML/CSS/JS (not Astro); no `public/` — images live in `images/`.
+- **Repo:** https://github.com/victormovdesign-jpg/eka-yoga-shop · **Live:** https://victormovdesign-jpg.github.io/eka-yoga-shop/
+- **Home animations + navbar-on-scroll** are done; spec and file locations in `SITE.md` › Animations. Other pages not animated yet.
+- Still open: checkout provider, videos, favicon, repo visibility, delete duplicate `MuhtarovPhilips/eka-yoga-shop`.

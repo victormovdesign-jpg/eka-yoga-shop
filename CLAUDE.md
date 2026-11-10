@@ -1,5 +1,7 @@
 # EKA Yoga shop – build brief for Claude Code
 
+> **Update 2026-11-10 — read `SITE.md` first.** The site is now plain HTML/CSS/JS (no Astro/TypeScript, no build step), all 9 pages exist, and the code source of truth is the artifact https://claude.ai/artifact/M9QoAUzvXfv5cPdeaiTteE. Images are in `images/` (not `public/images/`); the cart adapter is `js/checkout.js` (not `lib/checkout.ts`). Sections below are the original brief — where they conflict with `SITE.md`, `SITE.md` wins.
+
 Boutique shop for EKA YOGA ("wear the bloom"), the clothing line of yoga teacher Ekaterina Minkova (https://ekaterinaminkova.com/).
 Designer: Viktor Muhtarov (victormov). Language of all UI copy: Bulgarian.
 
