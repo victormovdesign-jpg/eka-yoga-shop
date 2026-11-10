@@ -726,3 +726,39 @@ a.emb__card:focus-visible { outline: 2px solid var(--brand-green); outline-offse
   line-height: 1.4;
   color: var(--text-main);
 }
+
+/* ================================================================= */
+/* Motion — every page (js/motion.js)                                  */
+/* Entrance on scroll:                                                 */
+/* - every element: 0 → 100% opacity in 500 ms when it scrolls in;     */
+/* - titles also rise from 24px below;                                 */
+/* - grids / carousels reveal items left → right (delay set in JS);    */
+/* - no JS or reduced motion → everything is simply visible.           */
+/* ================================================================= */
+.js-anim [data-reveal] {
+  opacity: 0;
+  transition: opacity 500ms linear, transform 500ms cubic-bezier(0.2, 0, 0, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.js-anim [data-reveal="title"] { transform: translateY(24px); }
+.js-anim [data-reveal].is-in { opacity: 1; transform: none; }
+/* A covered section's transform is driven by scroll — never animate it. */
+.js-anim [data-covered-by][data-reveal] { transition-property: opacity; }
+@media (prefers-reduced-motion: reduce) {
+  .js-anim [data-reveal] { opacity: 1; transform: none; transition: none; }
+}
+
+/* ---------- Scroll overlap (Home + Brand only: needs data-covered-by) ----------
+   The section named in [data-covered-by] slides over the covered one; the
+   covered section drifts up at 30% of scroll speed (translateY set by
+   motion.js) and blurs. The cover and everything after it is filled with
+   bg/content-primary and stacked above, so the sections stay stuck together
+   with nothing showing through. clip-path keeps the blur inside its box. */
+[data-cover],
+[data-cover] ~ * {
+  position: relative;
+  z-index: 1;
+  background: var(--bg-content-primary, #F3F0E4);
+}
+body:has([data-cover]) .ft { position: relative; z-index: 1; }
+.js-anim [data-covered-by] { will-change: transform, filter; clip-path: inset(0); }

@@ -51,16 +51,17 @@ Reference-only files also in the repo (not part of the live site): `components.h
 
 ---
 
-## Animations (entrance + overlap: Home only; navbar: every page)
+## Animations (every page)
 
-Implemented at the **end** of `css/home.css` and `js/home.js`; the page markup is untouched (JS adds `data-reveal` attributes itself).
+**Entrance + overlap** live in `js/motion.js` (loaded **last** on every page, after the page script has rendered) and at the end of `css/components.css`. Page markup is untouched for the entrance — JS adds `data-reveal` itself; each page's `<head>` sets `<html class="js-anim">` with an inline script.
 
-**Entrance on scroll** — sections animate one by one when they scroll into view (IntersectionObserver, threshold 0.15), never all at load:
+**Entrance on scroll** — every page, same as Home: sections animate one by one when they scroll into view (IntersectionObserver, threshold 0.15), never all at load:
 - every element: opacity 0 → 100%, **500 ms**;
-- titles (`.hm-title`, `.hm-ritual__title`, PreFooter "Още от…" h2): fade + rise from 24 px below;
-- groups reveal children **left → right, 120 ms apart**: both carousels (`[data-row]`), brand tiles, colour swatches, colour grid, sets grid, PreFooter cards;
-- singles fade: hero image, ritual image + CTA, PreFooter quote, EM banner.
-- `<html class="js-anim">` is set by an inline script in `index.html` `<head>`; without JS, or with `prefers-reduced-motion`, everything is simply visible.
+- titles (`.hm-title`, `.hm-ritual__title`, `.br-h2`, `.cl-title`, `.ct-title`, `.co-title`, `.ty-title`, PreFooter "Още от…" h2): fade + rise from 24 px below;
+- groups reveal children **left → right, 120 ms apart**: Home carousels / brand tiles / swatches / colour grid / sets grid, product-page grids, PreFooter cards; long grids (Collection `.cl-grid`, Sets `.st-grid`) reveal **row by row** as each scrolls in;
+- singles fade: hero / ritual / Brand images and text blocks, breadcrumbs, filter bar, product gallery + info, cart, checkout form + summary, thank-you table, PreFooter quote, EM banner;
+- grids that re-render (filters, tabs) animate their new items;
+- without JS, or with `prefers-reduced-motion`, everything is simply visible.
 
 **Navbar on scroll** — now on **every page** (moved out of Home into `js/header.js` + `css/components.css`, class `.hd--scroll` added by JS):
 - solid header (most pages): `position: sticky`, keeps `--bg-page`; overlay header (Home, Brand): `position: fixed`;
@@ -71,7 +72,9 @@ Implemented at the **end** of `css/home.css` and `js/home.js`; the page markup i
 - stays visible while the mobile menu is open or when focus enters the header;
 - `css/base.css` uses `overflow-x: clip` on `html, body` (not `hidden`, which turns the body into a scroll container and breaks every `position: sticky`).
 
-**Scroll overlap** — "Пазарувай по цвят" slides over "Завърши практиката с красив ритуал", and the PreFooter quote slides over "EKA комплекти" (`data-covered-by` on the covered section, `data-cover` on the one that slides over):
+**Scroll overlap** — **Home and Brand only** (other pages have none). Mark the covered section `data-covered-by="<selector of the next section>"` and the next one `data-cover`; they must be adjacent:
+- Home: "Пазарувай по цвят" over "Завърши практиката с красив ритуал"; PreFooter quote over "EKA комплекти";
+- Brand (`za-eka-yoga.html`): "Какви материи използваме?" over "За кого са създадени тези облекла?"; PreFooter quote over the eye-pillows photo (`.br-pillows`);
 - while covered, the covered section keeps moving up at **30 % of the scroll speed** (bottom-aligned if taller than the viewport) and blurs **0 → 12 px**;
 - the cover and every section after it are filled with `--bg-content-primary` (#F3F0E4) and stacked above, so sections stay stuck together with no gap or shadow; `clip-path: inset(0)` keeps the blur inside the covered section;
 - off with `prefers-reduced-motion`.

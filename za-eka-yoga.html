@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="css/base.css" />
     <link rel="stylesheet" href="css/components.css" />
     <link rel="stylesheet" href="css/brand.css" />
+    <script>document.documentElement.classList.add("js-anim");</script>
   </head>
   <body>
     <header class="hd hd--overlay" data-variant="overlay">
@@ -80,7 +81,7 @@
 </div>
 </section>
 
-<section aria-labelledby="br-who">
+<section aria-labelledby="br-who" data-covered-by=".br-mat">
 <h2 id="br-who" class="br-h2">За кого са създадени тези облекла?</h2>
 <div class="br-who">
 <div class="br-who__panel">
@@ -99,7 +100,7 @@
 </div>
 </section>
 
-<section class="br-mat" aria-labelledby="br-mat">
+<section class="br-mat" aria-labelledby="br-mat" data-cover>
 <h2 id="br-mat" class="br-h2">Какви материи използваме?</h2>
 <div class="br-text">
 <p>В Eka Yoga избираме материите с внимание към движението, комфорта и усещането върху кожата.</p>
@@ -113,7 +114,7 @@
 </div>
 </section>
 
-<img src="images/eye-pillows/eka-yoga-eye-pillows.webp" alt="Четири възглавнички за очи от ръчно щампован индийски памук върху корков постелка" class="br-pillows" loading="lazy" />
+<img src="images/eye-pillows/eka-yoga-eye-pillows.webp" alt="Четири възглавнички за очи от ръчно щампован индийски памук върху корков постелка" class="br-pillows" loading="lazy" data-covered-by=".pf__quote" />
 
     </main>
 
@@ -121,7 +122,7 @@
     <!-- PreFooter                                                     -->
     <!-- ============================================================ -->
     <div class="pf">
-      <figure class="pf__quote">
+      <figure class="pf__quote" data-cover>
         <blockquote>„Йога дрехи и аксесоари в подкрепа на твоята практика с красиво и запомнящо се присъствие.“</blockquote>
         <figcaption>— ЕКАТЕРИНА МИНКОВА —</figcaption>
       </figure>
@@ -265,5 +266,6 @@
     <script type="module" src="js/header.js"></script>
     <script type="module" src="js/cart-drawer.js"></script>
     <script type="module" src="js/brand.js"></script>
+    <script type="module" src="js/motion.js"></script>
   </body>
 </html>
