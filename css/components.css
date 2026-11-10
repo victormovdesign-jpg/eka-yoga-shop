@@ -717,6 +717,22 @@ a.emb__card:focus-visible { outline: 2px solid var(--brand-green); outline-offse
   font: 700 24px/1.2 var(--font-serif);
   font-variant-numeric: lining-nums;
 }
+/* Open / close animation (js/cart-drawer.js toggles .is-open):
+   backdrop fades, panel slides in from the right + fades (500 ms);
+   [data-cd-step] elements fade in one after another (delay set in JS). */
+.cd__backdrop { opacity: 0; transition: opacity 500ms linear; }
+.cd__panel {
+  opacity: 0;
+  transform: translateX(100%);
+  transition: opacity 500ms linear, transform 500ms cubic-bezier(0.2, 0, 0, 1);
+}
+.cd.is-open .cd__backdrop { opacity: 1; }
+.cd.is-open .cd__panel { opacity: 1; transform: none; }
+.cd [data-cd-step] { opacity: 0; transition: opacity 500ms linear; }
+.cd.is-open [data-cd-step] { opacity: 1; transition-delay: var(--cd-delay, 0ms); }
+@media (prefers-reduced-motion: reduce) {
+  .cd__backdrop, .cd__panel, .cd [data-cd-step] { transition: none; }
+}
 .cd__provider-note {
   margin: 12px 0 0;
   padding: 12px;

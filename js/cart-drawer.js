@@ -146,15 +146,44 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   };
 
+  // --- Open / close animation -------------------------------------------
+  // Panel slides in from the right + fades in (500 ms, CSS). Then the content
+  // fades in one after another, top → bottom (header, products, total), and
+  // last the buttons: "Продължи да пазаруваш", then "Купи сега".
+  const DURATION = 500;   // panel + each element
+  const START = 250;      // content starts while the panel is still sliding in
+  const STAGGER = 120;    // between consecutive elements
+  const head = drawer.querySelector(".cd__head");
+  const total = drawer.querySelector(".cd__total");
+  const keepShopping = drawer.querySelector(".cd__btn--secondary");
+  const buy = drawer.querySelector("[data-buy]");
+  const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let closeTimer = 0;
+
+  const sequence = () => {
+    const steps = [head, ...(empty.hidden ? [] : [empty]), ...list.children, total, keepShopping, buy];
+    steps.forEach((el, i) => {
+      el.setAttribute("data-cd-step", "");
+      el.style.setProperty("--cd-delay", `${START + i * STAGGER}ms`);
+    });
+  };
+
   const open = () => {
+    clearTimeout(closeTimer);
     drawer.removeAttribute("hidden");
     document.body.style.overflow = "hidden";
     render();
+    sequence();
+    void drawer.offsetWidth;              // start from the closed state
+    drawer.classList.add("is-open");
   };
   const close = () => {
-    drawer.setAttribute("hidden", "");
+    drawer.classList.remove("is-open");
     document.body.style.overflow = "";
-    providerNote.hidden = true;
+    closeTimer = setTimeout(() => {
+      drawer.setAttribute("hidden", "");
+      providerNote.hidden = true;
+    }, reduced() ? 0 : DURATION);
   };
 
   drawer.querySelectorAll("[data-close]").forEach((btn) =>
@@ -163,7 +192,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   window.addEventListener("eka:cart-open", open);
   onChange(render);
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && !drawer.hasAttribute("hidden")) close();
+    if (e.key === "Escape" && drawer.classList.contains("is-open")) close();
   });
 
   // "Купи сега" goes to the checkout page; payment is handed off there.

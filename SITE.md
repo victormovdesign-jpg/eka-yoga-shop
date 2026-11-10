@@ -79,6 +79,12 @@ Reference-only files also in the repo (not part of the live site): `components.h
 - the cover and every section after it are filled with `--bg-content-primary` (#F3F0E4) and stacked above, so sections stay stuck together with no gap or shadow; `clip-path: inset(0)` keeps the blur inside the covered section;
 - off with `prefers-reduced-motion`.
 
+**Cart drawer "Моята количка"** — every page (`js/cart-drawer.js` toggles `.cd.is-open`; CSS at the CartDrawer block in `css/components.css`):
+- open: backdrop fades in; panel slides in **from right to left** + fades in, **500 ms**;
+- content fades in **one after another, top → bottom**, 500 ms each, 120 ms apart, starting 250 ms in: header, products, total — then the buttons, **"Продължи да пазаруваш" first, then "Купи сега"**;
+- close (×, backdrop, "Продължи да пазаруваш", Esc): panel slides out to the right + fades out, 500 ms; then `hidden`;
+- quantity changes while open re-render without re-animating; off with `prefers-reduced-motion`.
+
 Animation reference requested: https://www.wearetala.com/en-eu — **could not be reached from the cloud sandbox**, so timings follow the written spec above, not Tala's exact easing.
 
 ---
@@ -122,6 +128,7 @@ Gotchas learned:
 
 ## Recent changes
 
+- **2026-11-10:** Cart drawer: slides in from the right + fades (500 ms); content appears top → bottom, then "Продължи да пазаруваш", then "Купи сега"; slides/fades out on close.
 - **2026-11-10:** Entrance animations on **every page** (shared `js/motion.js`); Collection/Sets grids reveal row by row and re-animate after filter/tab changes. Scroll overlap added on Brand ("Какви материи…" over "За кого…", quote over the eye-pillows photo).
 - **2026-11-10:** Navbar hide/show on scroll on **every page** (solid header sticky, overlay header fixed); sticky side panels move below the shown header. `base.css`: `overflow-x: clip` (was `hidden`, which broke all `position: sticky`).
 - **2026-11-10:** Home scroll overlap: cover sections stuck together and filled `#F3F0E4`, blur clipped, covered section drifts up at 30 % of scroll speed. Entrance fade 300 → 500 ms.
