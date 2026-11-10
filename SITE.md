@@ -51,7 +51,7 @@ Reference-only files also in the repo (not part of the live site): `components.h
 
 ---
 
-## Animations (Home only — other pages not animated yet)
+## Animations (entrance + overlap: Home only; navbar: every page)
 
 Implemented at the **end** of `css/home.css` and `js/home.js`; the page markup is untouched (JS adds `data-reveal` attributes itself).
 
@@ -62,11 +62,14 @@ Implemented at the **end** of `css/home.css` and `js/home.js`; the page markup i
 - singles fade: hero image, ritual image + CTA, PreFooter quote, EM banner.
 - `<html class="js-anim">` is set by an inline script in `index.html` `<head>`; without JS, or with `prefers-reduced-motion`, everything is simply visible.
 
-**Navbar on scroll** — header is `position: fixed` on Home (`body.hm-page`):
-- at the top (≤10 px): always visible, original gradient;
+**Navbar on scroll** — now on **every page** (moved out of Home into `js/header.js` + `css/components.css`, class `.hd--scroll` added by JS):
+- solid header (most pages): `position: sticky`, keeps `--bg-page`; overlay header (Home, Brand): `position: fixed`;
+- at the top (≤10 px): always visible, original look;
 - scrolling down: fades out, **200 ms**; scrolling up: fades in, **200 ms** (jitter < 6 px ignored);
-- after scroll-up, **desktop (>984 px) keeps the gradient**; **≤984 px** (burger header) gets solid `--brand-green` so the white logo stays readable;
-- stays visible while the mobile menu is open or when focus enters the header.
+- overlay header after scroll-up: **desktop (>984 px) keeps the gradient**; **≤984 px** (burger header) gets solid `--brand-green` so the white logo stays readable;
+- while the header is shown below the top, sticky side panels (product info, cart summary, checkout aside) move down by the header height so it never covers them;
+- stays visible while the mobile menu is open or when focus enters the header;
+- `css/base.css` uses `overflow-x: clip` on `html, body` (not `hidden`, which turns the body into a scroll container and breaks every `position: sticky`).
 
 **Scroll overlap** — "Пазарувай по цвят" slides over "Завърши практиката с красив ритуал", and the PreFooter quote slides over "EKA комплекти" (`data-covered-by` on the covered section, `data-cover` on the one that slides over):
 - while covered, the covered section keeps moving up at **30 % of the scroll speed** (bottom-aligned if taller than the viewport) and blurs **0 → 12 px**;

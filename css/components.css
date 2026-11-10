@@ -28,6 +28,35 @@
   right: 0;
   z-index: 10;
 }
+/* ---------- Header on scroll (every page, set up by js/header.js) ----------
+   Scroll down → fades out; scroll up → fades back in (200 ms).
+   Solid header: sticky, keeps --bg-page. Overlay header (Home, Brand): fixed;
+   desktop keeps the gradient, ≤984px (burger header) turns solid brand-green
+   once scrolled so the white logo stays readable. */
+.hd--scroll {
+  position: sticky;
+  top: 0;
+  transition: opacity 200ms linear, visibility 0s linear 0s, background-color 0s;
+}
+.hd--overlay.hd--scroll { position: fixed; }
+.hd--scroll.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 200ms linear, visibility 0s linear 200ms;
+}
+@media (max-width: 984px) {
+  .hd--overlay.hd--scroll.is-scrolled { background: var(--brand-green); }
+}
+/* Sticky side panels slide down below the header while it is shown. */
+.pd-info, .ct-sum, .co-aside { transition: top 200ms linear; }
+body.hd-pinned .pd-info,
+body.hd-pinned .ct-sum,
+body.hd-pinned .co-aside { top: calc(var(--hd-height, 110px) + 24px); }
+@media (prefers-reduced-motion: reduce) {
+  .hd--scroll, .hd--scroll.is-hidden, .pd-info, .ct-sum, .co-aside { transition: none; }
+}
+
 .hd__logo { display: block; flex: none; }
 .hd__logo img { display: block; width: 221px; height: 78px; }
 

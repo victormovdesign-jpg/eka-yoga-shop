@@ -150,30 +150,6 @@ span.pc__swatch { cursor: default; }
   .js-anim [data-reveal] { opacity: 1; transform: none; transition: none; }
 }
 
-/* ================================================================= */
-/* Header on scroll (Home only)                                       */
-/* Hidden while scrolling down, shown when scrolling up — 200 ms fade. */
-/* On mobile (≤984px), past the hero it gets a solid brand-green bg so  */
-/* the logo + links stay readable. Desktop keeps the gradient.         */
-/* ================================================================= */
-.hm-page .hd--overlay {
-  position: fixed;
-  transition: opacity 200ms linear, visibility 0s linear 0s, background-color 0s;
-}
-.hm-page .hd--overlay.is-hidden {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transition: opacity 200ms linear, visibility 0s linear 200ms;
-}
-/* Desktop keeps the header gradient; mobile/tablet header (≤984px) goes solid green. */
-@media (max-width: 984px) {
-  .hm-page .hd--overlay.is-scrolled { background: var(--brand-green); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .hm-page .hd--overlay, .hm-page .hd--overlay.is-hidden { transition: none; }
-}
-
 /* ---------- Scroll overlap ----------
    The section named in [data-covered-by] slides over the covered one; the
    covered section drifts up at 30% of scroll speed (translateY set by
@@ -186,5 +162,5 @@ span.pc__swatch { cursor: default; }
   z-index: 1;
   background: var(--bg-content-primary, #F3F0E4);
 }
-.hm-page .ft { position: relative; z-index: 1; }
+.ft { position: relative; z-index: 1; }
 .js-anim [data-covered-by] { will-change: transform, filter; clip-path: inset(0); }
