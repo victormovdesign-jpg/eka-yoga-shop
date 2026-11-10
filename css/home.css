@@ -176,6 +176,15 @@ span.pc__swatch { cursor: default; }
 
 /* ---------- Scroll overlap ----------
    The section named in [data-covered-by] slides over the covered one; the
-   covered section stays pinned (translateY set by home.js) and blurs. */
-[data-cover] { position: relative; z-index: 1; background: var(--bg-page, #F3F0E4); }
-.js-anim [data-covered-by] { will-change: transform, filter; }
+   covered section drifts up at 10% of scroll speed (translateY set by
+   home.js) and blurs. The cover and everything after it is filled with
+   bg/content-primary and stacked above, so the sections stay stuck together
+   with nothing showing through. clip-path keeps the blur inside its box. */
+[data-cover],
+[data-cover] ~ * {
+  position: relative;
+  z-index: 1;
+  background: var(--bg-content-primary, #F3F0E4);
+}
+.hm-page .ft { position: relative; z-index: 1; }
+.js-anim [data-covered-by] { will-change: transform, filter; clip-path: inset(0); }

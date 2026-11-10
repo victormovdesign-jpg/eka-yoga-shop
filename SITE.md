@@ -68,6 +68,11 @@ Implemented at the **end** of `css/home.css` and `js/home.js`; the page markup i
 - after scroll-up, **desktop (>984 px) keeps the gradient**; **≤984 px** (burger header) gets solid `--brand-green` so the white logo stays readable;
 - stays visible while the mobile menu is open or when focus enters the header.
 
+**Scroll overlap** — "Пазарувай по цвят" slides over "Завърши практиката с красив ритуал", and the PreFooter quote slides over "EKA комплекти" (`data-covered-by` on the covered section, `data-cover` on the one that slides over):
+- while covered, the covered section keeps moving up at **10 % of the scroll speed** (bottom-aligned if taller than the viewport) and blurs **0 → 12 px**;
+- the cover and every section after it are filled with `--bg-content-primary` (#F3F0E4) and stacked above, so sections stay stuck together with no gap or shadow; `clip-path: inset(0)` keeps the blur inside the covered section;
+- off with `prefers-reduced-motion`.
+
 Animation reference requested: https://www.wearetala.com/en-eu — **could not be reached from the cloud sandbox**, so timings follow the written spec above, not Tala's exact easing.
 
 ---
