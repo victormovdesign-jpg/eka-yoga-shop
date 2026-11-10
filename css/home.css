@@ -153,8 +153,8 @@ span.pc__swatch { cursor: default; }
 /* ================================================================= */
 /* Header on scroll (Home only)                                       */
 /* Hidden while scrolling down, shown when scrolling up — 200 ms fade. */
-/* Past the hero it gets a solid brand-green background so the white  */
-/* logo + links stay readable over light sections.                    */
+/* On mobile (≤984px), past the hero it gets a solid brand-green bg so  */
+/* the logo + links stay readable. Desktop keeps the gradient.         */
 /* ================================================================= */
 .hm-page .hd--overlay {
   position: fixed;
@@ -166,7 +166,10 @@ span.pc__swatch { cursor: default; }
   pointer-events: none;
   transition: opacity 200ms linear, visibility 0s linear 200ms;
 }
-.hm-page .hd--overlay.is-scrolled { background: var(--brand-green); }
+/* Desktop keeps the header gradient; mobile/tablet header (≤984px) goes solid green. */
+@media (max-width: 984px) {
+  .hm-page .hd--overlay.is-scrolled { background: var(--brand-green); }
+}
 @media (prefers-reduced-motion: reduce) {
   .hm-page .hd--overlay, .hm-page .hd--overlay.is-hidden { transition: none; }
 }
