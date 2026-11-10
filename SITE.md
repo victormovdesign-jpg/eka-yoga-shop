@@ -56,7 +56,7 @@ Reference-only files also in the repo (not part of the live site): `components.h
 Implemented at the **end** of `css/home.css` and `js/home.js`; the page markup is untouched (JS adds `data-reveal` attributes itself).
 
 **Entrance on scroll** — sections animate one by one when they scroll into view (IntersectionObserver, threshold 0.15), never all at load:
-- every element: opacity 0 → 100%, **300 ms**;
+- every element: opacity 0 → 100%, **500 ms**;
 - titles (`.hm-title`, `.hm-ritual__title`, PreFooter "Още от…" h2): fade + rise from 24 px below;
 - groups reveal children **left → right, 120 ms apart**: both carousels (`[data-row]`), brand tiles, colour swatches, colour grid, sets grid, PreFooter cards;
 - singles fade: hero image, ritual image + CTA, PreFooter quote, EM banner.

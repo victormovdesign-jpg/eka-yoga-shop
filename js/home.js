@@ -75,7 +75,7 @@ switchBtns.forEach((btn) => {
 
 // --- Entrance animations ---------------------------------------------------
 // Sections animate one by one as they scroll into view — never all at load.
-// Each element fades 0 → 100% in 300 ms; titles also rise from below;
+// Each element fades 0 → 100% in 500 ms; titles also rise from below;
 // carousel / grid items appear left → right, STAGGER ms apart.
 (() => {
   const STAGGER = 120;
@@ -149,4 +149,33 @@ switchBtns.forEach((btn) => {
   }, { passive: true });
   // Keyboard users tabbing into the header must always see it.
   hd.addEventListener("focusin", () => hd.classList.remove("is-hidden"));
+})();
+
+// --- Scroll overlap -------------------------------------------------------
+// The next section slides over the covered one, which stays pinned
+// (bottom-aligned if taller than the viewport) and blurs 0 → MAX_BLUR px.
+(() => {
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const MAX_BLUR = 12;
+  const pairs = [...document.querySelectorAll("[data-covered-by]")]
+    .map((under) => ({ under, over: document.querySelector(under.dataset.coveredBy) }))
+    .filter((p) => p.over);
+  if (!pairs.length) return;
+  let ticking = false;
+  const update = () => {
+    ticking = false;
+    const vh = window.innerHeight;
+    pairs.forEach(({ under, over }) => {
+      const h = under.offsetHeight;
+      const naturalTop = over.getBoundingClientRect().top - h; // sections are adjacent
+      const shift = Math.min(h, Math.max(0, Math.min(0, vh - h) - naturalTop));
+      const p = shift / h;
+      under.style.transform = shift ? `translateY(${shift}px)` : "";
+      under.style.filter = p > 0 ? `blur(${(p * MAX_BLUR).toFixed(2)}px)` : "";
+    });
+  };
+  const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onScroll);
+  update();
 })();
